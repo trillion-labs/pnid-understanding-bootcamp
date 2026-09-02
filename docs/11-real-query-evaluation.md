@@ -1,165 +1,111 @@
-# 11. 실제 GS Agent 쿼리로 검증하기
+# 부록: 여러 도면에서 관련 P&ID를 찾는 작업
 
-## 결론
+핵심 워크북에서는 이미 선택된 P&ID 한 장을 깊게 읽었습니다. 실제 업무에서는 그보다 앞서 수백 장의 도면 가운데 질문과 관련된 시트를 찾아야 할 때도 있습니다.
 
-`gs-agent-pnid-eval`에서 현재 샘플 도면 `J-11520-ZM-105-005`를 정답으로 요구하는 실제 질의 두 개가 확인됐다.
+이 부록에서는 단일 도면 이해와 도면 검색을 섞지 않고, 도면 검색을 별도의 평가 작업으로 다룹니다.
 
-| ID | 난이도 | 질의 핵심 | 기대 도면 |
-|---|---|---|---|
-| Q005 | easy | Bottom Ash Vibro Feeder #C Outlet Expansion Joint Ash Leak | J-11520-ZM-105-005 |
-| Q008 | medium | Reception Bin-2 to OFA Line Flexible Hose Pinhole / Ash Leak | J-11520-ZM-105-005 |
+## 실제 평가 데이터에서 찾은 두 질문
 
-원본 위치:
+별도 `gs-agent-pnid-eval` 프로젝트에는 현재 샘플 도면 `J-11520-ZM-105-005`를 정답으로 요구하는 실제 질문 두 개가 있습니다.
 
-- 별도 `gs-agent-pnid-eval` 프로젝트의 `outputs/facilitator-answer-key.jsonl`
-- Q005는 같은 프로젝트의 `repo/queries/examples.jsonl`과 참가자 handout에도 포함
+| 질문 | 난이도 | 기대 도면 |
+|---|---|---|
+| Bottom Ash Vibro Feeder #C Outlet Expansion Joint Ash Leak 관련 P&ID 찾기 | 쉬움 | `J-11520-ZM-105-005` |
+| Reception Bin 2와 OFA Line 사이 Flexible Hose의 Pinhole·Ash Leak 관련 P&ID 찾기 | 중간 | `J-11520-ZM-105-005` |
 
-교육 프로젝트에는 두 질의를 `data/real-queries.jsonl`로 복사해 두었다.
+기술 데이터 파일에서는 기존 실행 결과와 연결하기 위해 질문 ID를 유지합니다. 워크북에서는 독자가 질문의 의미를 바로 이해할 수 있도록 장비와 문제 상황으로 부릅니다.
 
-## 왜 현재 도면 이해 방식과 직접 연결되는가
+## 파일명만으로는 왜 부족할까요?
 
-두 질문 모두 파일명만으로는 Bottom Ash Handling System 1/5~5/5 중 어느 시트인지 확정하기 어렵다.
-
-```text
-파일명/카탈로그
-  -> Bottom Ash Handling System 5장으로 후보 축소
-overview
-  -> Reception Bin 반복 구조와 feeder가 있는 시트 후보 파악
-R03 확대본
-  -> Vibro Feeder #C, Reception Bin 2, Flexible Hose, Boiler OFA 확인
-bbox
-  -> 답변 근거 위치 고정
-구조화 데이터
-  -> query term과 관찰 object/text를 비교
-```
-
-즉, 이 두 질의는 coarse-to-fine의 효과를 보여 주기 좋은 실제 사례다.
-
-## R03 query evidence crop
-
-기존 입문 실습의 R02는 Reception Bin 1을 설명하기 위한 단순 예다. 실제 Q005와 Q008은 Reception Bin 2가 있는 R03에서 직접 증거를 찾는다.
-
-![R03 실제 쿼리 근거](../assets/bbox/feeder-c-query-evidence.png)
-
-- 빨간 상자: Q008의 `Flexible Hose`, `Reception Bin 2`, `Boiler OFA` 문맥
-- 파란 상자: Q005의 `VIBRO FEEDER #C`, `11520-M-VB-03C`, 출구 쪽 joint 심벌 문맥
-
-이 상자는 query evidence를 빠르게 검토하기 위한 넓은 region bbox다. 개별 부품의 최종 gold bbox는 별도 adjudication이 필요합니다.
-
-## 기존 Q005 실행 결과
-
-`repo/viewer/data/runs.json`에서 Q005 관련 run 여섯 개를 확인했다.
-
-| run | 결정 | 정확 | strict single | 시간 | tool calls |
-|---|---|---:|---:|---:|---:|
-| baseline Claude Sonnet | 005 포함, 추가 후보 존재 | 예 | 아니오 | 190.63s | 27 |
-| baseline Claude Haiku | 002 | 아니오 | 아니오 | 130.83s | 15 |
-| baseline Codex Luna | 005 | 예 | 예 | 163.26s | 26 |
-| baseline Codex Terra | 005 | 예 | 예 | 123.05s | 18 |
-| catalog-v1 Codex Luna | 003 | 아니오 | 아니오 | 95.21s | 8 |
-| pid-view-v2 Codex Luna | 005 | 예 | 예 | 124.27s | 12 |
-
-관찰:
-
-1. Haiku baseline은 2/5의 일반 expansion joint를 보고 잘못 선택했다.
-2. 카탈로그만 제공한 Luna도 3/5를 골라 실패했다.
-3. overview와 crop을 사용한 pid-view-v2 Luna는 5/5에서 `VIBRO FEEDER #C`를 확인해 성공했다.
-4. 동일한 Codex Luna 비교에서 pid-view-v2는 raw baseline보다 tool call이 26→12, 시간은 163.26→124.27초로 감소했다.
-5. 기록된 input token은 840,958→684,239, 추정 비용은 약 9.2% 감소했다. 토큰 집계 방식은 harness에 의존하므로 절대값보다 동일 harness 내 비교로 본다.
-
-## 중요한 반례: 도면을 맞혀도 근거가 틀릴 수 있다
-
-일부 성공 run은 `11520-E-MT-18`을 expansion joint로 표현했다. 그러나 도면에서 `EM` 심벌과 `E-MT-18`은 feeder의 전동기 표기로 보입니다. drawing ID exact match만 채점하면 이런 근거 오류를 놓친다.
-
-따라서 평가를 두 층으로 나눕니다.
-
-### Retrieval 평가
-
-- 올바른 도면 ID를 골랐는가?
-- 불필요한 다른 도면 ID를 함께 제시하지 않았는가?
-
-### Evidence 평가
-
-- `VIBRO FEEDER #C`를 실제 crop에서 확인했는가?
-- `11520-M-VB-03C`를 올바르게 읽었는가?
-- expansion joint와 motor tag를 혼동하지 않았는가?
-- Q008에서 Flexible Hose와 Boiler OFA 문맥을 확인했는가?
-- 근거 bbox 또는 crop을 남겼는가?
-
-우리 교육의 bbox, text layer, 구조화 데이터는 retrieval보다 evidence 평가에서 더 큰 역할을 합니다.
-
-## text layer가 얼마나 도와주는가
-
-현재 whole-page OCR text layer에서는 다음 문자열이 검색됐다.
-
-- `FLEXIBLE HOSE`
-- `BOILER OFA`
-- `RECEPTION BIN 2`
-- 일부 `VIBRO FEEDER`
-
-하지만 `VIBRO FEEDER #C` 전체와 세부 tag는 안정적으로 추출되지 않았다. 따라서 text layer만으로 Q005를 풀기에는 부족하다.
-
-권장 결합:
+두 질문 모두 Bottom Ash Handling System 1/5~5/5 가운데 관련 시트를 골라야 합니다. 파일 목록으로는 다섯 장까지 후보를 줄일 수 있지만, 어느 시트에 Feeder #C와 Reception Bin 2가 있는지는 이미지를 읽어야 확인할 수 있습니다.
 
 ```text
-OCR text layer로 후보 문서/구역 검색
-  -> 고해상도 crop에서 세부 문자 확인
-    -> bbox로 evidence 저장
-      -> 사람이 심벌과 tag 의미 검토
+파일 목록으로 Bottom Ash Handling System 후보를 좁힙니다.
+        ↓
+전체 구조용 이미지에서 Reception Bin과 Feeder가 있는 시트를 찾습니다.
+        ↓
+Feeder #C 주변을 크게 보며 질문의 작은 단서를 확인합니다.
+        ↓
+위치 상자로 선택 근거를 남깁니다.
 ```
 
-## 권장 A/B 실험
+이 과정에서 파일 목록은 후보를 찾는 도구이고, 도면 이미지는 최종 판단의 근거입니다.
 
-### A: raw query
+## 두 질문이 요구하는 근거는 다릅니다
 
-입력:
+![Feeder #C와 Flexible Hose 질문의 근거 구역](../assets/bbox/feeder-c-query-evidence.png)
 
-- 455개 원본 PDF
-- Q005 또는 Q008 원문
+- 파란 상자는 `VIBRO FEEDER #C`, `11520-M-VB-03C`, 출구 쪽 joint 심벌 문맥을 보여 줍니다.
+- 빨간 상자는 `FLEXIBLE HOSE`, `RECEPTION BIN 2`, `BOILER OFA` 문맥을 보여 줍니다.
 
-출력:
+두 질문의 기대 도면번호는 같지만 필요한 시각 근거는 다릅니다. 도면번호만 맞혔는지 평가하면 이 차이를 확인할 수 없습니다.
 
-- 도면 ID 하나
-- 자유로운 판단 근거
+## 기존 실행에서는 어떤 차이가 있었나요?
 
-### B: AI-ready query
+기존 실행 기록에서 Claude Sonnet, Codex Luna와 Codex Terra 결과를 같은 질문으로 비교했습니다. Haiku 실행은 현재 주 비교 대상에서 제외했습니다.
 
-입력:
+| 실행 조건 | 모델 | 선택 결과 | 도면 선택 성공 | 도구 호출 수 |
+|---|---|---|---:|---:|
+| 원본 파일과 자유로운 탐색 | Claude Sonnet | 5/5 포함, 추가 후보 존재 | 부분 성공 | 27 |
+| 원본 파일과 자유로운 탐색 | Codex Luna | 5/5 | 성공 | 26 |
+| 원본 파일과 자유로운 탐색 | Codex Terra | 5/5 | 성공 | 18 |
+| 파일 목록만 추가 | Codex Luna | 3/5 | 실패 | 8 |
+| 전체 구조용 이미지와 부분 확대 도구 추가 | Codex Luna | 5/5 | 성공 | 12 |
 
-- 파일 카탈로그
-- 1600px overview
-- 필요 시 R03 crop
-- OCR text 후보
-- 근거를 bbox와 함께 남기는 출력 스키마
+같은 Codex Luna에서도 파일 목록만 제공했을 때에는 3/5를 선택했습니다. 전체 구조용 이미지와 부분 확대 도구를 제공했을 때에는 Feeder #C를 이미지에서 확인하여 5/5를 선택했습니다.
 
-출력:
+이 비교는 파일 목록을 추가하는 것과 도면을 읽을 수 있는 시각 도구를 추가하는 것이 서로 다른 개선임을 보여 줍니다.
 
-- 도면 ID 하나
-- 확인한 query term
-- crop/bbox 근거
-- 확인하지 못한 term
-- evidence review status
+## 도면번호가 맞아도 근거는 틀릴 수 있습니다
 
-## 점수표
+일부 실행은 올바른 도면을 선택했지만 `11520-E-MT-18`을 Expansion Joint 태그로 설명했습니다. 원본에서는 `EM`과 `E-MT-18`이 Feeder의 motor 관련 표기로 보입니다.
+
+따라서 도면 검색 결과도 두 층으로 나누어 평가합니다.
+
+### 도면 선택
+
+- 기대한 도면번호를 골랐습니까?
+- 하나를 요구했을 때 불필요한 후보를 함께 제시하지 않았습니까?
+
+### 선택 근거
+
+- `VIBRO FEEDER #C`를 실제 이미지에서 확인했습니까?
+- `11520-M-VB-03C`를 올바르게 읽었습니까?
+- Expansion Joint와 motor 표기를 혼동하지 않았습니까?
+- Flexible Hose 질문에서는 Reception Bin 2와 Boiler OFA 문맥을 확인했습니까?
+- 다른 사람이 다시 볼 수 있는 근거 위치를 남겼습니까?
+
+## 텍스트 레이어는 후보 검색에 사용합니다
+
+전체 페이지 OCR 텍스트 레이어에서는 `FLEXIBLE HOSE`, `BOILER OFA`, `RECEPTION BIN 2`와 일부 `VIBRO FEEDER` 문자열을 검색할 수 있었습니다.
+
+하지만 `VIBRO FEEDER #C` 전체와 세부 태그는 안정적으로 추출되지 않았습니다. 따라서 텍스트 검색 결과만으로 관련 시트를 확정하지 않습니다.
+
+```text
+OCR 텍스트 레이어로 후보 문서와 구역을 찾습니다.
+        ↓
+고해상도 부분 확대 이미지에서 세부 글자를 확인합니다.
+        ↓
+위치 상자로 선택 근거를 저장합니다.
+        ↓
+사람이 심벌과 태그 의미를 검토합니다.
+```
+
+## 도면 검색 평가표
 
 | 항목 | 점수 |
 |---|---:|
-| 기대 도면 ID exact match | 2 |
-| 추가 drawing ID 없음 | 1 |
-| 핵심 장비/문자 근거 확인 | 2 |
-| 근거 위치 crop/bbox 제공 | 2 |
-| component 의미 혼동 없음 | 2 |
-| 미확인 항목을 추측하지 않음 | 1 |
+| 기대 도면번호를 선택했습니다. | 2 |
+| 불필요한 추가 도면번호가 없습니다. | 1 |
+| 질문의 핵심 장비와 글자 근거를 확인했습니다. | 2 |
+| 근거 위치를 부분 확대 이미지나 위치 상자로 남겼습니다. | 2 |
+| 설비 요소의 의미를 혼동하지 않았습니다. | 2 |
+| 확인하지 못한 항목을 추측하지 않았습니다. | 1 |
 
-총 10점입니다. 기존 drawing retrieval 점수만 사용하면 3점까지만 평가하는 셈입니다.
+총점은 10점입니다. 앞 단원의 단일 도면 이해 4점 평가표와 합치지 않습니다. 두 평가는 입력과 성공 기준이 서로 다르기 때문입니다.
 
-## 예상
+## 개선을 주장하기 전에 확인할 것
 
-coarse-to-fine과 query evidence 스키마는 다음을 개선할 가능성이 높다.
+실제 개선을 주장하려면 같은 모델, 같은 질문, 같은 원본 파일, 새 세션과 같은 제한 시간으로 전후 실행을 반복해야 합니다.
 
-- 1/5~5/5 중 올바른 sheet 선택
-- `#C`와 `Reception Bin 2`처럼 작은 구분자의 판독
-- 답변 근거의 재검토 가능성
-- motor, joint, feeder 같은 component 의미 혼동 발견
-
-다만 실제 개선을 주장하려면 동일 모델, 동일 query, fresh session, 동일 시간 제한으로 A/B를 반복해야 합니다. 현재 자료는 Q005에서 유의미한 선행 증거를 제공하지만 Q008은 별도 실행 비교가 더 필요합니다.
+현재 기록은 Feeder #C 질문에서 전체 구조용 이미지와 부분 확대 도구가 도면 선택에 도움을 준 사례를 제공합니다. Flexible Hose 질문은 같은 조건의 전후 실행이 충분하지 않으므로 별도 비교가 더 필요합니다.

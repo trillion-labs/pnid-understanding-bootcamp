@@ -12,14 +12,14 @@
 |---|---|
 | Lean prompt | 스킬에는 원본 보존, query-term 검증, evidence 구분만 둠 |
 | State once | `추측하지 마`를 여러 문서에서 반복해 system prompt를 비대하게 만들지 않음 |
-| Relevant tools | catalog, overview, crop 중 현재 단계에 필요한 것만 사용 |
-| Representative eval | Q005/Q008 실제 질의로 no_skill/skill 반복 |
+| 필요한 도구 선택 | 파일 목록, 전체 구조용 이미지, 부분 확대 이미지 중 현재 단계에 필요한 것만 사용 |
+| 대표 질문 평가 | Feeder #C와 Flexible Hose 질문으로 스킬 사용 전후를 반복 실행 |
 | Quality before efficiency | drawing/evidence 점수가 유지될 때만 token·call 감소를 개선으로 인정 |
-| Autonomy boundary | 원본은 read-only, crop·검사 같은 가역 작업은 허용, 안전 판단은 제외 |
+| 자율 작업 경계 | 원본은 읽기 전용으로 두고 부분 확대·검사 같은 되돌릴 수 있는 작업만 허용하며, 안전 판단은 제외 |
 
 ## Claude/Anthropic에서 가져온 원칙
 
-Anthropic 공식 가이드는 명확하고 직접적인 지시, 작업 이유와 맥락 제공, relevant/diverse examples, 구조화된 prompt, 명확한 성공 기준과 source verification을 권장합니다. Vision 작업에서는 관련 영역을 zoom할 수 있는 crop tool 또는 agent skill이 image evaluation에서 일관된 향상을 보였다고 설명합니다. [Anthropic prompting best practices](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices)
+Anthropic 공식 가이드는 명확하고 직접적인 지시, 작업 이유와 맥락, 관련성 있는 다양한 예시, 구조화된 요청, 명확한 성공 기준과 원본 검증을 권장합니다. 이미지 작업에서는 관련 영역을 크게 볼 수 있는 부분 확대 도구나 에이전트 스킬이 이미지 평가에 도움이 될 수 있다고 설명합니다. [Anthropic prompting best practices](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices)
 
 ### P&ID 실습으로 변환
 
@@ -30,13 +30,13 @@ Anthropic 공식 가이드는 명확하고 직접적인 지시, 작업 이유와
 | Structured state | confirmed/unresolved query term을 JSON/표로 저장 |
 | Source verification | drawing ID를 맞혀도 crop에서 component 근거를 다시 검토 |
 | Crop/skill | overview에서 후보 region을 찾고 필요한 부분만 zoom |
-| Avoid overtriggering | 항상 crop/OCR을 강제하지 않고 task mode에 따라 선택 |
+| 불필요한 도구 호출 방지 | 항상 부분 확대나 OCR을 강제하지 않고 질문에 따라 선택 |
 
 ## 추가 실습 1: prompt diet
 
 목표: 스킬이 길수록 좋은지 검증합니다.
 
-1. 현재 `pid-visual-evidence` 스킬로 Q005를 실행합니다.
+1. 현재 `pid-visual-evidence` 스킬로 Feeder #C 질문을 실행합니다.
 2. 같은 의미를 반복하는 instruction 한 그룹을 제거합니다.
 3. fresh session에서 다시 실행합니다.
 4. drawing, evidence, token, time을 비교합니다.
@@ -74,7 +74,7 @@ B:
 
 ## 추가 실습 4: 정답과 근거 분리
 
-Q005에서 drawing ID가 맞지만 `E-MT-18`을 expansion joint로 설명한 결과를 검토합니다.
+Feeder #C 질문에서 도면번호는 맞지만 `E-MT-18`을 Expansion Joint로 설명한 결과를 검토합니다.
 
 - Retrieval: 정답
 - Evidence: component 오류
@@ -88,7 +88,7 @@ Extractor가 다음만 저장합니다.
 - confirmed terms
 - unresolved terms
 - inspected regions
-- next recommended crop
+- 다음에 권장할 부분 확대 구역
 
 Reviewer는 원본 대화를 보지 않고 이 state와 source image만 받아 검토합니다. structured state가 handoff에 충분한지 평가합니다.
 
@@ -104,4 +104,4 @@ Codex best practice와 Claude best practice는 서로 반대되지 않습니다.
   + 품질이 유지될 때만 비용 절감을 개선으로 인정
 ```
 
-스킬은 이 과정을 재사용하기 위한 작은 instruction package다. 스킬을 추가했다는 사실이 아니라 실제 Q005/Q008 결과가 좋아졌는지가 성공 기준입니다.
+스킬은 이 과정을 재사용하기 위한 작은 지침 묶음입니다. 스킬을 추가했다는 사실이 아니라 실제 Feeder #C와 Flexible Hose 결과가 좋아졌는지가 성공 기준입니다.
