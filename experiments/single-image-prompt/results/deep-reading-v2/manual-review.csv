@@ -1,0 +1,10 @@
+provider,model,condition,feeder_identity,upstream_connection,outlet_calibration,motor_joint_separation,evidence_score,review_note
+claude,sonnet,full-short,1,1,0,1,3,"Correct feeder and bin; overextends the lower connection toward Coal Silo/Feeder/Pulverizer"
+claude,sonnet,crop-short,1,1,0,1,3,"Reads tag and bin; states a downstream path to FROM COAL SILO C"
+claude,sonnet,crop-guided,1,1,0,1,3,"Careful about joint meaning but still narrates a downstream route to the FROM COAL SILO C line"
+codex,luna,full-short,1,1,1,1,4,"Uses full context to identify feeder, bin, downstream equipment, and joint uncertainty"
+codex,luna,crop-short,1,1,0,1,3,"Reads local labels but interprets the lower line as continuing toward FROM COAL SILO C"
+codex,luna,crop-guided,1,1,0,1,3,"Separates motor/joint evidence but still gives a directional interpretation toward Coal Silo C"
+codex,terra,full-short,0,1,1,1,3,"Correct context but misreads the feeder tag as M-FE-03C"
+codex,terra,crop-short,0,1,0,1,2,"Misreads Unit 1 tag as 03B and overinterprets the lower connection"
+codex,terra,crop-guided,0,1,1,1,3,"Misreads Unit 1 tag but appropriately leaves the exact lower equipment unresolved"

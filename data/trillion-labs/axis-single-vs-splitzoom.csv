@@ -1,0 +1,9 @@
+axis,single_highres,splitzoom_highres,delta
+isolation,0.415,0.706,0.291
+series_parallel,0.442,0.760,0.318
+valve,0.550,0.750,0.200
+multihop,0.702,0.681,-0.021
+material,0.888,0.815,-0.073
+graph,0.381,0.546,0.165
+fanio,0.543,0.627,0.084
+walkthrough,0.515,0.622,0.107

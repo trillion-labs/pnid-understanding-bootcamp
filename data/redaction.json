@@ -1,0 +1,21 @@
+{
+  "document_id": "J-11520-ZM-105-005",
+  "coordinate_system": "pixel_top_left",
+  "source_image_size": [4963, 3509],
+  "redaction_bbox": [3900, 2050, 4830, 3130],
+  "mask_style": "opaque_white_with_black_border",
+  "masked_content": [
+    "company names and logos",
+    "company address and contact information",
+    "revision preparer, reviewer, and approver information"
+  ],
+  "preserved_content": [
+    "drawing title",
+    "drawing identifiers",
+    "sheet number",
+    "revision"
+  ],
+  "original_source_retained": "source/sample-pid.pdf",
+  "distribution_pdf": "output/pdf/sample-pid-searchable.pdf",
+  "ocr_regenerated_after_redaction": true
+}

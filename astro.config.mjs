@@ -1,0 +1,76 @@
+import { defineConfig } from 'astro/config';
+import starlight from '@astrojs/starlight';
+
+export default defineConfig({
+  site: 'https://trillion-labs.github.io',
+  base: '/pnid-understanding-bootcamp',
+  integrations: [
+    starlight({
+      title: 'P&ID × AI Agent Workbook',
+      description:
+        'Claude Code와 Codex로 P&ID 도면을 읽고, 근거를 구조화하고, 평가와 개선 Loop까지 수행하는 실습형 워크북입니다.',
+      logo: {
+        src: './src/assets/logo.svg',
+        replacesTitle: false,
+      },
+      favicon: '/favicon.svg',
+      social: [
+        {
+          icon: 'github',
+          label: 'GitHub 저장소',
+          href: 'https://github.com/trillion-labs/pnid-understanding-bootcamp',
+        },
+      ],
+      locales: {
+        root: {
+          label: '한국어',
+          lang: 'ko',
+        },
+      },
+      customCss: ['./src/styles/custom.css'],
+      lastUpdated: true,
+      pagefind: true,
+      credits: false,
+      tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 3 },
+      sidebar: [
+        { label: '시작하기', link: '/' },
+        {
+          label: '핵심 워크북',
+          items: [
+            { label: '워크북 안내', link: '/workbook/00-course-design-principles/' },
+            { label: 'P&ID 입문', link: '/workbook/00-pid-primer/' },
+            { label: '첫 번째 실제 실험', link: '/workbook/01-program-design/' },
+            { label: '이미지 입력 전략', link: '/workbook/02-visual-prompting-strategy/' },
+            { label: '위치 상자와 텍스트 레이어', link: '/workbook/03-screenshot-and-bbox/' },
+            { label: '구조화 데이터', link: '/workbook/04-data-schema/' },
+            { label: 'Claude Code와 Codex 운영', link: '/workbook/05-agent-workflow/' },
+            { label: '평가 기준', link: '/workbook/06-evaluation/' },
+            { label: '개선 Loop', link: '/workbook/14-benchmark-improvement-loop/' },
+          ],
+        },
+        {
+          label: '따라 하기 실습',
+          items: [
+            { label: '60분 실습 안내', link: '/practice/guide/' },
+            { label: '내 실습 기록지', link: '/practice/my-work/' },
+            { label: '확장 실습', link: '/practice/extensions/' },
+          ],
+        },
+        {
+          label: '심화·운영 자료',
+          collapsed: true,
+          items: [
+            { label: '강사용 60분 진행안', link: '/workbook/07-workshop-runbook/' },
+            { label: '프롬프트 카드', link: '/workbook/08-prompt-cards/' },
+            { label: 'PDF에서 이미지 준비', link: '/workbook/09-file-to-image-reference/' },
+            { label: '품질 검토 기록', link: '/workbook/10-quality-review/' },
+            { label: '실제 쿼리 평가', link: '/workbook/11-real-query-evaluation/' },
+            { label: '스킬 추가 전후 실험', link: '/workbook/12-skill-experiment/' },
+            { label: 'Codex·Claude 실습 원칙', link: '/workbook/13-codex-claude-best-practices/' },
+            { label: '워크북 그레이딩', link: '/workbook/15-workbook-grading-report/' },
+          ],
+        },
+      ],
+    }),
+  ],
+});

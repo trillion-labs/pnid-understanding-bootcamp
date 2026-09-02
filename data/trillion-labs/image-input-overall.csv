@@ -1,0 +1,8 @@
+strategy,overall,input_mp,zoom_mp,total_mp,turn_mode
+single-lowres,0.497,,,,single-turn
+single-highres,0.554,12.09,0.00,12.09,single-turn
+split-lowres,0.623,8.61,0.00,8.61,single-turn
+tilezoom-highres,0.650,30.93,5.81,36.74,multi-turn
+zoom-highres,0.656,13.20,5.74,18.94,multi-turn
+splitzoom-highres,0.688,9.83,5.42,15.25,multi-turn
+zoom-lowres,0.696,,,,multi-turn

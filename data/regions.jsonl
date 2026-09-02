@@ -1,0 +1,6 @@
+{"region_id":"R01","document_id":"J-11520-ZM-105-005","name":"legend","bbox":[3650,80,4770,980],"image_path":"assets/regions/R01-legend.png","status":"draft"}
+{"region_id":"R02","document_id":"J-11520-ZM-105-005","name":"reception_bin_1_area","bbox":[480,930,1710,2580],"image_path":"assets/regions/R02-reception-bin-1.png","status":"draft"}
+{"region_id":"R03","document_id":"J-11520-ZM-105-005","name":"reception_bin_2_area","bbox":[1740,900,3070,2610],"image_path":null,"status":"planned"}
+{"region_id":"R04","document_id":"J-11520-ZM-105-005","name":"reception_bin_3_area","bbox":[3060,850,4070,2610],"image_path":null,"status":"planned"}
+{"region_id":"R05","document_id":"J-11520-ZM-105-005","name":"downstream_connections","bbox":[570,2410,3660,3350],"image_path":null,"status":"planned"}
+{"region_id":"R06","document_id":"J-11520-ZM-105-005","name":"title_block","bbox":[3920,1980,4810,3370],"image_path":"assets/regions/R06-title-block.png","status":"draft"}

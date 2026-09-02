@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="700" viewBox="0 0 1400 700">
+<rect width="1400" height="700" fill="#fbfcfe"/>
+<style>text{font-family:AppleGothic,"Apple SD Gothic Neo",sans-serif}</style>
+<text x="70" y="72" font-size="36" font-weight="500" text-anchor="start" fill="#182237">같은 P&amp;ID도 이미지 전달 방식에 따라 결과가 달라졌습니다</text>
+<text x="70" y="112" font-size="18" font-weight="400" text-anchor="start" fill="#5e6c82">Trillion Labs 내부 실험 · Gemini 3.5 Flash · OVERALL score</text>
+<text x="70" y="210" font-size="23" font-weight="400" text-anchor="start" fill="#182237">Single image</text>
+<rect x="350" y="175" width="780" height="48" fill="#e9eef5"/>
+<rect x="350" y="175" width="600.2" height="48" fill="#7f91aa"/>
+<text x="966.1666666666667" y="209" font-size="22" font-weight="500" text-anchor="start" fill="#7f91aa">0.554</text>
+<text x="70" y="298" font-size="23" font-weight="400" text-anchor="start" fill="#182237">Split image</text>
+<rect x="350" y="263" width="780" height="48" fill="#e9eef5"/>
+<rect x="350" y="263" width="674.9" height="48" fill="#7f91aa"/>
+<text x="1040.9166666666667" y="297" font-size="22" font-weight="500" text-anchor="start" fill="#7f91aa">0.623</text>
+<text x="70" y="386" font-size="23" font-weight="400" text-anchor="start" fill="#182237">Zoom</text>
+<rect x="350" y="351" width="780" height="48" fill="#e9eef5"/>
+<rect x="350" y="351" width="710.7" height="48" fill="#7f91aa"/>
+<text x="1076.6666666666667" y="385" font-size="22" font-weight="500" text-anchor="start" fill="#7f91aa">0.656</text>
+<text x="70" y="474" font-size="23" font-weight="500" text-anchor="start" fill="#182237">Split + zoom</text>
+<rect x="350" y="439" width="780" height="48" fill="#e9eef5"/>
+<rect x="350" y="439" width="745.3" height="48" fill="#315efb"/>
+<text x="1111.3333333333333" y="473" font-size="22" font-weight="500" text-anchor="start" fill="#315efb">0.688</text>
+<text x="70" y="570" font-size="20" font-weight="500" text-anchor="start" fill="#315efb">핵심 메시지</text>
+<text x="220" y="570" font-size="21" font-weight="500" text-anchor="start" fill="#182237">한 장을 그대로 주는 것보다, 나누고 필요한 곳을 확대했을 때 전체 점수가 높았습니다.</text>
+<text x="70" y="612" font-size="18" font-weight="400" text-anchor="start" fill="#5e6c82">단, 일부 문제 유형은 오히려 하락했습니다. 따라서 ‘항상 분할’이 아니라 질문별 검증이 필요합니다.</text>
+<text x="70" y="666" font-size="14" font-weight="400" text-anchor="start" fill="#778399">내부 사례 · 동일 Gemini judge · 표본 수와 불확실성 구간은 export에 기재되지 않았습니다.</text>
+</svg>

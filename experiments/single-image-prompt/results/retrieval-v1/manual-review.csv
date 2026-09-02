@@ -1,0 +1,13 @@
+provider,model,condition,feeder_tag,motor_joint_separation,uncertainty_calibration,context_integrity,evidence_score,review_note
+claude,haiku,full-short,0,1,1,1,3,"Small text unresolved; avoids false joint identification"
+claude,haiku,crop-short,1,0,0,1,2,"Reads #C tag but equates flexible hose/sensors with requested evidence"
+claude,haiku,crop-guided,1,0,0,1,2,"Reads tag but explicitly interprets E as expansion joint"
+claude,sonnet,full-short,1,1,1,1,4,"Correct drawing context and cautious about exact joint"
+claude,sonnet,crop-short,1,0,0,0,1,"Reads tag but misclassifies the crop as a different Coal Handling system"
+claude,sonnet,crop-guided,1,1,1,1,4,"Separates visible tag from unresolved component meaning"
+codex,luna,full-short,0,0,0,0,0,"Misreads VB as VF and drawing identifier; overstates expansion joint"
+codex,luna,crop-short,1,1,1,0,3,"Reads tag and remains cautious but treats off-page reference as drawing ID"
+codex,luna,crop-guided,1,1,1,1,4,"Correct tag, motor/joint separation, and uncertainty"
+codex,terra,full-short,0,1,1,1,3,"Correct drawing context but does not transcribe full feeder tag"
+codex,terra,crop-short,1,0,0,0,1,"Reads tag but treats off-page reference as drawing ID and overstates joint"
+codex,terra,crop-guided,1,1,1,1,4,"Correct tag, motor/joint separation, and uncertainty"
