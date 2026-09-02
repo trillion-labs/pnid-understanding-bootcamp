@@ -75,20 +75,23 @@ header.header {
 }
 
 .hero {
+  grid-template-columns: minmax(0, 1fr);
   padding-block: clamp(3.5rem, 10vw, 7rem);
 }
 
 .hero h1 {
-  max-width: 13ch;
+  max-width: 16ch;
   font-size: clamp(2.65rem, 8vw, 5.6rem);
   line-height: 0.98;
   letter-spacing: -0.06em;
+  word-break: keep-all;
 }
 
 .hero .tagline {
   max-width: 44rem;
   font-size: clamp(1.05rem, 2.2vw, 1.3rem);
   line-height: 1.65;
+  word-break: keep-all;
 }
 
 @media (max-width: 50rem) {
