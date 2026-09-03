@@ -35,8 +35,9 @@ AI 답을 원본 위치와 연결합니다.
 | 5 | [위치 상자와 텍스트 레이어](docs/03-screenshot-and-bbox.md) | AI 답을 원본 위치와 연결합니다. |
 | 6 | [구조화 데이터](docs/04-data-schema.md) | AI 답을 검색하고 비교할 수 있는 표로 바꿉니다. |
 | 7 | [Claude Code와 Codex 운영](docs/05-agent-workflow.md) | 목표·입력·규칙·출력·검사를 포함한 업무 계약을 만듭니다. |
-| 8 | [평가 기준](docs/06-evaluation.md) | 정답뿐 아니라 근거와 추측 여부를 함께 평가합니다. |
-| 9 | [개선 과정](docs/14-benchmark-improvement-loop.md) | 오류 하나를 개선하고 같은 조건으로 다시 평가합니다. |
+| 8 | [터미널에서 직접 실행하기](docs/05-terminal-claude-codex.md) | Claude Code와 Codex 명령을 실행하고 결과를 저장합니다. |
+| 9 | [평가 기준](docs/06-evaluation.md) | 정답뿐 아니라 근거와 추측 여부를 함께 평가합니다. |
+| 10 | [개선 과정](docs/14-benchmark-improvement-loop.md) | 오류 하나를 개선하고 같은 조건으로 다시 평가합니다. |
 
 ## 워크북 부록
 
@@ -46,7 +47,6 @@ AI 답을 원본 위치와 연결합니다.
 | [프롬프트 카드](docs/08-prompt-cards.md) | 탐색·추출·검토 목적에 맞추어 요청문을 조정합니다. |
 | [PDF에서 이미지 준비](docs/09-file-to-image-reference.md) | PDF 점검과 이미지 렌더링 과정을 재현합니다. |
 | [스킬 추가 전후 실험](docs/12-skill-experiment.md) | 반복 지침을 스킬로 저장하고 전후를 비교합니다. |
-| [Codex·Claude 실습 원칙](docs/13-codex-claude-best-practices.md) | 제품별 원칙을 관찰 가능한 실험으로 바꿉니다. |
 
 ## 기준 파일
 

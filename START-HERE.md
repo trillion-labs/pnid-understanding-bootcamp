@@ -6,7 +6,7 @@
 
 그다음 [P&ID 입문](docs/00-pid-primer.md)에서 도면의 제목란, 범례, 장비, 연결선, 계기와 태그를 실제 이미지로 확인합니다. 여기까지 읽으면 이후 단원에서 Feeder #C와 Reception Bin 2를 찾는 과정이 낯설지 않습니다.
 
-[첫 번째 실제 실험](docs/01-program-design.md)부터는 같은 도면을 Claude Sonnet, Codex Luna, Codex Terra가 어떻게 다르게 읽었는지 살펴봅니다. 이후 단원은 이미지 입력, 위치 근거, 구조화 데이터, 에이전트 운영, 평가와 개선 순서로 이어집니다.
+[첫 번째 실제 실험](docs/01-program-design.md)부터는 같은 도면을 Claude Sonnet, Codex Luna, Codex Terra가 어떻게 다르게 읽었는지 살펴봅니다. 이후 단원은 이미지 입력, 위치 근거, 구조화 데이터, 에이전트 운영, [터미널 실행](docs/05-terminal-claude-codex.md), 평가와 개선 순서로 이어집니다.
 
 ## 처음 나오는 용어
 

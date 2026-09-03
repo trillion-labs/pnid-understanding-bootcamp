@@ -7,8 +7,8 @@ cd "$repo_dir"
 out_dir="experiments/single-image-prompt/results/verifiable-v3/raw"
 mkdir -p "$out_dir"
 
-full_image="$repo_dir/workshop/participant-kit/inputs/01-overview.png"
-crop_image="$repo_dir/workshop/participant-kit/inputs/02-feeder-c-area.png"
+full_image="$repo_dir/assets/overview/sample-pid-overview-1600.png"
+crop_image="$repo_dir/assets/regions/feeder-c-area.png"
 short_prompt=$(<experiments/single-image-prompt/prompts/short.txt)
 guided_prompt=$(<experiments/single-image-prompt/prompts/guided.txt)
 

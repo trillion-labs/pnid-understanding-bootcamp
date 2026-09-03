@@ -1,2 +1,0 @@
-{"id":"Q005","difficulty":"easy","query":"보일러 계통에서 Bottom Ash Vibro Feeder #C Outlet Expansion Joint Ash Leak 관련 P&ID를 찾아라.","expected_drawing":"J-11520-ZM-105-005","source":"gs-agent-pnid-eval/outputs/facilitator-answer-key.jsonl","verification_status":"previous_ground_truth"}
-{"id":"Q008","difficulty":"medium","query":"#1BLR MAR System Reception Bin-2 to OFA Line Flexible Hose Pinhole 및 Ash Leak 관련 P&ID를 찾아라.","expected_drawing":"J-11520-ZM-105-005","source":"gs-agent-pnid-eval/outputs/facilitator-answer-key.jsonl","verification_status":"previous_ground_truth"}

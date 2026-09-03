@@ -15,11 +15,11 @@ const workbookPages = [
   ['03-screenshot-and-bbox.md', 'AI의 답을 원본 위치와 연결하는 방법', '위치 상자와 텍스트 레이어로 AI 답변의 근거를 다시 찾을 수 있게 만듭니다.'],
   ['04-data-schema.md', 'AI의 답을 검색하고 비교할 수 있는 데이터로 바꾸는 방법', '자유로운 문장을 검토·검색·평가할 수 있는 구조화 데이터로 바꿉니다.'],
   ['05-agent-workflow.md', 'Claude Code와 Codex에게 도면 작업을 맡기는 방법', '입력, 규칙, 결과물, 완료 조건을 포함하는 에이전트 업무 계약을 만듭니다.'],
+  ['05-terminal-claude-codex.md', '터미널에서 Claude Code와 Codex 실행하기', '준비된 명령으로 전체 이미지와 부분 확대 이미지 실험을 직접 실행하고 결과를 저장합니다.'],
   ['06-evaluation.md', 'P&ID 에이전트의 답을 평가하는 방법', '도면에 직접 적힌 네 값을 기준으로 판독 정확도와 근거를 평가합니다.'],
   ['08-prompt-cards.md', 'Claude Code·Codex 공통 프롬프트 카드', '탐색, 추출, 검증 목적에 따라 조정해 쓰는 요청문 모음입니다.'],
   ['09-file-to-image-reference.md', '원본 PDF에서 학습 이미지까지', 'PDF 점검, 렌더링, 확대 이미지 준비 과정을 재현합니다.'],
   ['12-skill-experiment.md', '스킬을 추가하고 전후를 비교하는 실습', '반복 가능한 도면 읽기 지침을 스킬로 저장하고 A/B 평가합니다.'],
-  ['13-codex-claude-best-practices.md', 'Codex와 Claude 실습 원칙', '제품별 모범 사례를 관찰 가능한 P&ID 실험으로 바꿉니다.'],
   ['14-benchmark-improvement-loop.md', '평가 결과로 에이전트를 개선하는 방법', '오류를 분류하고 한 가지만 바꾼 뒤 같은 조건으로 재평가합니다.'],
 ];
 

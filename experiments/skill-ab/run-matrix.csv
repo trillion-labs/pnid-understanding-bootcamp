@@ -1,9 +1,0 @@
-experiment_id,query_id,provider,model,condition,skill_name,skill_version,skill_load_mode,fresh_session,effort,max_turns,time_limit_sec,expected_drawing_id,started_at,status,decision_drawing_id,extra_drawing_ids,duration_sec,tool_calls,input_tokens,cached_input_tokens,output_tokens,cost_usd,confirmed_term_count,required_term_count,evidence_location_count,component_error_count,unsupported_claim_count,appropriate_unknown_count,drawing_exact,retrieval_score,evidence_score,total_score,response_path,trace_path,reviewer,notes
-E001,Q005,codex,gpt-5.6-luna,no_skill,,,none,true,medium,,,J-11520-ZM-105-005,,,,,,,,,,,,4,,,,,,,,,,,,
-E002,Q005,codex,gpt-5.6-luna,skill,pid-visual-evidence,1.0,agent_skill,true,medium,,,J-11520-ZM-105-005,,,,,,,,,,,,4,,,,,,,,,,,,
-E003,Q005,claude,claude-haiku-4-5-20251001,no_skill,,,none,true,medium,,,J-11520-ZM-105-005,,,,,,,,,,,,4,,,,,,,,,,,,
-E004,Q005,claude,claude-haiku-4-5-20251001,skill,pid-visual-evidence,1.0,agent_skill,true,medium,,,J-11520-ZM-105-005,,,,,,,,,,,,4,,,,,,,,,,,,
-E005,Q008,codex,gpt-5.6-luna,no_skill,,,none,true,medium,,,J-11520-ZM-105-005,,,,,,,,,,,,5,,,,,,,,,,,,
-E006,Q008,codex,gpt-5.6-luna,skill,pid-visual-evidence,1.0,agent_skill,true,medium,,,J-11520-ZM-105-005,,,,,,,,,,,,5,,,,,,,,,,,,
-E007,Q008,claude,claude-haiku-4-5-20251001,no_skill,,,none,true,medium,,,J-11520-ZM-105-005,,,,,,,,,,,,5,,,,,,,,,,,,
-E008,Q008,claude,claude-haiku-4-5-20251001,skill,pid-visual-evidence,1.0,agent_skill,true,medium,,,J-11520-ZM-105-005,,,,,,,,,,,,5,,,,,,,,,,,,
