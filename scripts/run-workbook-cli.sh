@@ -10,7 +10,7 @@ usage() {
   ./scripts/run-workbook-cli.sh <도구> <조건>
 
 도구
-  claude       Claude Sonnet
+  claude       Claude Haiku
   codex-luna   Codex GPT-5.6 Luna
   codex-terra  Codex GPT-5.6 Terra
 
@@ -70,7 +70,7 @@ case "$agent" in
       exit 1
     }
     provider="claude"
-    model="sonnet"
+    model="haiku"
     ;;
   codex-luna)
     command -v codex >/dev/null || {
