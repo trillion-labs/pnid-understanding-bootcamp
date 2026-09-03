@@ -9,7 +9,7 @@ import sharp from 'sharp';
 const execFile = promisify(execFileCallback);
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(scriptDir, '..');
-const sourcePdf = path.join(rootDir, 'source', 'sample-pid.pdf');
+const sourcePdf = path.join(rootDir, 'source', '원본-pnid.pdf');
 const tempDir = path.join(rootDir, 'tmp', 'redaction-build');
 const renderedBase = path.join(tempDir, 'source-page');
 const renderedPage = `${renderedBase}.png`;

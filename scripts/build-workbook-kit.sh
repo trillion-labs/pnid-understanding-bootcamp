@@ -24,9 +24,9 @@ items = [
     root / "scripts" / "build-ocr-assets.sh",
     root / "scripts" / "search_ocr.py",
     root / "data" / "ocr" / "pnid-user-words.txt",
-    root / "data" / "ocr" / "sample-pid-full-improved.tsv",
+    root / "data" / "ocr" / "전체-도면-ocr.tsv",
     root / "data" / "ocr" / "feeder-c-area-improved.tsv",
-    root / "data" / "ocr" / "sample-pid-ocr.txt",
+    root / "data" / "ocr" / "검색가능한-pnid.txt",
 ]
 
 with ZipFile(output, "w", ZIP_DEFLATED) as archive:

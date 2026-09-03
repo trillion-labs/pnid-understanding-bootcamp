@@ -114,7 +114,7 @@ const downloadsDir = path.join(rootDir, 'public', 'downloads');
 await mkdir(downloadsDir, { recursive: true });
 await cp(
   path.join(practiceDir, 'ocr', '검색가능한-pnid.pdf'),
-  path.join(downloadsDir, 'sample-pid-ocr.pdf'),
+  path.join(downloadsDir, '검색가능한-pnid.pdf'),
 );
 
 console.log(`Prepared ${workbookPages.length + 1} site pages.`);

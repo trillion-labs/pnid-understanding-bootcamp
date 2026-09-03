@@ -21,7 +21,7 @@
 
 ```json
 {
-  "file": "sample-pid.pdf"
+  "file": "검색가능한-pnid.pdf"
 }
 ```
 
@@ -37,7 +37,7 @@
 
 ```json
 {
-  "file": "sample-pid.pdf",
+  "file": "검색가능한-pnid.pdf",
   "drawing_id": "J-11520-ZM-105-005",
   "title": "DRY BOTTOM ASH HANDLING SYSTEM (5/5)",
   "revision": "F",
@@ -57,7 +57,7 @@
 
 ```json
 {
-  "file": "sample-pid.pdf",
+  "file": "검색가능한-pnid.pdf",
   "drawing_id": "J-11520-ZM-105-005",
   "title": "DRY BOTTOM ASH HANDLING SYSTEM (5/5)",
   "revision": "F",
@@ -93,7 +93,7 @@ region은 장비 하나의 외곽을 정밀하게 따는 픽셀 마스크가 아
 
 ```json
 {
-  "file": "sample-pid.pdf",
+  "file": "검색가능한-pnid.pdf",
   "drawing_id": "J-11520-ZM-105-005",
   "title": "DRY BOTTOM ASH HANDLING SYSTEM (5/5)",
   "revision": "F",
@@ -192,7 +192,7 @@ OCR이 제안한 문자열을 바로 태그 목록에 넣어서는 안 됩니다
 
 ```json
 {
-  "file": "sample-pid.pdf",
+  "file": "검색가능한-pnid.pdf",
   "drawing_id": "J-11520-ZM-105-005",
   "title": "DRY BOTTOM ASH HANDLING SYSTEM (5/5)",
   "revision": "F",

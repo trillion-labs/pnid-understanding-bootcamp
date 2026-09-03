@@ -8,7 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCES = [
-    ("전체 도면", ROOT / "data/ocr/sample-pid-full-improved.tsv"),
+    ("전체 도면", ROOT / "data/ocr/전체-도면-ocr.tsv"),
     ("Feeder #C 확대", ROOT / "data/ocr/feeder-c-area-improved.tsv"),
 ]
 

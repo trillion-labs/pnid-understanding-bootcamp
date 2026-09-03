@@ -17,7 +17,7 @@
     },
     {
       "id": "gs_department_number_label",
-      "bbox": [4318, 3305, 4500, 3345],
+      "bbox": [4325, 3317, 4495, 3340],
       "mask_style": "whiteout"
     }
   ],
@@ -36,7 +36,7 @@
     "sheet number",
     "revision"
   ],
-  "original_source_retained": "source/sample-pid.pdf",
+  "original_source_retained": "source/원본-pnid.pdf",
   "distribution_pdf": "실습자료/ocr/검색가능한-pnid.pdf",
   "ocr_regenerated_after_redaction": true
 }

@@ -42,7 +42,7 @@ source_policy: immutable
 
 ```bash
 pdftoppm -png -r 300 -f 1 -singlefile \
-  "source/sample-pid.pdf" \
+  "source/원본-pnid.pdf" \
   실습자료/이미지/원본-고해상도-도면
 ```
 

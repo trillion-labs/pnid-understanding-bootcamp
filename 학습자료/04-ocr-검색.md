@@ -2,7 +2,7 @@
 
 앞 단원에서는 같은 도면도 전체 이미지로 볼 때와 필요한 부분을 확대해서 볼 때 답변이 달라질 수 있다는 점을 확인했습니다. 이번에는 이미지 안의 글자를 검색할 수 있게 만들어 봅니다.
 
-실습을 마치면 `sample-pid.pdf`와 모양은 같지만 `Ctrl+F`로 `VIBRO FEEDER`를 찾을 수 있는 새 PDF가 생깁니다. 사람이 문자열을 검색할 수 있게 되면 AI 에이전트도 긴 도면에서 관련 단어를 먼저 찾고, 확인해야 할 구역을 더 빠르게 좁힐 수 있습니다.
+실습을 마치면 `실습자료/ocr/검색가능한-pnid.pdf`가 만들어집니다. 이 파일에서는 `Ctrl+F`로 `VIBRO FEEDER`를 찾을 수 있습니다. 사람이 문자열을 검색할 수 있게 되면 AI 에이전트도 긴 도면에서 관련 단어를 먼저 찾고, 확인해야 할 구역을 더 빠르게 좁힐 수 있습니다.
 
 <div class="lesson-summary">
   <p class="lesson-summary__label">이 단원에서 할 일</p>
@@ -108,13 +108,13 @@ bash scripts/build-ocr-assets.sh
 ```text
 완료했습니다.
 PDF: 실습자료/ocr/검색가능한-pnid.pdf
-전체 OCR: data/ocr/sample-pid-full-improved.tsv
+전체 OCR: data/ocr/전체-도면-ocr.tsv
 부분 확대 OCR: data/ocr/feeder-c-area-improved.tsv
 ```
 
 이 실습에서 가장 중요한 결과물은 다음 PDF입니다.
 
-[검색 가능한 P&ID 열기](/pnid-understanding-bootcamp/downloads/sample-pid-ocr.pdf)
+[검색 가능한 P&ID 열기](/pnid-understanding-bootcamp/downloads/검색가능한-pnid.pdf)
 
 로컬 컴퓨터에서 직접 생성된 파일은 저장소의 `실습자료/ocr/검색가능한-pnid.pdf`에 있습니다.
 

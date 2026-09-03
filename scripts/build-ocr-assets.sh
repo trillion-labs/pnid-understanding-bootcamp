@@ -18,7 +18,7 @@ full_image="실습자료/이미지/원본-고해상도-도면.png"
 zoom_image="실습자료/이미지/feeder-c-원본-확대.png"
 user_words="data/ocr/pnid-user-words.txt"
 pdf_base="실습자료/ocr/검색가능한-pnid"
-full_tsv_base="data/ocr/sample-pid-full-improved"
+full_tsv_base="data/ocr/전체-도면-ocr"
 zoom_tsv_base="data/ocr/feeder-c-area-improved"
 
 mkdir -p 실습자료/ocr data/ocr public/downloads
@@ -55,8 +55,8 @@ tesseract "$zoom_image" "$zoom_tsv_base" "${common_options[@]}" "${zoom_layout_o
 keep_word_rows "$zoom_tsv_base.tsv"
 
 echo "4/4 PDF 검색 텍스트를 추출합니다."
-pdftotext "$pdf_base.pdf" "data/ocr/sample-pid-ocr.txt"
-cp "$pdf_base.pdf" public/downloads/sample-pid-ocr.pdf
+pdftotext "$pdf_base.pdf" "data/ocr/검색가능한-pnid.txt"
+cp "$pdf_base.pdf" public/downloads/검색가능한-pnid.pdf
 
 echo
 echo "완료했습니다."

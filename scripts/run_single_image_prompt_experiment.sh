@@ -57,6 +57,12 @@ case "$condition" in
     run_codex gpt-5.6-terra terra full-short "$full_image" "$short_prompt" &
     wait
     ;;
+  full-guided)
+    run_claude sonnet sonnet full-guided "$full_image" "$guided_prompt" &
+    run_codex gpt-5.6-luna luna full-guided "$full_image" "$guided_prompt" &
+    run_codex gpt-5.6-terra terra full-guided "$full_image" "$guided_prompt" &
+    wait
+    ;;
   crop-short)
     run_claude sonnet sonnet crop-short "$crop_image" "$short_prompt" &
     run_codex gpt-5.6-luna luna crop-short "$crop_image" "$short_prompt" &
@@ -71,11 +77,12 @@ case "$condition" in
     ;;
   all)
     "$0" full-short
+    "$0" full-guided
     "$0" crop-short
     "$0" crop-guided
     ;;
   *)
-    echo "usage: $0 [full-short|crop-short|crop-guided|all]" >&2
+    echo "usage: $0 [full-short|full-guided|crop-short|crop-guided|all]" >&2
     exit 2
     ;;
 esac
