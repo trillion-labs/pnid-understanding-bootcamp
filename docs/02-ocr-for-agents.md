@@ -98,16 +98,16 @@ bash scripts/build-ocr-assets.sh
 
 ```text
 완료했습니다.
-PDF: assets/ocr/sample-pid-searchable-improved.pdf
+PDF: assets/ocr/sample-pid-ocr.pdf
 전체 OCR: data/ocr/sample-pid-full-improved.tsv
 부분 확대 OCR: data/ocr/feeder-c-area-improved.tsv
 ```
 
 이 실습에서 가장 중요한 결과물은 다음 PDF입니다.
 
-[검색 가능한 P&ID 열기](/pnid-understanding-bootcamp/downloads/sample-pid-searchable-improved.pdf)
+[검색 가능한 P&ID 열기](/pnid-understanding-bootcamp/downloads/sample-pid-ocr.pdf)
 
-로컬 컴퓨터에서 직접 생성된 파일은 저장소의 `assets/ocr/sample-pid-searchable-improved.pdf`에 있습니다.
+로컬 컴퓨터에서 직접 생성된 파일은 저장소의 `assets/ocr/sample-pid-ocr.pdf`에 있습니다.
 
 ## 3. 정말 검색되는지 확인합니다
 

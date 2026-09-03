@@ -16,7 +16,7 @@ done
 
 full_image="assets/full/J-11520-ZM-105-005_page-001.png"
 zoom_image="assets/regions/feeder-c-area.png"
-pdf_base="assets/ocr/sample-pid-searchable-improved"
+pdf_base="assets/ocr/sample-pid-ocr"
 full_tsv_base="data/ocr/sample-pid-full-improved"
 zoom_tsv_base="data/ocr/feeder-c-area-improved"
 
@@ -49,7 +49,7 @@ tesseract "$zoom_image" "$zoom_tsv_base" "${common_options[@]}" tsv
 keep_word_rows "$zoom_tsv_base.tsv"
 
 echo "4/4 PDF 검색 텍스트를 추출합니다."
-pdftotext "$pdf_base.pdf" "data/ocr/sample-pid-searchable-improved.txt"
+pdftotext "$pdf_base.pdf" "data/ocr/sample-pid-ocr.txt"
 
 echo
 echo "완료했습니다."

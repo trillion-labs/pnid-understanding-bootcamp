@@ -105,7 +105,7 @@ AI가 `VIBRO FEEDER #C가 보입니다`라고 답해도, 그 글자가 도면 �
 - `assets/overview/sample-pid-overview-1600.png`: 도면 전체 구조를 보는 이미지입니다.
 - `assets/regions/feeder-c-area.png`: C번 Vibro Feeder 주변을 크게 보여 주는 이미지입니다.
 - `assets/bbox/feeder-c-query-evidence.png`: 질문과 관련된 근거 위치를 표시한 이미지입니다.
-- `assets/ocr/sample-pid-searchable-improved.pdf`: OCR 텍스트 검색을 실험하는 교육용 PDF입니다.
+- `assets/ocr/sample-pid-ocr.pdf`: OCR 텍스트 검색을 실험하는 교육용 PDF입니다.
 
 독자는 PDF 변환이나 이미지 분할부터 시작하지 않아도 됩니다. 준비된 파일로 먼저 개념과 작업 흐름을 이해한 뒤, 필요하면 부록의 이미지 준비 과정으로 확장할 수 있습니다.
 

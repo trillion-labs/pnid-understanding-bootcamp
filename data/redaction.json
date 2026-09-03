@@ -31,6 +31,6 @@
     "revision"
   ],
   "original_source_retained": "source/sample-pid.pdf",
-  "distribution_pdf": "assets/ocr/sample-pid-searchable-improved.pdf",
+  "distribution_pdf": "assets/ocr/sample-pid-ocr.pdf",
   "ocr_regenerated_after_redaction": true
 }

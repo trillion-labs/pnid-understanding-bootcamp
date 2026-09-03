@@ -57,7 +57,7 @@ AI 답을 원본 위치와 연결합니다.
 - 전체 구조용 이미지: `assets/overview/sample-pid-overview-1600.png`
 - Feeder #C 주변 확대 이미지: `assets/regions/feeder-c-area.png`
 - 질문 근거 위치 예시: `assets/bbox/feeder-c-query-evidence.png`
-- 검색 가능한 교육용 PDF: `assets/ocr/sample-pid-searchable-improved.pdf`
+- 검색 가능한 교육용 PDF: `assets/ocr/sample-pid-ocr.pdf`
 
 ## 비식별 처리
 

@@ -125,7 +125,7 @@ Feeder #C 주변 확대 이미지는 전체 도면의 일부를 잘라 크게 �
 
 이 워크북에서는 Tesseract OCR을 사용하여 검색 가능한 교육용 PDF와 위치가 포함된 OCR 결과를 만들었습니다.
 
-- [검색 가능한 PDF](/pnid-understanding-bootcamp/downloads/sample-pid-searchable-improved.pdf)
+- [검색 가능한 PDF](/pnid-understanding-bootcamp/downloads/sample-pid-ocr.pdf)
 - 위치가 포함된 OCR 결과: `data/ocr/sample-pid-full-improved.tsv`
 
 OCR 결과에는 각 단어의 글자와 위치가 함께 들어 있습니다.

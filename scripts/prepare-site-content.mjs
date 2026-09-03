@@ -98,8 +98,8 @@ await cp(path.join(rootDir, 'assets'), path.join(contentDir, 'assets'), {
 const downloadsDir = path.join(rootDir, 'public', 'downloads');
 await mkdir(downloadsDir, { recursive: true });
 await cp(
-  path.join(rootDir, 'assets', 'ocr', 'sample-pid-searchable-improved.pdf'),
-  path.join(downloadsDir, 'sample-pid-searchable-improved.pdf'),
+  path.join(rootDir, 'assets', 'ocr', 'sample-pid-ocr.pdf'),
+  path.join(downloadsDir, 'sample-pid-ocr.pdf'),
 );
 
 console.log(`Prepared ${workbookPages.length + 1} site pages.`);
