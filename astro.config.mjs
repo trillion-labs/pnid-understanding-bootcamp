@@ -51,7 +51,6 @@ export default defineConfig({
         },
         {
           label: '워크북 부록',
-          collapsed: true,
           items: [
             { label: '첫 실험 상세 답변', link: '/workbook/01-experiment-answer-details/' },
             { label: '프롬프트 카드', link: '/workbook/08-prompt-cards/' },
