@@ -4,6 +4,16 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
   site: 'https://trillion-labs.github.io',
   base: '/pnid-understanding-bootcamp',
+  redirects: {
+    '/workbook/00-course-design-principles/': '/pnid-understanding-bootcamp/workbook/guide/',
+    '/workbook/00-pid-primer/': '/pnid-understanding-bootcamp/workbook/01-pid-primer/',
+    '/workbook/01-program-design/': '/pnid-understanding-bootcamp/workbook/02-first-experiment/',
+    '/workbook/02-visual-prompting-strategy/': '/pnid-understanding-bootcamp/workbook/03-image-input-strategy/',
+    '/workbook/02-ocr-for-agents/': '/pnid-understanding-bootcamp/workbook/04-ocr-search/',
+    '/workbook/03-screenshot-and-bbox/': '/pnid-understanding-bootcamp/workbook/05-evidence-location/',
+    '/workbook/04-pid-indexing/': '/pnid-understanding-bootcamp/workbook/06-pid-indexing/',
+    '/workbook/05-agent-workflow/': '/pnid-understanding-bootcamp/workbook/07-agent-workflow/',
+  },
   integrations: [
     starlight({
       title: 'P&ID × AI Agent Workbook',
@@ -14,13 +24,6 @@ export default defineConfig({
         replacesTitle: false,
       },
       favicon: '/favicon.svg',
-      social: [
-        {
-          icon: 'github',
-          label: 'GitHub 저장소',
-          href: 'https://github.com/trillion-labs/pnid-understanding-bootcamp',
-        },
-      ],
       locales: {
         root: {
           label: '한국어',
@@ -36,14 +39,14 @@ export default defineConfig({
         {
           label: '핵심 워크북',
           items: [
-            { label: '워크북 안내', link: '/workbook/00-course-design-principles/' },
-            { label: '1. P&ID 입문', link: '/workbook/00-pid-primer/' },
-            { label: '2. 첫 번째 실제 실험', link: '/workbook/01-program-design/' },
-            { label: '3. 이미지 입력 전략', link: '/workbook/02-visual-prompting-strategy/' },
-            { label: '4. Tesseract OCR로 검색 가능한 P&ID 만들기', link: '/workbook/02-ocr-for-agents/' },
-            { label: '5. 위치 상자와 텍스트 레이어', link: '/workbook/03-screenshot-and-bbox/' },
-            { label: '6. P&ID를 검색 가능한 데이터로 정리하기', link: '/workbook/04-pid-indexing/' },
-            { label: '7. AI에게 도면 작업 맡기기', link: '/workbook/05-agent-workflow/' },
+            { label: '워크북 안내', link: '/workbook/guide/' },
+            { label: '1. P&ID 입문', link: '/workbook/01-pid-primer/' },
+            { label: '2. 첫 번째 실제 실험', link: '/workbook/02-first-experiment/' },
+            { label: '3. 이미지 입력 전략', link: '/workbook/03-image-input-strategy/' },
+            { label: '4. Tesseract OCR로 검색 가능한 P&ID 만들기', link: '/workbook/04-ocr-search/' },
+            { label: '5. 위치 상자와 텍스트 레이어', link: '/workbook/05-evidence-location/' },
+            { label: '6. P&ID를 검색 가능한 데이터로 정리하기', link: '/workbook/06-pid-indexing/' },
+            { label: '7. AI에게 도면 작업 맡기기', link: '/workbook/07-agent-workflow/' },
           ],
         },
         {

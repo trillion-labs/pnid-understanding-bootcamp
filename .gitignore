@@ -4,7 +4,8 @@ dist/
 .astro/
 .site-content/
 src/content/docs/
-public/downloads/
+public/downloads/*
+!public/downloads/pnid-ai-workbook-kit.zip
 
 # Private or distributable-source material
 source/

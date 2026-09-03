@@ -7,14 +7,11 @@
 | 참여 방법 | 준비 |
 |---|---|
 | 사이트에서 내용을 읽고 준비된 결과를 확인합니다. | 별도 준비가 필요하지 않습니다. |
-| 명령을 직접 실행해 결과를 만들어 봅니다. | 아래와 같이 실습 파일을 받은 뒤, 사용할 Claude Code 또는 Codex에 로그인합니다. |
+| 명령을 직접 실행해 결과를 만들어 봅니다. | 실습 키트를 내려받은 뒤, 사용할 Claude Code 또는 Codex에 로그인합니다. |
 
-```bash
-git clone https://github.com/trillion-labs/pnid-understanding-bootcamp.git
-cd pnid-understanding-bootcamp
-```
+[실습 키트 ZIP 내려받기](/pnid-understanding-bootcamp/downloads/pnid-ai-workbook-kit.zip)
 
-이후 단원에 나오는 `./scripts/...` 명령과 `assets/...` 경로는 이 폴더 안에서 실행하고 찾습니다.
+압축을 풀고 터미널에서 `pnid-ai-workbook-kit` 폴더로 이동합니다. 이후 단원에 나오는 `./scripts/...` 명령과 `assets/...` 경로는 이 폴더 안에서 실행하고 찾습니다.
 
 ## 중심 질문과 기준 답안
 

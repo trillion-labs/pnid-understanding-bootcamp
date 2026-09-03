@@ -7,23 +7,25 @@ const rootDir = path.resolve(scriptDir, '..');
 const contentDir = path.join(rootDir, 'src', 'content', 'docs');
 
 const workbookPages = [
-  ['00-course-design-principles.md', '이 워크북에서 무엇을 배우나요?', 'P&ID 도면을 AI 에이전트와 함께 읽고 평가하는 전체 흐름을 소개합니다.'],
-  ['00-pid-primer.md', 'P&ID를 처음 읽는 분을 위한 안내', 'P&ID의 기본 구성요소와 전문가가 도면을 읽는 순서를 실제 예제로 익힙니다.'],
-  ['01-program-design.md', '첫 번째 실험: 작은 태그는 확대하면 더 잘 읽을까요?', '전체에서 위치를 찾고 관련 구역을 확대해 작은 태그를 확인하는 과정을 따라갑니다.'],
-  ['01-experiment-answer-details.md', '첫 번째 실험의 모델별 상세 답변', 'Reception Bin 태그부터 전동기 태그까지 아홉 개 실제 답변과 항목별 점수를 모았습니다.'],
-  ['02-visual-prompting-strategy.md', '이미지 입력 전략: 전체에서 찾고, 필요한 곳을 확대하기', '전체에서 위치를 찾고 관련 구역을 확대해 답하는 coarse-to-fine 방식을 배웁니다.'],
-  ['02-ocr-for-agents.md', 'Tesseract OCR로 검색 가능한 P&ID 만들기', '도구를 설치하고 검색 가능한 PDF를 만든 뒤 OCR 텍스트와 원본 이미지를 함께 사용하는 흐름을 배웁니다.'],
-  ['03-screenshot-and-bbox.md', 'AI의 답을 원본 위치와 연결하는 방법', '위치 상자와 텍스트 레이어로 AI 답변의 근거를 다시 찾을 수 있게 만듭니다.'],
-  ['04-pid-indexing.md', 'P&ID를 검색 가능한 데이터로 정리하는 방법', '도면의 기본정보, 한 줄 요약, 큰 구역과 주요 태그를 단계별 JSON으로 정리합니다.'],
-  ['04-data-schema.md', 'AI의 답을 검색하고 비교할 수 있는 데이터로 바꾸는 방법', '자유로운 문장을 검토·검색·평가할 수 있는 구조화 데이터로 바꿉니다.'],
-  ['05-agent-workflow.md', 'AI에게 도면 작업을 맡기는 방법', '목표, 입력, 판단 규칙, 출력과 완료 조건을 포함한 요청문을 만듭니다.'],
-  ['05-terminal-claude-codex.mdx', '터미널에서 Claude Code와 Codex 실행하기', '명령을 직접 타이핑해 연습한 뒤 전체 이미지와 부분 확대 이미지 실험을 실행합니다.'],
-  ['06-evaluation.md', 'P&ID 에이전트의 답을 평가하는 방법', '도면에 직접 적힌 네 값을 기준으로 판독 정확도와 근거를 평가합니다.'],
-  ['08-prompt-cards.md', 'Claude Code·Codex 공통 프롬프트 카드', '탐색, 추출, 검증 목적에 따라 조정해 쓰는 요청문 모음입니다.'],
-  ['09-file-to-image-reference.md', '원본 PDF에서 학습 이미지까지', 'PDF 점검, 렌더링, 확대 이미지 준비 과정을 재현합니다.'],
-  ['12-skill-experiment.md', '스킬을 추가하고 전후를 비교하는 실습', '반복 가능한 도면 읽기 지침을 스킬로 저장하고 A/B 평가합니다.'],
-  ['14-benchmark-improvement-loop.md', '평가 결과로 에이전트를 개선하는 방법', '오류를 분류하고 한 가지만 바꾼 뒤 같은 조건으로 재평가합니다.'],
+  ['00-course-design-principles.md', 'guide', '이 워크북에서 무엇을 배우나요?', 'P&ID 도면을 AI 에이전트와 함께 읽고 평가하는 전체 흐름을 소개합니다.'],
+  ['00-pid-primer.md', '01-pid-primer', 'P&ID를 처음 읽는 분을 위한 안내', 'P&ID의 기본 구성요소와 전문가가 도면을 읽는 순서를 실제 예제로 익힙니다.'],
+  ['01-program-design.md', '02-first-experiment', '첫 번째 실험: 작은 태그는 확대하면 더 잘 읽을까요?', '전체에서 위치를 찾고 관련 구역을 확대해 작은 태그를 확인하는 과정을 따라갑니다.'],
+  ['01-experiment-answer-details.md', '01-experiment-answer-details', '첫 번째 실험의 모델별 상세 답변', 'Reception Bin 태그부터 전동기 태그까지 아홉 개 실제 답변과 항목별 점수를 모았습니다.'],
+  ['02-visual-prompting-strategy.md', '03-image-input-strategy', '이미지 입력 전략: 전체에서 찾고, 필요한 곳을 확대하기', '전체에서 위치를 찾고 관련 구역을 확대해 답하는 coarse-to-fine 방식을 배웁니다.'],
+  ['02-ocr-for-agents.md', '04-ocr-search', 'Tesseract OCR로 검색 가능한 P&ID 만들기', '도구를 설치하고 검색 가능한 PDF를 만든 뒤 OCR 텍스트와 원본 이미지를 함께 사용하는 흐름을 배웁니다.'],
+  ['03-screenshot-and-bbox.md', '05-evidence-location', 'AI의 답을 원본 위치와 연결하는 방법', '위치 상자와 텍스트 레이어로 AI 답변의 근거를 다시 찾을 수 있게 만듭니다.'],
+  ['04-pid-indexing.md', '06-pid-indexing', 'P&ID를 검색 가능한 데이터로 정리하는 방법', '도면의 기본정보, 한 줄 요약, 큰 구역과 주요 태그를 단계별 JSON으로 정리합니다.'],
+  ['04-data-schema.md', '04-data-schema', 'AI의 답을 검색하고 비교할 수 있는 데이터로 바꾸는 방법', '자유로운 문장을 검토·검색·평가할 수 있는 구조화 데이터로 바꿉니다.'],
+  ['05-agent-workflow.md', '07-agent-workflow', 'AI에게 도면 작업을 맡기는 방법', '목표, 입력, 판단 규칙, 출력과 완료 조건을 포함한 요청문을 만듭니다.'],
+  ['05-terminal-claude-codex.mdx', '05-terminal-claude-codex', '터미널에서 Claude Code와 Codex 실행하기', '명령을 직접 타이핑해 연습한 뒤 전체 이미지와 부분 확대 이미지 실험을 실행합니다.'],
+  ['06-evaluation.md', '06-evaluation', 'P&ID 에이전트의 답을 평가하는 방법', '도면에 직접 적힌 네 값을 기준으로 판독 정확도와 근거를 평가합니다.'],
+  ['08-prompt-cards.md', '08-prompt-cards', 'Claude Code·Codex 공통 프롬프트 카드', '탐색, 추출, 검증 목적에 따라 조정해 쓰는 요청문 모음입니다.'],
+  ['09-file-to-image-reference.md', '09-file-to-image-reference', '원본 PDF에서 학습 이미지까지', 'PDF 점검, 렌더링, 확대 이미지 준비 과정을 재현합니다.'],
+  ['12-skill-experiment.md', '12-skill-experiment', '스킬을 추가하고 전후를 비교하는 실습', '반복 가능한 도면 읽기 지침을 스킬로 저장하고 A/B 평가합니다.'],
+  ['14-benchmark-improvement-loop.md', '14-benchmark-improvement-loop', '평가 결과로 에이전트를 개선하는 방법', '오류를 분류하고 한 가지만 바꾼 뒤 같은 조건으로 재평가합니다.'],
 ];
+
+const outputSlugBySource = new Map(workbookPages.map(([fileName, slug]) => [fileName, slug]));
 
 function withFrontmatter(source, title, description) {
   const withoutTopHeading = source.replace(/^\uFEFF?#\s+[^\n]+\n+/, '');
@@ -33,7 +35,10 @@ function withFrontmatter(source, title, description) {
 function rewriteWorkbookLinks(source) {
   return source.replace(
     /\]\(([^/()]+)\.mdx?(#[^)]+)?\)/g,
-    (_match, fileName, anchor = '') => `](../${fileName}/${anchor})`,
+    (_match, fileName, anchor = '') => {
+      const sourceName = `${fileName}.md`;
+      return `](../${outputSlugBySource.get(sourceName) ?? fileName}/${anchor})`;
+    },
   );
 }
 
@@ -46,9 +51,13 @@ hero:
   tagline: 실제 P&ID 한 장으로 도면 읽기부터 이미지 확대, OCR 검색과 근거 기록까지 직접 따라갑니다.
   actions:
     - text: 워크북 시작하기
-      link: /pnid-understanding-bootcamp/workbook/00-course-design-principles/
+      link: /pnid-understanding-bootcamp/workbook/guide/
       icon: right-arrow
       variant: primary
+    - text: 실습 키트 받기
+      link: /pnid-understanding-bootcamp/downloads/pnid-ai-workbook-kit.zip
+      icon: download
+      variant: secondary
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
@@ -82,10 +91,10 @@ await mkdir(path.join(contentDir, 'workbook'), { recursive: true });
 
 await writeFile(path.join(contentDir, 'index.mdx'), homePage, 'utf8');
 
-for (const [fileName, title, description] of workbookPages) {
+for (const [fileName, slug, title, description] of workbookPages) {
   const source = await readFile(path.join(rootDir, 'docs', fileName), 'utf8');
   await writeFile(
-    path.join(contentDir, 'workbook', fileName),
+    path.join(contentDir, 'workbook', `${slug}.md`),
     withFrontmatter(rewriteWorkbookLinks(source), title, description),
     'utf8',
   );
