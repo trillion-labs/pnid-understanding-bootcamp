@@ -1,3 +1,13 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+
+@font-face {
+  font-family: 'Paperlogy';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/gh/whitedev7773/Paperlogy@main/Paperlogy-6SemiBold.woff2') format('woff2');
+}
+
 :root {
   --sl-color-accent-low: #d6f5f1;
   --sl-color-accent: #087f75;
@@ -10,7 +20,7 @@
   --sl-color-gray-5: #29364b;
   --sl-color-gray-6: #172236;
   --sl-color-black: #0b1220;
-  --sl-font: Inter, Pretendard, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --sl-font: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --sl-font-system-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
   --sl-content-width: 46rem;
 }
@@ -33,7 +43,7 @@
 }
 
 body {
-  letter-spacing: -0.012em;
+  letter-spacing: -0.004em;
 }
 
 /* Keep long-form workbook pages compact enough to scan without feeling cramped. */
@@ -76,6 +86,8 @@ header.header {
 
 .content-panel h1 {
   max-width: 22ch;
+  font-family: 'Paperlogy', 'Pretendard Variable', sans-serif;
+  font-weight: 600;
   font-size: clamp(2.15rem, 3.2vw, 2.7rem);
   line-height: 1.18;
   letter-spacing: -0.04em;
@@ -84,8 +96,42 @@ header.header {
 
 .sl-markdown-content {
   font-size: 1rem;
+  font-weight: 450;
   line-height: 1.7;
   word-break: keep-all;
+}
+
+.lesson-summary {
+  margin-block: 1.45rem 2rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid color-mix(in srgb, var(--sl-color-accent) 20%, var(--sl-color-hairline));
+  border-radius: 0.7rem;
+  background: color-mix(in srgb, var(--sl-color-accent-low) 20%, var(--sl-color-bg));
+  font-size: 0.94rem;
+  line-height: 1.6;
+}
+
+.lesson-summary__label {
+  margin: 0 0 0.55rem;
+  color: var(--sl-color-accent-high);
+  font-size: 0.8rem;
+  font-weight: 750;
+  letter-spacing: 0.035em;
+}
+
+.lesson-summary ul {
+  margin: 0;
+  padding-inline-start: 1.2rem;
+}
+
+.lesson-summary li + li {
+  margin-top: 0.22rem;
+}
+
+.lesson-summary__outcome {
+  margin: 0.7rem 0 0;
+  padding-top: 0.65rem;
+  border-top: 1px solid color-mix(in srgb, var(--sl-color-accent) 14%, var(--sl-color-hairline));
 }
 
 .sl-markdown-content p,
@@ -162,6 +208,11 @@ header.header {
 
 .sl-markdown-content blockquote > :last-child {
   margin-bottom: 0;
+}
+
+.sl-markdown-content blockquote:has(> p:first-child > strong:first-child) {
+  border-inline-start-width: 4px;
+  background: color-mix(in srgb, var(--sl-color-accent-low) 62%, var(--sl-color-bg));
 }
 
 .sl-markdown-content details.practice-result {
@@ -253,6 +304,11 @@ header.header {
   .sl-markdown-content {
     font-size: 0.975rem;
     line-height: 1.68;
+  }
+
+  .lesson-summary {
+    margin-block: 1.2rem 1.65rem;
+    padding: 0.9rem 0.95rem;
   }
 
   .sl-markdown-content p,

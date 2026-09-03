@@ -4,6 +4,15 @@ P&ID를 이해한다는 것은 도면에 있는 모든 기호를 외운다는 �
 
 이 단원에서는 실제 샘플 도면을 천천히 살펴봅니다. 도면을 처음 보는 분도 이후의 AI 실습에서 막히지 않도록, 현업 질문을 읽는 방법부터 전문가가 근거를 확인하는 순서까지 하나씩 따라가겠습니다.
 
+<div class="lesson-summary">
+  <p class="lesson-summary__label">이 단원에서 할 일</p>
+  <ul>
+    <li>제목란과 범례에서 도면의 기본정보를 찾습니다.</li>
+    <li>장비, 연결선과 태그를 구분해 읽습니다.</li>
+  </ul>
+  <p class="lesson-summary__outcome"><strong>완료 기준</strong> Reception Bin 2에서 Feeder #C 전동기까지 근거를 따라 설명할 수 있습니다.</p>
+</div>
+
 ## P&ID는 어떤 도면인가요?
 
 P&ID는 `Piping and Instrumentation Diagram`의 약자입니다. 우리말로는 보통 `배관 및 계장도`라고 부릅니다.

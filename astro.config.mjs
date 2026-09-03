@@ -34,7 +34,7 @@ export default defineConfig({
       lastUpdated: true,
       pagefind: true,
       credits: false,
-      tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 3 },
+      tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 2 },
       sidebar: [
         {
           label: '핵심 워크북',

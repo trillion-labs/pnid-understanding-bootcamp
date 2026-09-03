@@ -4,6 +4,15 @@
 
 실습을 마치면 `sample-pid.pdf`와 모양은 같지만 `Ctrl+F`로 `VIBRO FEEDER`를 찾을 수 있는 새 PDF가 생깁니다. 사람이 문자열을 검색할 수 있게 되면 AI 에이전트도 긴 도면에서 관련 단어를 먼저 찾고, 확인해야 할 구역을 더 빠르게 좁힐 수 있습니다.
 
+<div class="lesson-summary">
+  <p class="lesson-summary__label">이 단원에서 할 일</p>
+  <ul>
+    <li>Tesseract OCR로 도면에 검색 가능한 텍스트 레이어를 만듭니다.</li>
+    <li>검색 결과를 원본 이미지의 위치와 다시 대조합니다.</li>
+  </ul>
+  <p class="lesson-summary__outcome"><strong>완료 기준</strong> PDF에서 태그를 검색하고 판독 결과를 원본에서 검증할 수 있습니다.</p>
+</div>
+
 ## OCR을 적용하면 무엇이 달라지나요?
 
 원본 PDF에는 글자가 선명하게 보입니다. 그러나 이 글자는 PDF의 문자라기보다 한 장의 그림에 포함된 픽셀입니다. 따라서 마우스로 선택하거나 `Ctrl+F`로 검색할 수 없습니다.
