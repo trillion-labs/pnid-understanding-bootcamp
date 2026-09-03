@@ -72,5 +72,10 @@ await sharp(fullPath)
   .png()
   .toFile(path.join(rootDir, 'assets', 'regions', 'R06-title-block.png'));
 
+await sharp(path.join(rootDir, 'assets', 'regions', 'feeder-c-area.png'))
+  .resize({ height: 1600, withoutEnlargement: true })
+  .png()
+  .toFile(path.join(rootDir, 'assets', 'regions', 'feeder-c-area-long-edge-1600.png'));
+
 await rm(tempDir, { recursive: true, force: true });
 console.log(`Rendered the private source and applied ${manifest.redactions.length} public redactions.`);

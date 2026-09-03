@@ -44,11 +44,11 @@ case "$condition" in
     prompt_path="experiments/single-image-prompt/prompts/short.txt"
     ;;
   zoom)
-    image_path="assets/regions/feeder-c-area.png"
+    image_path="assets/regions/feeder-c-area-long-edge-1600.png"
     prompt_path="experiments/single-image-prompt/prompts/short.txt"
     ;;
   zoom-guided)
-    image_path="assets/regions/feeder-c-area.png"
+    image_path="assets/regions/feeder-c-area-long-edge-1600.png"
     prompt_path="experiments/single-image-prompt/prompts/guided.txt"
     ;;
   *)

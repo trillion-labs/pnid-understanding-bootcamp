@@ -28,18 +28,14 @@ AI 답을 원본 위치와 연결합니다.
 
 | 순서 | 문서 | 읽고 나면 할 수 있는 일 |
 |---|---|---|
-| 1 | [워크북 안내](docs/00-course-design-principles.md) | 전체 학습 흐름과 중심 질문을 이해합니다. |
-| 2 | [P&ID 입문](docs/00-pid-primer.md) | 도면 구성요소와 전문가의 판단 순서를 따라갑니다. |
-| 3 | [첫 번째 실제 실험](docs/01-program-design.md) | 전체 이미지·부분 확대 이미지·질문 방식에 따른 실제 결과를 비교합니다. |
-| 4 | [이미지 입력 전략](docs/02-visual-prompting-strategy.md) | 전체 문맥과 세부 확대를 연결합니다. |
-| 5 | [Tesseract OCR로 검색 가능한 P&ID 만들기](docs/02-ocr-for-agents.md) | 도구를 설치하고 검색 가능한 PDF를 만든 뒤 원본 이미지로 검증합니다. |
-| 6 | [위치 상자와 텍스트 레이어](docs/03-screenshot-and-bbox.md) | AI 답을 원본 위치와 연결합니다. |
-| 7 | [P&ID 데이터 정리](docs/04-pid-indexing.md) | 도면의 기본정보, 큰 구역과 주요 태그를 단계별 JSON으로 정리합니다. |
-| 8 | [AI 답변 구조화](docs/04-data-schema.md) | AI 답을 검색하고 비교할 수 있는 표로 바꿉니다. |
-| 9 | [Claude Code와 Codex 운영](docs/05-agent-workflow.md) | 목표·입력·규칙·출력·검사를 포함한 업무 계약을 만듭니다. |
-| 10 | [터미널에서 직접 실행하기](docs/05-terminal-claude-codex.mdx) | Claude Code와 Codex 명령을 직접 타이핑하고 결과를 저장합니다. |
-| 11 | [평가 기준](docs/06-evaluation.md) | 정답뿐 아니라 근거와 추측 여부를 함께 평가합니다. |
-| 12 | [개선 과정](docs/14-benchmark-improvement-loop.md) | 오류 하나를 개선하고 같은 조건으로 다시 평가합니다. |
+| 준비 | [워크북 안내](docs/00-course-design-principles.md) | 전체 학습 흐름과 중심 질문을 이해합니다. |
+| 1 | [P&ID 입문](docs/00-pid-primer.md) | 도면 구성요소와 전문가의 판단 순서를 따라갑니다. |
+| 2 | [첫 번째 실제 실험](docs/01-program-design.md) | 전체에서 위치를 찾고 관련 구역을 확대해 결과를 비교합니다. |
+| 3 | [이미지 입력 전략](docs/02-visual-prompting-strategy.md) | 전체 문맥과 세부 확대를 연결합니다. |
+| 4 | [Tesseract OCR로 검색 가능한 P&ID 만들기](docs/02-ocr-for-agents.md) | 검색 가능한 PDF를 만들고 원본 이미지로 검증합니다. |
+| 5 | [위치 상자와 텍스트 레이어](docs/03-screenshot-and-bbox.md) | AI 답을 원본 위치와 연결합니다. |
+| 6 | [P&ID 데이터 정리](docs/04-pid-indexing.md) | 도면의 기본정보, 큰 구역과 주요 태그를 단계별 JSON으로 정리합니다. |
+| 7 | [AI에게 도면 작업 맡기기](docs/05-agent-workflow.md) | 목표·입력·규칙·출력·완료 조건을 담은 요청문을 만듭니다. |
 
 ## 워크북 부록
 
@@ -55,7 +51,7 @@ AI 답을 원본 위치와 연결합니다.
 - 교육용 파일명: `sample-pid.pdf`
 - 도면 식별자: `J-11520-ZM-105-005`, Rev. F
 - 전체 구조용 이미지: `assets/overview/sample-pid-overview-1600.png`
-- Feeder #C 주변 확대 이미지: `assets/regions/feeder-c-area.png`
+- Feeder #C 주변 확대 이미지: `assets/regions/feeder-c-area-long-edge-1600.png`
 - 질문 근거 위치 예시: `assets/bbox/feeder-c-query-evidence.png`
 - 검색 가능한 교육용 PDF: `assets/ocr/sample-pid-ocr.pdf`
 

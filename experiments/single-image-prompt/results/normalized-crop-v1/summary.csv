@@ -1,0 +1,7 @@
+provider,model,condition,image,width,height,evidence_score,bin_tag,outlet_valve,feeder_tag,motor_tag,tokens_reported
+claude,sonnet,crop-short,assets/regions/feeder-c-area-long-edge-1600.png,1244,1600,4,1,1,1,1,
+codex,luna,crop-short,assets/regions/feeder-c-area-long-edge-1600.png,1244,1600,4,1,1,1,1,11355
+codex,terra,crop-short,assets/regions/feeder-c-area-long-edge-1600.png,1244,1600,4,1,1,1,1,11968
+claude,sonnet,crop-guided,assets/regions/feeder-c-area-long-edge-1600.png,1244,1600,4,1,1,1,1,
+codex,luna,crop-guided,assets/regions/feeder-c-area-long-edge-1600.png,1244,1600,4,1,1,1,1,7637
+codex,terra,crop-guided,assets/regions/feeder-c-area-long-edge-1600.png,1244,1600,4,1,1,1,1,12337

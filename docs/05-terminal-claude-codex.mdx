@@ -31,7 +31,7 @@ pwd
 
 ```bash
 ls assets/overview/sample-pid-overview-1600.png
-ls assets/regions/feeder-c-area.png
+ls assets/regions/feeder-c-area-long-edge-1600.png
 ls experiments/single-image-prompt/prompts/short.txt
 ```
 
@@ -137,7 +137,7 @@ output/workbook-cli/
 
 ```bash
 claude -p \
-  "Read assets/regions/feeder-c-area.png with the Read tool. Then read experiments/single-image-prompt/prompts/short.txt and answer that Korean prompt. Do not modify files." \
+  "Read assets/regions/feeder-c-area-long-edge-1600.png with the Read tool. Then read experiments/single-image-prompt/prompts/short.txt and answer that Korean prompt. Do not modify files." \
   --model sonnet \
   --effort medium \
   --allowedTools Read \
@@ -157,7 +157,7 @@ claude -p \
 ```bash
 codex exec \
   --model gpt-5.6-luna \
-  --image assets/regions/feeder-c-area.png \
+  --image assets/regions/feeder-c-area-long-edge-1600.png \
   --sandbox read-only \
   --ephemeral \
   -C "$PWD" \
