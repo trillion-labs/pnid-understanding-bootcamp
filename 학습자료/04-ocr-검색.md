@@ -1,4 +1,4 @@
-# Tesseract OCR로 검색 가능한 P&ID 만들기
+# OCR로 도면 검색하기
 
 앞 단원에서는 같은 도면도 전체 이미지로 볼 때와 필요한 부분을 확대해서 볼 때 답변이 달라질 수 있다는 점을 확인했습니다. 이번에는 이미지 안의 글자를 검색할 수 있게 만들어 봅니다.
 
@@ -10,7 +10,12 @@
     <li>Tesseract OCR로 도면에 검색 가능한 텍스트 레이어를 만듭니다.</li>
     <li>검색 결과를 원본 이미지의 위치와 다시 대조합니다.</li>
   </ul>
-  <p class="lesson-summary__outcome"><strong>완료 기준</strong> PDF에서 태그를 검색하고 판독 결과를 원본에서 검증할 수 있습니다.</p>
+  <p class="lesson-summary__outcome"><strong>완료 기준:</strong> PDF에서 태그를 검색하고 판독 결과를 원본에서 검증할 수 있습니다.</p>
+</div>
+
+<div class="scope-note">
+  <p class="scope-note__label">P&amp;ID 밖에서도 사용할 수 있습니다</p>
+  <p>여기서는 P&amp;ID를 예제로 사용하지만 원리는 특정 도면 형식에 묶이지 않습니다. 스캔한 매뉴얼, 설비 도면, 검사 성적서, 오래된 양식과 이미지 기반 PDF처럼 <strong>눈에는 보이지만 검색되지 않는 문서</strong>에 텍스트 레이어를 추가하는 데 같은 흐름을 적용할 수 있습니다. 문서마다 언어·배치·글자 크기가 다르므로 OCR 설정과 검증 기준만 대상에 맞게 조정합니다.</p>
 </div>
 
 ## OCR을 적용하면 무엇이 달라지나요?
@@ -274,16 +279,12 @@ OCR과 이미지가 다르면 차이를 적고, 확인되지 않은 값은 추�
 
 ## 이 단원에서 만든 작업 흐름
 
-```text
-Tesseract 설치 확인
-        ↓
-스크립트로 검색 가능한 PDF 생성
-        ↓
-Ctrl+F로 문자열 검색 확인
-        ↓
-에이전트가 OCR로 후보 위치 탐색
-        ↓
-원본 이미지에서 글자와 연결 관계 검증
-```
+<div class="process-flow" style="--flow-columns: 5">
+  <div class="process-step"><span class="process-step__number">1</span><strong>도구 설치 확인</strong></div>
+  <div class="process-step"><span class="process-step__number">2</span><strong>검색 가능한 PDF 생성</strong></div>
+  <div class="process-step"><span class="process-step__number">3</span><strong>문자열 검색 확인</strong></div>
+  <div class="process-step"><span class="process-step__number">4</span><strong>후보 위치 탐색</strong></div>
+  <div class="process-step"><span class="process-step__number">5</span><strong>원본에서 검증</strong></div>
+</div>
 
 이제 에이전트가 찾은 근거를 다른 사람도 같은 위치에서 다시 확인할 수 있어야 합니다. 다음 단원에서는 도면의 특정 구역을 위치 상자로 표시하고 기록하는 방법을 살펴봅니다.

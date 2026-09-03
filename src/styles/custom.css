@@ -134,6 +134,25 @@ header.header {
   border-top: 1px solid color-mix(in srgb, var(--sl-color-accent) 14%, var(--sl-color-hairline));
 }
 
+.lesson-summary__outcome strong {
+  margin-inline-end: 0.3rem;
+  color: var(--sl-color-accent-high);
+}
+
+/* 본문 속 용어와 도면 태그는 코드 박스보다 읽기 편한 형광펜 톤으로 강조합니다. */
+.sl-markdown-content :is(p, li, blockquote) > code {
+  padding: 0.08em 0.24em;
+  border: 0;
+  border-radius: 0.22em;
+  background: color-mix(in srgb, #f7d85a 30%, transparent);
+  color: inherit;
+  font-family: inherit;
+  font-size: 0.96em;
+  font-weight: 650;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
 .sl-markdown-content p,
 .sl-markdown-content ul,
 .sl-markdown-content ol {
@@ -186,8 +205,15 @@ header.header {
 
 .sl-anchor-icon,
 .sl-anchor-icon svg {
-  width: 0.7rem;
-  height: 0.7rem;
+  display: none;
+}
+
+.sl-anchor-link::before {
+  content: '#';
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 650;
+  line-height: 1;
 }
 
 .sl-heading-wrapper:hover .sl-anchor-link,
@@ -230,6 +256,118 @@ header.header {
 .sl-markdown-content td:first-child:has(code) {
   text-align: start;
   overflow-wrap: anywhere;
+}
+
+.scope-note {
+  margin-block: 1.4rem 1.8rem;
+  padding: 1rem 1.1rem;
+  border-inline-start: 4px solid var(--sl-color-accent);
+  border-radius: 0 0.7rem 0.7rem 0;
+  background: color-mix(in srgb, var(--sl-color-accent-low) 34%, var(--sl-color-bg));
+  font-size: 0.94rem;
+  line-height: 1.62;
+}
+
+.scope-note__label {
+  margin: 0 0 0.4rem;
+  color: var(--sl-color-accent-high);
+  font-size: 0.8rem;
+  font-weight: 750;
+  letter-spacing: 0.025em;
+}
+
+.scope-note p:last-child {
+  margin-bottom: 0;
+}
+
+.process-flow {
+  display: grid;
+  grid-template-columns: repeat(var(--flow-columns, 4), minmax(0, 1fr));
+  gap: 1.65rem;
+  margin-block: 1.5rem 2rem;
+}
+
+.process-step {
+  position: relative;
+  min-width: 0;
+  padding: 0.9rem 0.8rem;
+  border: 1px solid color-mix(in srgb, var(--sl-color-accent) 18%, var(--sl-color-hairline));
+  border-radius: 0.68rem;
+  background: color-mix(in srgb, var(--sl-color-accent-low) 18%, var(--sl-color-bg));
+  text-align: center;
+}
+
+.process-step:not(:last-child)::after {
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 0.45rem);
+  color: var(--sl-color-gray-3);
+  content: '→';
+  font-size: 0.95rem;
+  transform: translateY(-50%);
+}
+
+.process-step__number {
+  display: inline-flex;
+  width: 1.5rem;
+  height: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.45rem;
+  border-radius: 999px;
+  color: var(--sl-color-accent-high);
+  background: color-mix(in srgb, var(--sl-color-accent-low) 72%, var(--sl-color-bg));
+  font-size: 0.74rem;
+  font-weight: 800;
+}
+
+.process-step strong {
+  display: block;
+  font-size: 0.9rem;
+  line-height: 1.42;
+}
+
+.pagination-links {
+  gap: 0.75rem;
+  margin-top: 3rem;
+}
+
+.pagination-links > a {
+  min-height: 5rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 0.75rem;
+  background: color-mix(in srgb, var(--sl-color-gray-6) 24%, var(--sl-color-bg));
+  box-shadow: none;
+  transition: border-color 140ms ease, background-color 140ms ease, transform 140ms ease;
+}
+
+.pagination-links > a:hover {
+  border-color: color-mix(in srgb, var(--sl-color-accent) 42%, var(--sl-color-hairline));
+  background: color-mix(in srgb, var(--sl-color-accent-low) 22%, var(--sl-color-bg));
+  transform: translateY(-1px);
+}
+
+.pagination-links svg {
+  width: 1rem;
+  height: 1rem;
+  color: var(--sl-color-accent);
+}
+
+.pagination-links > a > span {
+  color: var(--sl-color-gray-3);
+  font-size: 0.76rem;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+}
+
+.pagination-links .link-title {
+  display: inline-block;
+  margin-top: 0.25rem;
+  color: var(--sl-color-white);
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
 }
 
 .sl-markdown-content blockquote {
@@ -374,5 +512,21 @@ header.header {
 
   .sl-markdown-content table {
     font-size: 0.84rem;
+  }
+
+  .process-flow {
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+  }
+
+  .process-step:not(:last-child)::after {
+    top: calc(100% + 0.2rem);
+    left: 50%;
+    content: '↓';
+    transform: translateX(-50%);
+  }
+
+  .pagination-links {
+    grid-template-columns: 1fr;
   }
 }

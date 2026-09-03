@@ -1,4 +1,4 @@
-# P&ID를 처음 읽는 분을 위한 안내
+# P&ID 입문
 
 P&ID를 이해한다는 것은 도면에 있는 모든 기호를 외운다는 뜻이 아닙니다. 먼저 어떤 장비가 있고, 장비가 무엇으로 연결되어 있으며, 어디에서 측정하고 제어하는지를 원본 근거와 함께 설명할 수 있어야 합니다.
 
@@ -10,7 +10,7 @@ P&ID를 이해한다는 것은 도면에 있는 모든 기호를 외운다는 �
     <li>제목란과 범례에서 도면의 기본정보를 찾습니다.</li>
     <li>장비, 연결선과 태그를 구분해 읽습니다.</li>
   </ul>
-  <p class="lesson-summary__outcome"><strong>완료 기준</strong> Reception Bin 2에서 Feeder #C 전동기까지 근거를 따라 설명할 수 있습니다.</p>
+  <p class="lesson-summary__outcome"><strong>완료 기준:</strong> Reception Bin 2에서 Feeder #C 전동기까지 근거를 따라 설명할 수 있습니다.</p>
 </div>
 
 ## P&ID는 어떤 도면인가요?
