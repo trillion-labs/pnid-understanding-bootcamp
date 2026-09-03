@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE = ROOT / "experiments" / "single-image-prompt" / "results" / "verifiable-v3"
+BASE = ROOT / "experiments" / "image-reading" / "baseline"
 RAW = BASE / "raw"
 REVIEWS = BASE / "manual-review.csv"
 OUT = BASE / "summary.csv"

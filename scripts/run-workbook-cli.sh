@@ -16,6 +16,7 @@ usage() {
 
 조건
   full          전체 구조용 이미지 + 짧은 질문
+  full-guided   전체 구조용 이미지 + 단계별 질문
   zoom          Feeder #C 주변 확대 이미지 + 짧은 질문
   zoom-guided   Feeder #C 주변 확대 이미지 + 단계별 질문
 
@@ -42,6 +43,10 @@ case "$condition" in
   full)
     image_path="실습자료/이미지/전체-도면.png"
     prompt_path="실습자료/프롬프트/기본-질문.txt"
+    ;;
+  full-guided)
+    image_path="실습자료/이미지/전체-도면.png"
+    prompt_path="실습자료/프롬프트/단계별-질문.txt"
     ;;
   zoom)
     image_path="실습자료/이미지/feeder-c-확대.png"

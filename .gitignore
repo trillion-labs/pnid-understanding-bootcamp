@@ -18,7 +18,7 @@ data/ocr/*
 !data/ocr/ocr-agent-comparison.csv
 
 # Raw model runs can contain local paths or unreviewed content
-experiments/**/results/**/raw/
+experiments/**/raw/
 
 # Local system files
 .DS_Store

@@ -41,7 +41,7 @@ export default defineConfig({
           items: [
             { label: '워크북 안내', link: '/workbook/guide/' },
             { label: '1. P&ID 입문', link: '/workbook/01-pid-primer/' },
-            { label: '2. 첫 번째 실제 실험', link: '/workbook/02-first-experiment/' },
+            { label: '2. 이미지 확대·프롬프트 비교', link: '/workbook/02-first-experiment/' },
             { label: '3. 이미지 입력 전략', link: '/workbook/03-image-input-strategy/' },
             { label: '4. OCR로 도면 검색하기', link: '/workbook/04-ocr-search/' },
             { label: '5. 위치 상자와 텍스트 레이어', link: '/workbook/05-evidence-location/' },
