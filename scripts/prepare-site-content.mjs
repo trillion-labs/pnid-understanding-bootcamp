@@ -42,8 +42,8 @@ title: 시작하기
 description: Claude Code와 Codex로 실제 P&ID 도면을 읽고 평가하고 개선하는 실습형 워크북입니다.
 template: splash
 hero:
-  title: 도면을 읽는 AI는 어떻게 만들어질까요?
-  tagline: P&ID를 처음 보는 분도 실제 이미지를 따라가며 Claude Code와 Codex의 답을 검토하고, 근거를 데이터로 남기고, 개선 전후를 평가할 수 있습니다.
+  title: P&ID × AI Agent 실습 워크북
+  tagline: 실제 P&ID 한 장으로 도면 읽기부터 이미지 확대, OCR 검색과 근거 기록까지 직접 따라갑니다.
   actions:
     - text: 워크북 시작하기
       link: /pnid-understanding-bootcamp/workbook/00-course-design-principles/
@@ -53,26 +53,26 @@ hero:
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
-## 이 워크북에서 완성하는 한 가지 흐름
+## 무엇을 직접 해보나요?
 
 <CardGrid>
-  <Card title="1. 도면을 읽습니다" icon="magnifier">
-    전체 도면으로 구조를 파악하고, 질문과 관련된 부분을 크게 보며 작은 태그와 연결을 확인합니다.
+  <Card title="도면에서 위치 찾기" icon="magnifier">
+    제목란과 반복 구조를 확인하고 Reception Bin 2와 Feeder #C가 있는 구역을 찾습니다.
   </Card>
-  <Card title="2. 근거를 남깁니다" icon="approve-check-circle">
-    답변 문장만 저장하지 않고, 원본의 어느 위치에서 무엇을 확인했는지 함께 기록합니다.
+  <Card title="모델 답변 비교하기" icon="analytics">
+    전체 이미지와 부분 확대 이미지를 Claude Code와 Codex에 입력해 실제 답변을 비교합니다.
   </Card>
-  <Card title="3. 같은 기준으로 평가합니다" icon="analytics">
-    Claude Code와 Codex의 결과를 정답, 근거, 추측 여부라는 같은 기준으로 비교합니다.
+  <Card title="검색하고 근거 남기기" icon="approve-check-circle">
+    OCR로 태그를 검색하고, 답을 다시 확인할 수 있도록 원본 위치와 도면 색인을 남깁니다.
   </Card>
-  <Card title="4. 하나를 바꾸고 다시 봅니다" icon="random">
-    이미지, 데이터 구조, 프롬프트, 스킬 중 한 가지만 개선하고 같은 질문을 다시 실행합니다.
+  <Card title="AI에게 작업 맡기기" icon="random">
+    목표, 입력 파일, 판단 규칙과 완료 조건을 정리해 재사용할 수 있는 업무 요청문을 만듭니다.
   </Card>
 </CardGrid>
 
-## 이 워크북을 읽는 순서
+## 시작하는 순서
 
-**워크북 안내 → P&ID 입문 → 첫 번째 실제 실험** 순서로 시작해 주세요. 이후에는 이미지 입력, 위치 근거, 구조화 데이터, 에이전트 운영, 평가와 개선이 하나의 흐름으로 이어집니다. 필요한 이미지는 이미 준비되어 있으므로 별도의 PDF 변환부터 시작하지 않습니다.
+**워크북 안내 → P&ID 입문 → 첫 번째 실제 실험** 순서로 시작하세요. 필요한 이미지와 실행 스크립트는 이미 준비되어 있습니다.
 
 > 이 사이트에 표시되는 도면 이미지는 회사명, 로고, 주소, 작성·검토자 영역을 마스킹한 교육용 사본입니다. 내부 원본 PDF와 개인 메타데이터가 포함된 export 파일은 공개 저장소와 사이트에 포함하지 않습니다.
 `;
