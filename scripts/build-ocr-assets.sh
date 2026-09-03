@@ -7,13 +7,15 @@ cd "$repo_dir"
 for command_name in tesseract pdftotext; do
   command -v "$command_name" >/dev/null || {
     echo "필요한 명령을 찾지 못했습니다: $command_name" >&2
+    echo "macOS: brew install tesseract poppler" >&2
+    echo "Ubuntu/WSL: sudo apt install -y tesseract-ocr poppler-utils" >&2
+    echo "설치한 뒤 이 스크립트를 다시 실행해 주세요." >&2
     exit 1
   }
 done
 
 full_image="assets/full/J-11520-ZM-105-005_page-001.png"
 zoom_image="assets/regions/feeder-c-area.png"
-user_words="data/ocr/pid-user-words.txt"
 pdf_base="assets/ocr/sample-pid-searchable-improved"
 full_tsv_base="data/ocr/sample-pid-full-improved"
 zoom_tsv_base="data/ocr/feeder-c-area-improved"
@@ -24,7 +26,6 @@ common_options=(
   -l eng
   --psm 6
   --dpi 300
-  --user-words "$user_words"
   -c thresholding_method=2
   -c preserve_interword_spaces=1
 )

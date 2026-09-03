@@ -32,7 +32,7 @@ AI 답을 원본 위치와 연결합니다.
 | 2 | [P&ID 입문](docs/00-pid-primer.md) | 도면 구성요소와 전문가의 판단 순서를 따라갑니다. |
 | 3 | [첫 번째 실제 실험](docs/01-program-design.md) | 전체 이미지·부분 확대 이미지·질문 방식에 따른 실제 결과를 비교합니다. |
 | 4 | [이미지 입력 전략](docs/02-visual-prompting-strategy.md) | 전체 문맥과 세부 확대를 연결합니다. |
-| 5 | [Tesseract OCR과 에이전트 검색](docs/02-ocr-for-agents.md) | OCR로 후보를 찾고 원본 이미지로 검증합니다. |
+| 5 | [Tesseract OCR로 검색 가능한 P&ID 만들기](docs/02-ocr-for-agents.md) | 도구를 설치하고 검색 가능한 PDF를 만든 뒤 원본 이미지로 검증합니다. |
 | 6 | [위치 상자와 텍스트 레이어](docs/03-screenshot-and-bbox.md) | AI 답을 원본 위치와 연결합니다. |
 | 7 | [P&ID 데이터 정리](docs/04-pid-indexing.md) | 도면의 기본정보, 큰 구역과 주요 태그를 단계별 JSON으로 정리합니다. |
 | 8 | [AI 답변 구조화](docs/04-data-schema.md) | AI 답을 검색하고 비교할 수 있는 표로 바꿉니다. |

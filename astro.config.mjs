@@ -41,7 +41,7 @@ export default defineConfig({
             { label: 'P&ID 입문', link: '/workbook/00-pid-primer/' },
             { label: '첫 번째 실제 실험', link: '/workbook/01-program-design/' },
             { label: '이미지 입력 전략', link: '/workbook/02-visual-prompting-strategy/' },
-            { label: 'Tesseract OCR과 에이전트 검색', link: '/workbook/02-ocr-for-agents/' },
+            { label: 'Tesseract OCR로 검색 가능한 P&ID 만들기', link: '/workbook/02-ocr-for-agents/' },
             { label: '위치 상자와 텍스트 레이어', link: '/workbook/03-screenshot-and-bbox/' },
             { label: 'P&ID를 검색 가능한 데이터로 정리하기', link: '/workbook/04-pid-indexing/' },
             { label: 'AI 답변 구조화', link: '/workbook/04-data-schema/' },
