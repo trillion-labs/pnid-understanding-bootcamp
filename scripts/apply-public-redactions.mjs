@@ -46,23 +46,23 @@ const redactionSvg = Buffer.from(
     .join('')}</svg>`,
 );
 
-const fullPath = path.join(rootDir, 'assets', 'full', 'J-11520-ZM-105-005_page-001.png');
+const fullPath = path.join(rootDir, '실습자료', '이미지', '원본-고해상도-도면.png');
 await sharp(renderedPage).composite([{ input: redactionSvg }]).png().toFile(fullPath);
 
 await sharp(fullPath)
   .resize({ width: 1600 })
   .png()
-  .toFile(path.join(rootDir, 'assets', 'overview', 'sample-pid-overview-1600.png'));
+  .toFile(path.join(rootDir, '실습자료', '이미지', '전체-도면.png'));
 
 await sharp(fullPath)
   .extract({ left: 3920, top: 1450, width: 890, height: 1920 })
   .png()
-  .toFile(path.join(rootDir, 'assets', 'regions', 'R06-title-block.png'));
+  .toFile(path.join(rootDir, '실습자료', '이미지', '제목란.png'));
 
-await sharp(path.join(rootDir, 'assets', 'regions', 'feeder-c-area.png'))
+await sharp(path.join(rootDir, '실습자료', '이미지', 'feeder-c-원본-확대.png'))
   .resize({ height: 1600, withoutEnlargement: true })
   .png()
-  .toFile(path.join(rootDir, 'assets', 'regions', 'feeder-c-area-long-edge-1600.png'));
+  .toFile(path.join(rootDir, '실습자료', '이미지', 'feeder-c-확대.png'));
 
 await rm(tempDir, { recursive: true, force: true });
 console.log(`Rendered the private source and applied ${manifest.redactions.length} public redactions.`);

@@ -107,7 +107,7 @@ bash scripts/build-ocr-assets.sh
 
 ```text
 완료했습니다.
-PDF: assets/ocr/sample-pid-ocr.pdf
+PDF: 실습자료/ocr/검색가능한-pnid.pdf
 전체 OCR: data/ocr/sample-pid-full-improved.tsv
 부분 확대 OCR: data/ocr/feeder-c-area-improved.tsv
 ```
@@ -116,7 +116,7 @@ PDF: assets/ocr/sample-pid-ocr.pdf
 
 [검색 가능한 P&ID 열기](/pnid-understanding-bootcamp/downloads/sample-pid-ocr.pdf)
 
-로컬 컴퓨터에서 직접 생성된 파일은 저장소의 `assets/ocr/sample-pid-ocr.pdf`에 있습니다.
+로컬 컴퓨터에서 직접 생성된 파일은 저장소의 `실습자료/ocr/검색가능한-pnid.pdf`에 있습니다.
 
 ## 3. 정말 검색되는지 확인합니다
 
@@ -133,6 +133,117 @@ VIBRO FEEDER
 ```
 
 검색 결과가 표시되면 이미지였던 도면 위에 텍스트 레이어가 만들어진 것입니다. 같은 PDF에서 모든 글자가 완벽하게 검색되는 것은 아닙니다. 작은 글자, 선과 겹친 태그, 심벌 가까이에 있는 글자는 다르게 읽히거나 빠질 수 있습니다.
+
+## OCR 품질이 아쉬울 때 무엇을 바꿀 수 있나요?
+
+기본 실습을 마친 뒤 특정 태그가 계속 빠지거나 틀리게 읽힌다면 아래 항목을 하나씩 펼쳐 확인해 보세요. 여러 설정을 한꺼번에 바꾸면 무엇이 효과가 있었는지 알기 어려우므로, **한 번에 하나만 바꾸고 같은 검색어로 전후 결과를 비교**하는 것이 좋습니다.
+
+<details class="practice-result">
+  <summary>도면에 자주 나오는 장비명과 태그를 사용자 사전에 추가하기</summary>
+  <div class="practice-result__body">
+
+Tesseract의 사용자 단어 사전은 일반 영어 사전에 없는 `VIBRO`, `FEEDER`, 장비 태그 같은 문자열을 후보로 알려 줍니다. 먼저 한 줄에 한 단어씩 파일을 만듭니다.
+
+```text title="data/ocr/pnid-user-words.txt"
+BOILER
+OFA
+CONVEYOR
+FLEXIBLE
+RECEPTION
+VIBRO
+```
+
+실제 예제 사전에는 도면에서 확인한 P&ID 용어 46개가 들어 있습니다. `ae`, `KA]`, `VN`처럼 선이나 심벌을 글자로 잘못 읽은 결과는 사전 단어로 추가하지 않습니다.
+
+그다음 기존 Tesseract 명령에 다음 옵션을 추가합니다.
+
+```bash
+--user-words data/ocr/pnid-user-words.txt
+```
+
+이 워크북의 `scripts/build-ocr-assets.sh`에는 위 사전이 이미 연결되어 있습니다. 직접 실행할 때의 전체 명령은 다음과 같습니다.
+
+```bash
+tesseract input.png output -l eng --psm 6 --user-words data/ocr/pnid-user-words.txt pdf
+```
+
+사전은 흐릿한 글자를 선명하게 만들거나 없는 글자를 찾아내는 기능은 아닙니다. OCR이 비슷한 후보 사이에서 고민할 때 도메인 단어를 우선하도록 돕습니다. 실제 도면에서 확인한 단어만 넣고, 예상한 정답을 무작정 많이 넣지는 마세요.
+
+  </div>
+</details>
+
+<details class="practice-result">
+  <summary>글자가 흩어진 도면에 맞게 페이지 분할 모드 바꾸기</summary>
+  <div class="practice-result__body">
+
+`--psm`은 Tesseract가 글자의 배치를 어떻게 가정할지 정하는 옵션입니다. 일반 문서와 달리 글자가 여러 위치에 흩어진 P&ID에서는 `--psm 11`이 유용할 수 있습니다. 이 워크북의 스크립트는 전체 도면에 `--psm 11`, 잘라낸 확대 이미지에 `--psm 6`을 사용합니다.
+
+```bash
+tesseract input.png output-psm11 -l eng --psm 11 tsv
+```
+
+| 모드 | 가정 | 비교해 볼 상황 |
+|---|---|---|
+| `6` | 하나의 텍스트 블록 | 일정한 구역을 잘라낸 이미지 |
+| `11` | 흩어진 글자를 가능한 만큼 탐색 | 전체 도면처럼 라벨 위치가 분산된 이미지 |
+| `13` | 한 줄의 글자 | 장비 태그 한 줄만 아주 작게 잘라낸 이미지 |
+
+한 모드가 모든 도면에서 가장 좋지는 않습니다. 동일한 이미지로 TSV를 각각 만든 뒤, 필요한 태그가 더 잘 남는 쪽을 선택합니다.
+
+  </div>
+</details>
+
+<details class="practice-result">
+  <summary>작은 글자는 먼저 확대하고 필요한 구역만 OCR하기</summary>
+  <div class="practice-result__body">
+
+설정보다 입력 이미지가 더 큰 차이를 만드는 경우가 많습니다. 전체 도면의 작은 태그가 빠진다면 원본 PDF를 더 높은 해상도로 변환하거나, 필요한 구역을 잘라 2~4배 확대해 다시 OCR합니다. 이 워크북도 전체 도면과 `Feeder #C` 확대 이미지를 따로 처리합니다.
+
+확대할 때는 화면 캡처보다 원본 PDF 또는 원본 고해상도 이미지에서 다시 추출하세요. 글자가 선과 겹쳐 있다면 회색조·이진화가 도움이 될 수 있지만, 너무 강한 이진화는 가는 글자 획을 없앨 수 있습니다. 원본, 확대본, 전처리본을 각각 남겨 비교하는 편이 안전합니다.
+
+  </div>
+</details>
+
+<details class="practice-result">
+  <summary>한국어가 섞인 도면에 언어 데이터 추가하기</summary>
+  <div class="practice-result__body">
+
+`-l eng`은 영어만 읽습니다. 한국어 설명이 함께 있는 도면이라면 한국어 언어 데이터를 설치하고 `eng+kor`로 실행할 수 있습니다.
+
+```bash
+# macOS
+brew install tesseract-lang
+```
+
+```bash
+# Ubuntu 또는 WSL
+sudo apt install -y tesseract-ocr-kor
+```
+
+```bash
+tesseract input.png output -l eng+kor --psm 6 pdf
+```
+
+설치된 언어는 `tesseract --list-langs`로 확인합니다. 사용하지 않는 언어를 많이 지정하면 처리 시간이 늘고 비슷한 글자를 혼동할 수 있으므로, 실제 도면에 있는 언어만 선택하세요.
+
+  </div>
+</details>
+
+<details class="practice-result">
+  <summary>개선됐는지 같은 기준으로 비교하기</summary>
+  <div class="practice-result__body">
+
+몇 개가 눈에 잘 보인다는 느낌만으로 설정을 고르지 않습니다. 먼저 반드시 찾아야 할 장비명과 태그 10~20개를 정하고, 각 설정에서 정확히 검색되는 개수를 기록합니다. 잘못 읽은 문자열과 놓친 문자열도 함께 남기면 다음에 사전, 확대, `--psm` 중 무엇을 바꿀지 판단하기 쉽습니다.
+
+```text
+설정: 기본(--psm 6) / 사전 추가 / --psm 11 / 구역 확대
+확인: 정답 수 / 오인식 수 / 누락 수
+```
+
+최종 설정을 고른 뒤에도 OCR 문자열은 후보로만 사용하고 원본 이미지에서 다시 확인합니다.
+
+  </div>
+</details>
 
 ## 4. OCR 파일을 AI 에이전트와 함께 사용합니다
 

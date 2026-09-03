@@ -30,9 +30,9 @@ pwd
 다음 명령으로 이미지와 질문 파일이 있는지도 확인합니다.
 
 ```bash
-ls assets/overview/sample-pid-overview-1600.png
-ls assets/regions/feeder-c-area-long-edge-1600.png
-ls experiments/single-image-prompt/prompts/short.txt
+ls 실습자료/이미지/전체-도면.png
+ls 실습자료/이미지/feeder-c-확대.png
+ls 실습자료/프롬프트/기본-질문.txt
 ```
 
 세 파일명이 그대로 출력되면 준비가 끝났습니다.
@@ -137,7 +137,7 @@ output/workbook-cli/
 
 ```bash
 claude -p \
-  "Read assets/regions/feeder-c-area-long-edge-1600.png with the Read tool. Then read experiments/single-image-prompt/prompts/short.txt and answer that Korean prompt. Do not modify files." \
+  "Read 실습자료/이미지/feeder-c-확대.png with the Read tool. Then read 실습자료/프롬프트/기본-질문.txt and answer that Korean prompt. Do not modify files." \
   --model sonnet \
   --effort medium \
   --allowedTools Read \
@@ -157,11 +157,11 @@ claude -p \
 ```bash
 codex exec \
   --model gpt-5.6-luna \
-  --image assets/regions/feeder-c-area-long-edge-1600.png \
+  --image 실습자료/이미지/feeder-c-확대.png \
   --sandbox read-only \
   --ephemeral \
   -C "$PWD" \
-  "$(cat experiments/single-image-prompt/prompts/short.txt)"
+  "$(cat 실습자료/프롬프트/기본-질문.txt)"
 ```
 
 - `codex exec`는 질문을 비대화형으로 실행하고 종료합니다.

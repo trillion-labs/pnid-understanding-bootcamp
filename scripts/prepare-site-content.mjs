@@ -5,41 +5,46 @@ import { fileURLToPath } from 'node:url';
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(scriptDir, '..');
 const contentDir = path.join(rootDir, 'src', 'content', 'docs');
+const learningDir = path.join(rootDir, '학습자료');
+const practiceDir = path.join(rootDir, '실습자료');
 
 const workbookPages = [
-  ['00-course-design-principles.md', 'guide', '이 워크북에서 무엇을 배우나요?', 'P&ID 도면을 AI 에이전트와 함께 읽고 평가하는 전체 흐름을 소개합니다.'],
-  ['00-pid-primer.md', '01-pid-primer', 'P&ID를 처음 읽는 분을 위한 안내', 'P&ID의 기본 구성요소와 전문가가 도면을 읽는 순서를 실제 예제로 익힙니다.'],
-  ['01-program-design.md', '02-first-experiment', '첫 번째 실험: 작은 태그는 확대하면 더 잘 읽을까요?', '전체에서 위치를 찾고 관련 구역을 확대해 작은 태그를 확인하는 과정을 따라갑니다.'],
-  ['01-experiment-answer-details.md', '01-experiment-answer-details', '첫 번째 실험의 모델별 상세 답변', 'Reception Bin 태그부터 전동기 태그까지 아홉 개 실제 답변과 항목별 점수를 모았습니다.'],
-  ['02-visual-prompting-strategy.md', '03-image-input-strategy', '이미지 입력 전략: 전체에서 찾고, 필요한 곳을 확대하기', '전체에서 위치를 찾고 관련 구역을 확대해 답하는 coarse-to-fine 방식을 배웁니다.'],
-  ['02-ocr-for-agents.md', '04-ocr-search', 'Tesseract OCR로 검색 가능한 P&ID 만들기', '도구를 설치하고 검색 가능한 PDF를 만든 뒤 OCR 텍스트와 원본 이미지를 함께 사용하는 흐름을 배웁니다.'],
-  ['03-screenshot-and-bbox.md', '05-evidence-location', 'AI의 답을 원본 위치와 연결하는 방법', '위치 상자와 텍스트 레이어로 AI 답변의 근거를 다시 찾을 수 있게 만듭니다.'],
-  ['04-pid-indexing.md', '06-pid-indexing', 'P&ID를 검색 가능한 데이터로 정리하는 방법', '도면의 기본정보, 한 줄 요약, 큰 구역과 주요 태그를 단계별 JSON으로 정리합니다.'],
-  ['04-data-schema.md', '04-data-schema', 'AI의 답을 검색하고 비교할 수 있는 데이터로 바꾸는 방법', '자유로운 문장을 검토·검색·평가할 수 있는 구조화 데이터로 바꿉니다.'],
-  ['05-agent-workflow.md', '07-agent-workflow', 'AI에게 도면 작업을 맡기는 방법', '목표, 입력, 판단 규칙, 출력과 완료 조건을 포함한 요청문을 만듭니다.'],
-  ['05-terminal-claude-codex.mdx', '05-terminal-claude-codex', '터미널에서 Claude Code와 Codex 실행하기', '명령을 직접 타이핑해 연습한 뒤 전체 이미지와 부분 확대 이미지 실험을 실행합니다.'],
-  ['06-evaluation.md', '06-evaluation', 'P&ID 에이전트의 답을 평가하는 방법', '도면에 직접 적힌 네 값을 기준으로 판독 정확도와 근거를 평가합니다.'],
-  ['08-prompt-cards.md', '08-prompt-cards', 'Claude Code·Codex 공통 프롬프트 카드', '탐색, 추출, 검증 목적에 따라 조정해 쓰는 요청문 모음입니다.'],
-  ['09-file-to-image-reference.md', '09-file-to-image-reference', '원본 PDF에서 학습 이미지까지', 'PDF 점검, 렌더링, 확대 이미지 준비 과정을 재현합니다.'],
-  ['12-skill-experiment.md', '12-skill-experiment', '스킬을 추가하고 전후를 비교하는 실습', '반복 가능한 도면 읽기 지침을 스킬로 저장하고 A/B 평가합니다.'],
-  ['14-benchmark-improvement-loop.md', '14-benchmark-improvement-loop', '평가 결과로 에이전트를 개선하는 방법', '오류를 분류하고 한 가지만 바꾼 뒤 같은 조건으로 재평가합니다.'],
+  ['00-워크북-안내.md', 'guide', '이 워크북에서 무엇을 배우나요?', 'P&ID 도면을 AI 에이전트와 함께 읽고 평가하는 전체 흐름을 소개합니다.'],
+  ['01-pnid-기초.md', '01-pid-primer', 'P&ID를 처음 읽는 분을 위한 안내', 'P&ID의 기본 구성요소와 전문가가 도면을 읽는 순서를 실제 예제로 익힙니다.'],
+  ['02-첫번째-실험.md', '02-first-experiment', '첫 실험: 확대하면 더 잘 읽을까요?', '전체에서 위치를 찾고 관련 구역을 확대해 작은 태그를 확인하는 과정을 따라갑니다.'],
+  ['부록/모델별-답변.md', '01-experiment-answer-details', '첫 실험의 모델별 상세 답변', 'Reception Bin 태그부터 전동기 태그까지 아홉 개 실제 답변과 항목별 점수를 모았습니다.'],
+  ['03-이미지-입력-전략.md', '03-image-input-strategy', '이미지 입력 전략: 전체에서 찾고 확대하기', '전체에서 위치를 찾고 관련 구역을 확대해 답하는 coarse-to-fine 방식을 배웁니다.'],
+  ['04-ocr-검색.md', '04-ocr-search', 'OCR로 검색 가능한 P&ID 만들기', '도구를 설치하고 검색 가능한 PDF를 만든 뒤 OCR 텍스트와 원본 이미지를 함께 사용하는 흐름을 배웁니다.'],
+  ['05-근거-위치-표시.md', '05-evidence-location', 'AI 답변을 원본 위치와 연결하기', '위치 상자와 텍스트 레이어로 AI 답변의 근거를 다시 찾을 수 있게 만듭니다.'],
+  ['06-pnid-데이터-정리.md', '06-pid-indexing', 'P&ID를 검색 가능한 데이터로 정리하기', '도면의 기본정보, 한 줄 요약, 큰 구역과 주요 태그를 단계별 JSON으로 정리합니다.'],
+  ['부록/데이터-형식.md', '04-data-schema', 'AI 답변을 검색 가능한 데이터로 바꾸기', '자유로운 문장을 검토·검색·평가할 수 있는 구조화 데이터로 바꿉니다.'],
+  ['07-ai에게-작업-맡기기.md', '07-agent-workflow', 'AI에게 도면 작업 맡기기', '목표, 입력, 판단 규칙, 출력과 완료 조건을 포함한 요청문을 만듭니다.'],
+  ['부록/터미널-실습.mdx', '05-terminal-claude-codex', '터미널에서 Claude Code와 Codex 실행하기', '명령을 직접 타이핑해 연습한 뒤 전체 이미지와 부분 확대 이미지 실험을 실행합니다.'],
+  ['부록/평가-방법.md', '06-evaluation', 'P&ID 에이전트 답변 평가하기', '도면에 직접 적힌 네 값을 기준으로 판독 정확도와 근거를 평가합니다.'],
+  ['부록/프롬프트-카드.md', '08-prompt-cards', 'Claude Code·Codex 공통 프롬프트 카드', '탐색, 추출, 검증 목적에 따라 조정해 쓰는 요청문 모음입니다.'],
+  ['부록/pdf를-이미지로-변환하기.md', '09-file-to-image-reference', '원본 PDF에서 학습 이미지 만들기', 'PDF 점검, 렌더링, 확대 이미지 준비 과정을 재현합니다.'],
+  ['부록/스킬-적용-실험.md', '12-skill-experiment', '스킬 적용 전후 비교하기', '반복 가능한 도면 읽기 지침을 스킬로 저장하고 A/B 평가합니다.'],
+  ['부록/평가로-ai-개선하기.md', '14-benchmark-improvement-loop', '평가 결과로 에이전트 개선하기', '오류를 분류하고 한 가지만 바꾼 뒤 같은 조건으로 재평가합니다.'],
 ];
 
-const outputSlugBySource = new Map(workbookPages.map(([fileName, slug]) => [fileName, slug]));
+const outputSlugBySource = new Map(
+  workbookPages.map(([fileName, slug]) => [path.resolve(learningDir, fileName), slug]),
+);
 
 function withFrontmatter(source, title, description) {
   const withoutTopHeading = source.replace(/^\uFEFF?#\s+[^\n]+\n+/, '');
   return `---\ntitle: ${JSON.stringify(title)}\ndescription: ${JSON.stringify(description)}\n---\n\n${withoutTopHeading}`;
 }
 
-function rewriteWorkbookLinks(source) {
+function rewriteWorkbookLinks(source, sourcePath) {
   return source.replace(
-    /\]\(([^/()]+)\.mdx?(#[^)]+)?\)/g,
-    (_match, fileName, anchor = '') => {
-      const sourceName = `${fileName}.md`;
-      return `](../${outputSlugBySource.get(sourceName) ?? fileName}/${anchor})`;
+    /\]\(([^()]+\.mdx?)(#[^)]+)?\)/g,
+    (match, target, anchor = '') => {
+      const resolved = path.resolve(path.dirname(sourcePath), target);
+      const slug = outputSlugBySource.get(resolved);
+      return slug ? `](../${slug}/${anchor})` : match;
     },
-  );
+  ).replace(/\]\((?:\.\.\/)+실습자료\//g, '](../assets/');
 }
 
 const homePage = `---
@@ -92,22 +97,23 @@ await mkdir(path.join(contentDir, 'workbook'), { recursive: true });
 await writeFile(path.join(contentDir, 'index.mdx'), homePage, 'utf8');
 
 for (const [fileName, slug, title, description] of workbookPages) {
-  const source = await readFile(path.join(rootDir, 'docs', fileName), 'utf8');
+  const sourcePath = path.join(learningDir, fileName);
+  const source = await readFile(sourcePath, 'utf8');
   await writeFile(
     path.join(contentDir, 'workbook', `${slug}.md`),
-    withFrontmatter(rewriteWorkbookLinks(source), title, description),
+    withFrontmatter(rewriteWorkbookLinks(source, sourcePath), title, description),
     'utf8',
   );
 }
 
-await cp(path.join(rootDir, 'assets'), path.join(contentDir, 'assets'), {
+await cp(practiceDir, path.join(contentDir, 'assets'), {
   recursive: true,
 });
 
 const downloadsDir = path.join(rootDir, 'public', 'downloads');
 await mkdir(downloadsDir, { recursive: true });
 await cp(
-  path.join(rootDir, 'assets', 'ocr', 'sample-pid-ocr.pdf'),
+  path.join(practiceDir, 'ocr', '검색가능한-pnid.pdf'),
   path.join(downloadsDir, 'sample-pid-ocr.pdf'),
 );
 

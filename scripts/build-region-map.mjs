@@ -5,9 +5,9 @@ import sharp from 'sharp';
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(scriptDir, '..');
-const sourcePath = path.join(rootDir, 'assets/full/J-11520-ZM-105-005_page-001.png');
+const sourcePath = path.join(rootDir, '실습자료/이미지/원본-고해상도-도면.png');
 const regionsPath = path.join(rootDir, 'data/regions.jsonl');
-const outputPath = path.join(rootDir, 'assets/bbox/pid-major-regions.png');
+const outputPath = path.join(rootDir, '실습자료/근거-이미지/주요-구역-지도.png');
 
 const colors = ['#006DFF', '#E5484D', '#7C3AED', '#00875A', '#D97706', '#C026D3'];
 const regionLines = (await readFile(regionsPath, 'utf8')).trim().split('\n');

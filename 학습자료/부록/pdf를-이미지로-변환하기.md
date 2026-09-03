@@ -43,7 +43,7 @@ source_policy: immutable
 ```bash
 pdftoppm -png -r 300 -f 1 -singlefile \
   "source/sample-pid.pdf" \
-  assets/full/J-11520-ZM-105-005_page-001
+  실습자료/이미지/원본-고해상도-도면
 ```
 
 결과 크기:
@@ -56,7 +56,7 @@ x direction: left to right
 y direction: top to bottom
 ```
 
-![300dpi 전체 도면](../assets/full/J-11520-ZM-105-005_page-001.png)
+![300dpi 전체 도면](../../실습자료/이미지/원본-고해상도-도면.png)
 
 ## 4단계: 렌더링을 검사한다
 

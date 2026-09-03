@@ -13,7 +13,7 @@ if grep -Eq '^(source|tmp|output|workshop)/' <<<"$tracked_files"; then
 fi
 
 public_pdfs=$(grep -E '\.pdf$' <<<"$tracked_files" || true)
-unexpected_pdfs=$(grep -v '^assets/ocr/sample-pid-ocr.pdf$' <<<"$public_pdfs" || true)
+unexpected_pdfs=$(grep -v '^실습자료/ocr/검색가능한-pnid.pdf$' <<<"$public_pdfs" || true)
 if [[ -n "$unexpected_pdfs" ]]; then
   echo "검토되지 않은 PDF가 Git에 포함되어 있습니다." >&2
   echo "$unexpected_pdfs" >&2
@@ -27,10 +27,10 @@ if git grep --cached -n -I -E '/Users/scottsuk|hyunseong|MAGALDI|DONGHAE|STX Hea
 fi
 
 for required in \
-  assets/full/J-11520-ZM-105-005_page-001.png \
-  assets/overview/sample-pid-overview-1600.png \
-  assets/regions/R06-title-block.png \
-  assets/ocr/sample-pid-ocr.pdf \
+  실습자료/이미지/원본-고해상도-도면.png \
+  실습자료/이미지/전체-도면.png \
+  실습자료/이미지/제목란.png \
+  실습자료/ocr/검색가능한-pnid.pdf \
   data/redaction.json; do
   [[ -f "$required" ]] || {
     echo "필수 비식별 자산이 없습니다: $required" >&2
@@ -38,8 +38,8 @@ for required in \
   }
 done
 
-author=$(pdfinfo assets/ocr/sample-pid-ocr.pdf | sed -n 's/^Author:[[:space:]]*//p')
-title=$(pdfinfo assets/ocr/sample-pid-ocr.pdf | sed -n 's/^Title:[[:space:]]*//p')
+author=$(pdfinfo 실습자료/ocr/검색가능한-pnid.pdf | sed -n 's/^Author:[[:space:]]*//p')
+title=$(pdfinfo 실습자료/ocr/검색가능한-pnid.pdf | sed -n 's/^Title:[[:space:]]*//p')
 if [[ -n "$author" || -n "$title" ]]; then
   echo "공개 OCR PDF에 원본 Author 또는 Title 메타데이터가 남아 있습니다." >&2
   exit 1

@@ -40,16 +40,16 @@ fi
 
 case "$condition" in
   full)
-    image_path="assets/overview/sample-pid-overview-1600.png"
-    prompt_path="experiments/single-image-prompt/prompts/short.txt"
+    image_path="실습자료/이미지/전체-도면.png"
+    prompt_path="실습자료/프롬프트/기본-질문.txt"
     ;;
   zoom)
-    image_path="assets/regions/feeder-c-area-long-edge-1600.png"
-    prompt_path="experiments/single-image-prompt/prompts/short.txt"
+    image_path="실습자료/이미지/feeder-c-확대.png"
+    prompt_path="실습자료/프롬프트/기본-질문.txt"
     ;;
   zoom-guided)
-    image_path="assets/regions/feeder-c-area-long-edge-1600.png"
-    prompt_path="experiments/single-image-prompt/prompts/guided.txt"
+    image_path="실습자료/이미지/feeder-c-확대.png"
+    prompt_path="실습자료/프롬프트/단계별-질문.txt"
     ;;
   *)
     echo "알 수 없는 조건입니다: $condition" >&2

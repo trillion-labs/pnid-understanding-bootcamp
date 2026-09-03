@@ -185,11 +185,17 @@ header.header {
 .sl-markdown-content th {
   background: color-mix(in srgb, var(--sl-color-accent-low) 40%, var(--sl-color-bg));
   font-weight: 750;
+  text-align: center;
 }
 
 .sl-markdown-content th,
 .sl-markdown-content td {
   padding: 0.72rem 0.8rem;
+  vertical-align: middle;
+}
+
+.sl-markdown-content td:first-child {
+  text-align: center;
 }
 
 .sl-markdown-content blockquote {

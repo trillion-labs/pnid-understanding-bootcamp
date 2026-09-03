@@ -3,8 +3,8 @@ import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const inputPath = path.join(rootDir, 'assets/regions/feeder-c-area.png');
-const outputPath = path.join(rootDir, 'assets/bbox/feeder-c-query-evidence.png');
+const inputPath = path.join(rootDir, '실습자료/이미지/feeder-c-원본-확대.png');
+const outputPath = path.join(rootDir, '실습자료/근거-이미지/feeder-c-근거.png');
 
 const evidenceBox = [220, 700, 750, 1550];
 const [x1, y1, x2, y2] = evidenceBox;

@@ -14,6 +14,10 @@
     {
       "id": "supplier_scope_note",
       "bbox": [250, 3330, 1650, 3450]
+    },
+    {
+      "id": "gs_department_number_label",
+      "bbox": [4318, 3305, 4500, 3345]
     }
   ],
   "mask_style": "opaque_white_with_black_border",
@@ -21,6 +25,7 @@
     "company names and logos",
     "supplier name near the delivery-limit marker",
     "supplier name in the air-supply scope note",
+    "GS department number label",
     "company address and contact information",
     "revision preparer, reviewer, and approver information"
   ],
@@ -31,6 +36,6 @@
     "revision"
   ],
   "original_source_retained": "source/sample-pid.pdf",
-  "distribution_pdf": "assets/ocr/sample-pid-ocr.pdf",
+  "distribution_pdf": "실습자료/ocr/검색가능한-pnid.pdf",
   "ocr_regenerated_after_redaction": true
 }
