@@ -4,12 +4,17 @@ dist/
 .astro/
 .site-content/
 src/content/docs/
+public/downloads/
 
 # Private or distributable-source material
 source/
 tmp/
 output/
-data/ocr/
+data/ocr/*
+!data/ocr/pid-user-words.txt
+!data/ocr/sample-pid-full-improved.tsv
+!data/ocr/feeder-c-area-improved.tsv
+!data/ocr/ocr-agent-comparison.csv
 
 # Raw model runs can contain local paths or unreviewed content
 experiments/**/results/**/raw/

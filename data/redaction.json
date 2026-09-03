@@ -2,10 +2,25 @@
   "document_id": "J-11520-ZM-105-005",
   "coordinate_system": "pixel_top_left",
   "source_image_size": [4963, 3509],
-  "redaction_bbox": [3900, 2050, 4830, 3130],
+  "redactions": [
+    {
+      "id": "organization_and_approval_block",
+      "bbox": [3900, 1550, 4830, 3130]
+    },
+    {
+      "id": "supplier_label_near_delivery_limit",
+      "bbox": [4450, 1140, 4830, 1255]
+    },
+    {
+      "id": "supplier_scope_note",
+      "bbox": [250, 3330, 1650, 3450]
+    }
+  ],
   "mask_style": "opaque_white_with_black_border",
   "masked_content": [
     "company names and logos",
+    "supplier name near the delivery-limit marker",
+    "supplier name in the air-supply scope note",
     "company address and contact information",
     "revision preparer, reviewer, and approver information"
   ],
@@ -16,6 +31,6 @@
     "revision"
   ],
   "original_source_retained": "source/sample-pid.pdf",
-  "distribution_pdf": "output/pdf/sample-pid-searchable.pdf",
+  "distribution_pdf": "assets/ocr/sample-pid-searchable-improved.pdf",
   "ocr_regenerated_after_redaction": true
 }

@@ -74,6 +74,56 @@ header.header {
   padding: 0.8rem 1rem;
 }
 
+.sl-markdown-content details.practice-result {
+  margin-block: 1.15rem 1.8rem;
+  border: 1px solid color-mix(in srgb, var(--sl-color-accent) 28%, var(--sl-color-hairline));
+  border-radius: 0.8rem;
+  background: color-mix(in srgb, var(--sl-color-accent-low) 28%, transparent);
+  overflow: clip;
+}
+
+.sl-markdown-content details.practice-result summary {
+  cursor: pointer;
+  padding: 0.9rem 1rem;
+  color: var(--sl-color-accent-high);
+  font-weight: 700;
+  list-style-position: inside;
+}
+
+.sl-markdown-content details.practice-result summary:hover {
+  background: color-mix(in srgb, var(--sl-color-accent-low) 55%, transparent);
+}
+
+.sl-markdown-content details.practice-result[open] summary {
+  border-bottom: 1px solid color-mix(in srgb, var(--sl-color-accent) 18%, var(--sl-color-hairline));
+}
+
+.sl-markdown-content .practice-result__body {
+  padding: 0.9rem 1rem 1rem;
+}
+
+.sl-markdown-content .practice-result__body > :first-child {
+  margin-top: 0;
+}
+
+.sl-markdown-content .practice-result__body > :last-child {
+  margin-bottom: 0;
+}
+
+.sl-markdown-content .practice-result__label {
+  margin-bottom: 0.45rem;
+  color: var(--sl-color-gray-2);
+  font-size: 0.82rem;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+}
+
+.sl-markdown-content .practice-result__body blockquote {
+  margin-top: 0;
+  background: color-mix(in srgb, var(--sl-color-bg) 78%, var(--sl-color-accent-low));
+  font-size: 0.94rem;
+}
+
 .hero {
   grid-template-columns: minmax(0, 1fr);
   padding-block: clamp(3.5rem, 10vw, 7rem);

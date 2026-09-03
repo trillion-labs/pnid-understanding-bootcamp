@@ -1,8 +1,10 @@
-# 첫 번째 실험: 같은 도면도 어떻게 보여 주느냐에 따라 답이 달라질까요?
+# 첫 번째 실험: 전체 도면에서 안 읽히던 태그를 확대하면 어떻게 될까요?
 
 앞 단원에서는 Reception Bin 2의 A측 출구에서 선을 따라 Feeder #C와 전동기까지 확인했습니다. 이번에는 같은 작업을 Claude Sonnet, Codex Luna, Codex Terra에 맡겨봅니다.
 
-이 실험의 목적은 모델 순위를 정하는 것이 아닙니다. 전체 이미지와 부분 확대 이미지가 정확한 태그 판독에 어떤 차이를 만드는지, 확인 순서를 자세히 적은 프롬프트가 실제로 도움이 되는지 확인합니다.
+처음에는 도면 전체를 그대로 보여 주고 질문합니다. 모델이 작은 태그를 제대로 읽지 못하면 `도면이 너무 커서 그런가?`라는 가설을 세우고, 질문과 관련된 부분만 잘라 다시 보여 줍니다. 마지막에는 같은 확대 이미지에서 프롬프트를 더 자세히 쓰면 결과가 한 번 더 좋아지는지도 확인합니다.
+
+이 실험의 목적은 모델 순위를 정하는 것이 아닙니다. 실패한 답을 보고 이미지 범위를 바꾸어 다시 실행하면서, 정확도를 높인 원인이 이미지인지 프롬프트인지 하나씩 확인하는 데 있습니다.
 
 ## 답이 명확한 질문을 사용합니다
 
@@ -12,23 +14,96 @@
 
 이 질문은 네 항목의 문자열이 맞는지 각각 확인할 수 있습니다. 고장 원인이나 심벌 의미처럼 해석에 따라 달라질 수 있는 항목은 평가 대상에서 제외했습니다.
 
-## 세 가지 실행 조건
+## 이제 직접 실행해 봅니다
 
-### 조건 A: 전체 도면과 짧은 질문
+아래 실습은 실제 Codex 모델을 호출하고 결과를 `output/workbook-cli/`에 저장합니다. 아직 CLI 설치와 로그인을 마치지 않았다면 [터미널에서 Claude Code와 Codex 실행하기](05-terminal-claude-codex.mdx)의 준비 단계를 먼저 따라가세요.
+
+각 단계에서는 **명령을 먼저 실행하고 답변을 읽어 본 뒤** 결과 토글을 열어 비교합니다. 예시는 Codex Luna를 사용하지만, Claude를 사용하려면 명령의 `codex-luna`를 `claude`로 바꿀 수 있습니다.
+
+> **스크립트 말고 직접 대화해 보고 싶나요?**
+>
+> - **Codex:** 프로젝트 폴더에서 `codex --image assets/overview/sample-pid-overview-1600.png`를 실행한 뒤 `experiments/single-image-prompt/prompts/short.txt`의 질문을 붙여 넣습니다. 입력창에 이미지를 직접 붙여 넣어도 됩니다.
+> - **Claude Code:** 프로젝트 폴더에서 `claude`를 실행합니다. 입력창에 `@assets/overview/sample-pid-overview-1600.png`를 입력해 파일을 선택한 뒤 같은 질문을 붙여 넣습니다.
+>
+> 두 번째 실험에서는 이미지 경로만 `assets/regions/feeder-c-area.png`로 바꾸면 됩니다. 자세한 사용법은 [OpenAI 이미지 입력 안내](https://learn.chatgpt.com/docs/image-inputs)와 [Claude Code CLI 안내](https://docs.anthropic.com/en/docs/claude-code/cli-usage)를 참고하세요.
+
+## 실험 1: 전체 도면을 그대로 보여 줍니다
 
 도면 제목, 범례와 전체 연결이 보이는 1600px 이미지를 제공합니다. Reception Bin 2가 도면의 어느 부분에 있는지는 알 수 있지만 작은 태그는 매우 작게 보입니다.
 
-### 조건 B: Feeder #C 주변 확대 이미지와 같은 질문
+터미널에서 다음 명령을 실행하고, 네 항목 가운데 몇 개를 정확히 읽었는지 먼저 세어 보세요.
+
+```bash
+./scripts/run-workbook-cli.sh codex-luna full
+```
+
+- `codex-luna`: GPT-5.6 Luna로 실행합니다.
+- `full`: 전체 도면 이미지 `assets/overview/sample-pid-overview-1600.png`를 입력합니다.
+- 질문: `experiments/single-image-prompt/prompts/short.txt`를 사용합니다.
+- 저장: 실행 결과는 `output/workbook-cli/` 아래에 시간과 조건이 포함된 파일명으로 저장됩니다.
+
+<details class="practice-result">
+  <summary>실행을 마쳤다면 결과 확인하기</summary>
+  <div class="practice-result__body">
+    <p><strong>기록된 Luna 결과는 2/4였습니다.</strong></p>
+    <p class="practice-result__label">실제 답변</p>
+    <blockquote>
+      <p>Reception Bin 2 장비 태그: <code>11520-M-SI-04</code><br />
+      A측 하부 출구 밸브 번호: <code>V186</code><br />
+      Vibro Feeder #C 장비 태그: <code>11520-M-V-03C</code><br />
+      전동기 심벌 및 태그: <code>EX</code>, <code>11520-M-E-17</code></p>
+    </blockquote>
+    <p>Reception Bin 2 태그와 V186은 맞았지만 Feeder 태그를 <code>11520-M-V-03C</code>, 전동기를 <code>EX / 11520-M-E-17</code>로 잘못 읽었습니다. 다른 모델도 전체 이미지에서는 2~3점에 머물렀습니다.</p>
+  </div>
+</details>
+
+> 질문은 맞는 것 같은데 왜 못 읽었을까요? 전체 도면 안에서 정답 글자가 너무 작게 보였을 가능성이 있습니다.
+
+## 실험 2: 필요한 부분만 잘라서 다시 보여 줍니다
 
 Reception Bin 2, V186, Feeder #C와 전동기가 한 화면에 보이는 부분 확대 이미지를 제공합니다.
 
 ![Feeder #C 주변 확대 이미지](../assets/regions/feeder-c-area.png)
 
-네 항목은 크게 보이지만 제목란과 다른 계통은 이미지 밖으로 사라집니다.
+네 항목은 크게 보이지만 제목란과 다른 계통은 이미지 밖으로 사라집니다. 질문은 바꾸지 않고 이미지만 교체했습니다.
 
-### 조건 C: 같은 확대 이미지와 단계별 확인 질문
+이번에는 질문과 모델을 그대로 두고 이미지 조건만 `zoom`으로 바꿔 실행해 보세요.
 
-조건 B와 같은 이미지를 사용하되 다음 순서를 추가했습니다.
+```bash
+./scripts/run-workbook-cli.sh codex-luna zoom
+```
+
+- `codex-luna`: 첫 번째 실행과 같은 GPT-5.6 Luna를 사용합니다.
+- `zoom`: 부분 확대 이미지 `assets/regions/feeder-c-area.png`를 입력합니다.
+- 질문: 첫 번째 실행과 같은 `experiments/single-image-prompt/prompts/short.txt`를 사용합니다.
+- 저장: 별도의 결과 파일이 `output/workbook-cli/`에 생성되므로 `full` 결과와 나란히 비교할 수 있습니다.
+
+전체 이미지 결과와 비교해 Feeder 태그와 전동기 태그가 달라졌는지 확인합니다.
+
+<details class="practice-result">
+  <summary>두 답변을 비교했다면 결과 확인하기</summary>
+  <div class="practice-result__body">
+    <p><strong>기록된 Luna 결과는 2/4에서 4/4로 올랐습니다.</strong></p>
+    <p class="practice-result__label">실제 답변</p>
+    <blockquote>
+      <p>1. RECEPTION BIN 2 장비 태그: <code>11520-M-SI-04</code><br />
+      2. A측 하부 출구 밸브 번호: <code>V186</code><br />
+      3. VIBRO FEEDER #C 장비 태그: <code>11520 M-VB-03C</code><br />
+      4. 연결 전동기 심벌 및 태그: <code>EM</code>, <code>11520-E-MT-18</code></p>
+    </blockquote>
+    <p><code>11520-M-SI-04</code>, <code>V186</code>, <code>11520-M-VB-03C</code>, <code>EM / 11520-E-MT-18</code>을 모두 정확히 읽었습니다. 같은 확대 조건에서 Sonnet과 Terra도 4/4를 받았습니다.</p>
+  </div>
+</details>
+
+같은 질문과 같은 모델이어도 필요한 글자와 연결을 읽을 수 있는 크기로 보여 주자 결과가 달라졌습니다.
+
+> 그렇다면 프롬프트에 “관련 구역을 먼저 찾아 확대해서 확인하라”고 쓰면 더 좋아질까요?
+
+이 질문은 잠시 남겨 둡니다. 먼저 이미 잘라 둔 이미지에 자세한 확인 순서를 추가하는 것만으로도 결과가 더 좋아지는지 확인해 보겠습니다.
+
+## 보너스 실험: 프롬프트를 더 자세히 쓰면 좋아질까요?
+
+같은 확대 이미지에 사람이 확인하는 순서를 추가해 보았습니다.
 
 ```text
 1. RECEPTION BIN 2 바로 아래의 장비 태그를 읽습니다.
@@ -39,7 +114,30 @@ Reception Bin 2, V186, Feeder #C와 전동기가 한 화면에 보이는 부분 
 6. 읽히지 않는 문자는 추측하지 않습니다.
 ```
 
-이 프롬프트는 정답 문자열을 알려 주지 않고 사람이 도면을 확인하는 순서만 제공합니다.
+이 프롬프트는 정답 문자열을 알려 주지 않고 사람이 도면을 확인하는 순서만 제공합니다. Sonnet과 Luna는 4점을 유지했지만 Terra는 인접한 태그를 섞어 읽어 3점으로 낮아졌습니다. 확대가 만든 개선과 달리, 자세한 프롬프트는 일관된 추가 개선을 만들지 못했습니다.
+
+직접 확인하려면 같은 확대 이미지에 단계별 질문을 사용하는 다음 명령을 실행합니다.
+
+```bash
+./scripts/run-workbook-cli.sh codex-terra zoom-guided
+```
+
+- `codex-terra`: GPT-5.6 Terra로 실행합니다.
+- `zoom-guided`: 같은 부분 확대 이미지 `assets/regions/feeder-c-area.png`를 사용합니다.
+- 질문: 단계별 확인 순서가 들어 있는 `experiments/single-image-prompt/prompts/guided.txt`를 사용합니다.
+- 비교점: 이미지 범위는 그대로 두고 모델과 프롬프트 조건을 바꾼 실행입니다.
+
+<details class="practice-result">
+  <summary>단계별 질문 결과 확인하기</summary>
+  <div class="practice-result__body">
+    <p><strong>기록된 Terra 결과는 3/4였습니다.</strong></p>
+    <p class="practice-result__label">실제 답변</p>
+    <blockquote>
+      <p>Unit 1: <code>11520 M-VB-03B</code> / Unit 2: <code>11520 M-VB-03C</code>, 전동기는 <code>EM / 11520-E-MT-18</code>입니다.</p>
+    </blockquote>
+    <p>전동기는 정확히 읽었지만 Unit 1의 Feeder 태그에 오른쪽 장비의 <code>03B</code>를 섞었습니다. 지시를 길게 쓰는 것만으로는 확대처럼 일관된 개선이 생기지 않았습니다.</p>
+  </div>
+</details>
 
 ## 실행한 모델과 평가 기준
 

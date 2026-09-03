@@ -1,3 +1,0 @@
-run,model,model_version,input_strategy,image_files,call_count,input_tokens_if_available,output_tokens_if_available,elapsed_seconds,confirmed_items,unsupported_items,items_with_location_evidence,appropriate_unknowns,review_minutes,notes
-A,,,,,,,,,,,,,,
-B,,,,,,,,,,,,,,
