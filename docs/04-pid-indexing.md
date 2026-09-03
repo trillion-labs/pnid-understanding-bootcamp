@@ -94,32 +94,32 @@ region은 장비 하나의 외곽을 정밀하게 따는 픽셀 마스크가 아
     {
       "id": "R01",
       "name": "legend",
-      "bbox": [3650, 80, 4770, 980]
+      "bbox": [3640, 130, 4810, 1050]
     },
     {
       "id": "R02",
       "name": "Reception Bin 1 system",
-      "bbox": [480, 930, 1710, 2580]
+      "bbox": [500, 920, 1710, 2520]
     },
     {
       "id": "R03",
       "name": "Reception Bin 2 system",
-      "bbox": [1740, 900, 3070, 2610]
+      "bbox": [1740, 900, 3060, 2520]
     },
     {
       "id": "R04",
       "name": "Reception Bin 3 system",
-      "bbox": [3060, 850, 4070, 2610]
+      "bbox": [3060, 850, 3900, 2520]
     },
     {
       "id": "R05",
       "name": "downstream connections",
-      "bbox": [570, 2410, 3660, 3350]
+      "bbox": [600, 2500, 3730, 3290]
     },
     {
       "id": "R06",
       "name": "title block",
-      "bbox": [3920, 1980, 4810, 3370]
+      "bbox": [3910, 3110, 4815, 3395]
     }
   ]
 }
@@ -136,7 +136,7 @@ region은 장비 하나의 외곽을 정밀하게 따는 픽셀 마스크가 아
   "id": "R03",
   "name": "Reception Bin 2 system",
   "summary": "Reception Bin 2와 하부 A/B 출구, Vibro Feeder 및 Motor가 포함된 구역",
-  "bbox": [1740, 900, 3070, 2610]
+  "bbox": [1740, 900, 3060, 2520]
 }
 ```
 
@@ -194,37 +194,37 @@ OCR이 제안한 문자열을 바로 태그 목록에 넣어서는 안 됩니다
       "id": "R01",
       "name": "legend",
       "summary": "도면에서 사용하는 주요 심벌과 선 형식을 설명하는 구역",
-      "bbox": [3650, 80, 4770, 980]
+      "bbox": [3640, 130, 4810, 1050]
     },
     {
       "id": "R02",
       "name": "Reception Bin 1 system",
       "summary": "Reception Bin 1과 하부 출구 및 Feeder가 포함된 구역",
-      "bbox": [480, 930, 1710, 2580]
+      "bbox": [500, 920, 1710, 2520]
     },
     {
       "id": "R03",
       "name": "Reception Bin 2 system",
       "summary": "Reception Bin 2와 하부 A/B 출구, Vibro Feeder 및 Motor가 포함된 구역",
-      "bbox": [1740, 900, 3070, 2610]
+      "bbox": [1740, 900, 3060, 2520]
     },
     {
       "id": "R04",
       "name": "Reception Bin 3 system",
       "summary": "Reception Bin 3과 하부 출구 및 Feeder가 포함된 구역",
-      "bbox": [3060, 850, 4070, 2610]
+      "bbox": [3060, 850, 3900, 2520]
     },
     {
       "id": "R05",
       "name": "downstream connections",
       "summary": "세 Reception Bin 계통 아래의 공통 연결부가 포함된 구역",
-      "bbox": [570, 2410, 3660, 3350]
+      "bbox": [600, 2500, 3730, 3290]
     },
     {
       "id": "R06",
       "name": "title block",
       "summary": "도면번호, 제목, revision과 sheet 정보가 있는 구역",
-      "bbox": [3920, 1980, 4810, 3370]
+      "bbox": [3910, 3110, 4815, 3395]
     }
   ],
   "tags": [
