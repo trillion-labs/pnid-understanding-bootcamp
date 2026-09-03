@@ -46,18 +46,18 @@ def write_trillion_summary() -> None:
 
 
 def write_actual_runs() -> None:
-    summary = ROOT / "experiments" / "single-image-prompt" / "results" / "deep-reading-v2" / "summary.csv"
+    summary = ROOT / "experiments" / "single-image-prompt" / "results" / "verifiable-v3" / "summary.csv"
     with summary.open(encoding="utf-8") as stream:
         rows = list(csv.DictReader(stream))
     models = [("claude", "sonnet", "Claude Sonnet"), ("codex", "luna", "Codex Luna"), ("codex", "terra", "Codex Terra")]
-    conditions = [("full-short", "전체 + 짧은 질문"), ("crop-short", "부분 확대 + 짧은 질문"), ("crop-guided", "부분 확대 + 근거 확인 질문")]
+    conditions = [("full-short", "전체 + 짧은 질문"), ("crop-short", "부분 확대 + 짧은 질문"), ("crop-guided", "부분 확대 + 단계별 질문")]
     score = {(r["provider"], r["model"], r["condition"]): int(r["evidence_score"]) for r in rows}
     parts = [
         '<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="680" viewBox="0 0 1400 680">',
         '<rect width="1400" height="680" fill="#fbfcfe"/>',
         '<style>text{font-family:AppleGothic,"Apple SD Gothic Neo",sans-serif}</style>',
-        label(70, 72, "실제 CLI 실행: 부분 확대만으로는 충분하지 않았습니다", 36, 500),
-        label(70, 112, "단일 도면 이해 질문 · 본문 비교 9회 · 근거 검토 점수(4점 만점)", 18, color="#5e6c82"),
+        label(70, 72, "실제 CLI 실행: 정답에 필요한 구역을 크게 보여 주면 판독이 좋아졌습니다", 32, 500),
+        label(70, 112, "검증 가능한 네 항목 · 본문 비교 9회 · 항목별 정확도(4점 만점)", 18, color="#5e6c82"),
     ]
     left, top, cellw, cellh = 390, 180, 280, 90
     for j, (_, title) in enumerate(conditions):
@@ -76,9 +76,9 @@ def write_actual_runs() -> None:
             ]
     parts += [
         label(70, 510, "관찰 1", 18, 500, color="#315efb"),
-        label(165, 510, "부분 확대 이미지는 태그를 키웠지만, 하단 연결 방향을 잘못 해석하는 답은 줄지 않았습니다.", 19),
+        label(165, 510, "부분 확대와 짧은 질문에서는 세 모델 모두 4점을 받았습니다.", 19),
         label(70, 550, "관찰 2", 18, 500, color="#315efb"),
-        label(165, 550, "확인 순서는 motor와 joint 구분을 도왔지만 연결 관계 판단을 자동으로 해결하지는 못했습니다.", 19),
+        label(165, 550, "단계별 질문은 추가 점수를 만들지 않았고 Terra에는 인접 태그 혼동을 만들었습니다.", 19),
         label(70, 620, "점수는 제공된 기준 답안에 따른 수동 검토입니다. 전체 응답과 CLI 사용량은 실험 폴더에 보존했습니다.", 14, color="#778399"),
         '</svg>',
     ]

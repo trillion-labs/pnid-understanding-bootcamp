@@ -55,7 +55,7 @@
 
 ## 카드 4: object 후보 추출
 
-> Feeder #C 주변 확대 이미지에서 장비명, 장비 태그, 위쪽 장비, 아래쪽 연결과 joint 근거를 확인해 주세요. 각 질문 단서에 observed_text_or_symbol, inferred_component, evidence_region, status, note를 작성해 주세요. 흐린 글자와 확정할 수 없는 설비 요소의 의미는 unknown으로 두고, E-MT/EM motor 근거를 Expansion Joint 태그로 자동 해석하지 마세요.
+> Feeder #C 주변 확대 이미지에서 Reception Bin 2의 장비 태그, A측 밸브 번호, Feeder #C의 장비 태그, 연결된 전동기의 심벌과 태그를 확인해 주세요. 각 질문 단서에 observed_text_or_symbol, inferred_component, evidence_region, status, note를 작성해 주세요. 흐린 글자는 unknown으로 두고, 오른쪽 Feeder의 `03B`나 `E-MT-19`를 Feeder #C의 값으로 사용하지 마세요.
 
 ## 카드 5: reviewer
 

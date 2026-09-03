@@ -55,7 +55,6 @@ export default defineConfig({
             { label: '첫 실험 상세 답변', link: '/workbook/01-experiment-answer-details/' },
             { label: '프롬프트 카드', link: '/workbook/08-prompt-cards/' },
             { label: 'PDF에서 이미지 준비', link: '/workbook/09-file-to-image-reference/' },
-            { label: '여러 도면에서 관련 시트 찾기', link: '/workbook/11-real-query-evaluation/' },
             { label: '스킬 추가 전후 실험', link: '/workbook/12-skill-experiment/' },
             { label: 'Codex·Claude 실습 원칙', link: '/workbook/13-codex-claude-best-practices/' },
           ],

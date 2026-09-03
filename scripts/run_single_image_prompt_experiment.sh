@@ -4,7 +4,7 @@ set -euo pipefail
 repo_dir=$(cd "$(dirname "$0")/.." && pwd)
 cd "$repo_dir"
 
-out_dir="experiments/single-image-prompt/results/deep-reading-v2/raw"
+out_dir="experiments/single-image-prompt/results/verifiable-v3/raw"
 mkdir -p "$out_dir"
 
 full_image="$repo_dir/workshop/participant-kit/inputs/01-overview.png"

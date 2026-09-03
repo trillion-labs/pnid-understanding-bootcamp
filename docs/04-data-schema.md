@@ -8,13 +8,13 @@
 
 AI가 다음과 같이 답했다고 가정해 보겠습니다.
 
-> Feeder #C 주변 확대 이미지에서 Vibro Feeder #C와 11520-M-VB-03C를 확인했습니다. Feeder 아래쪽에는 joint로 보이는 심벌이 있지만, 정확한 Expansion Joint 태그는 확인하지 못했습니다.
+> Reception Bin 2의 태그는 11520-M-SI-04입니다. A측 하부 출구에서 V186을 거쳐 Vibro Feeder #C로 연결됩니다. Feeder 태그는 11520-M-VB-03C이고 전동기는 EM / 11520-E-MT-18입니다.
 
-사람이 한 번 읽기에는 충분히 좋은 답입니다. 하지만 이런 답이 Claude와 Codex에서 여러 번 생성되고, 도면도 수백 장으로 늘어나면 다음 질문에 답하기 어려워집니다.
+사람이 한 번 읽기에는 충분히 좋은 답입니다. 하지만 이런 답을 Claude와 Codex에서 여러 조건으로 반복 생성하면 다음 질문에 답하기 어려워집니다.
 
-- 어떤 모델이 Feeder tag를 맞혔습니까?
-- Expansion Joint를 확정하지 않은 결과만 모을 수 있습니까?
-- Motor와 joint를 혼동한 실행은 무엇입니까?
+- 어떤 모델이 Feeder 태그를 맞혔습니까?
+- V186을 정확히 읽지 못한 실행은 무엇입니까?
+- Feeder #C의 전동기를 오른쪽의 `11520-E-MT-19`와 혼동한 실행은 무엇입니까?
 - 아직 사람이 검토하지 않은 결과는 무엇입니까?
 - 같은 위치를 다시 확대하려면 어떤 좌표를 사용해야 합니까?
 - 다음 revision에서 장비 태그가 바뀌었습니까?
@@ -43,13 +43,14 @@ P&ID 결과도 같은 방식으로 정리할 수 있습니다.
 
 | 질문 ID | 확인할 단서 | 이미지에서 본 근거 | 해석한 설비 요소 | 위치 | 상태 |
 |---|---|---|---|---|---|
-| Feeder-C-Read | VIBRO FEEDER #C | VIBRO FEEDER #C | vibro_feeder | 파란 근거 구역 | 확인됨 |
-| Feeder-C-Read | 장비 태그 | 11520-M-VB-03C | equipment_tag | 파란 근거 구역 | 확인됨 |
-| Feeder-C-Read | Outlet Expansion Joint | 이중선 형태의 심벌 후보 | 확인하지 못함 | 파란 근거 구역 | 검토 필요 |
+| Feeder-C-Read | Reception Bin 2 태그 | 11520-M-SI-04 | equipment_tag | 파란 근거 구역 | 확인됨 |
+| Feeder-C-Read | A측 밸브 | V186 | valve | 파란 근거 구역 | 확인됨 |
+| Feeder-C-Read | Feeder #C 태그 | 11520-M-VB-03C | equipment_tag | 파란 근거 구역 | 확인됨 |
+| Feeder-C-Read | Feeder #C 전동기 | EM / 11520-E-MT-18 | motor | 파란 근거 구역 | 확인됨 |
 
 이 표를 보면 AI가 무엇을 확인했고 무엇을 보류했는지 한눈에 알 수 있습니다.
 
-`이미지에서 본 근거`와 `해석한 설비 요소`를 분리한 이유도 중요합니다. `11520-E-MT-18`이라는 문자열을 읽는 것과, 그 문자열이 motor를 뜻한다고 해석하는 것은 서로 다른 작업입니다. 기술 데이터에서는 설비 요소를 `component`라고 기록합니다.
+`이미지에서 본 근거`와 `해석한 설비 요소`를 분리한 이유도 중요합니다. `11520-E-MT-18`이라는 문자열을 읽는 것과, 그 문자열이 Feeder #C의 전동기를 뜻한다고 연결하는 것은 서로 다른 작업입니다. 기술 데이터에서는 설비 요소를 `component`라고 기록합니다.
 
 ## 어떤 상황에서 구조화 데이터가 도움이 되나요?
 
@@ -83,7 +84,7 @@ Claude는 `확인할 수 없습니다`라고 쓰고 Codex는 `unknown`이라고 
 
 - 결과를 나중에 다시 검색합니다.
 - Claude와 Codex 결과를 비교합니다.
-- 여러 도면에서 같은 작업을 반복합니다.
+- 같은 도면을 여러 모델과 입력 조건에서 반복합니다.
 - 사람의 검토 상태를 남깁니다.
 - 같은 위치를 다시 처리합니다.
 - 성능을 수치로 평가합니다.
@@ -119,7 +120,7 @@ Feeder #C 단일 도면 이해 작업에는 다음 열부터 시작할 수 있�
 | inferred_component | 근거를 이용하여 해석한 설비 요소입니다. | vibro_feeder |
 | evidence_region | 원본에서 다시 확인할 위치입니다. | 파란 근거 구역 |
 | status | 현재 확인 상태입니다. | confirmed |
-| note | 제한사항이나 검토 이유입니다. | joint tag는 확인하지 못함 |
+| note | 제한사항이나 검토 이유입니다. | 오른쪽 E-MT-19는 제외함 |
 
 열을 많이 만드는 것이 목표는 아닙니다. 실제로 검색하거나 검토할 필요가 있는 정보만 열로 만듭니다.
 
@@ -167,7 +168,7 @@ Document → Region → Object → Relation
 
 어떤 장비가 다른 장비에 연결되는지, 어떤 계기가 어느 장비에 부착되는지 기록합니다.
 
-이 네 층은 처음부터 모두 만들 필요가 없습니다. 질문이 `관련 도면을 찾아 주세요`라면 Document와 query evidence만으로도 시작할 수 있습니다. 공정 연결 관계까지 묻는 질문이 늘어나면 Object와 Relation을 확장합니다.
+이 네 층은 처음부터 모두 만들 필요가 없습니다. 태그 문자열만 비교한다면 Document와 Region만으로 시작할 수 있습니다. Bin, 밸브, Feeder와 전동기의 연결 관계까지 저장하려면 Object와 Relation을 확장합니다.
 
 ## JSONL 예시를 읽어봅니다
 
@@ -185,7 +186,7 @@ Document → Region → Object → Relation
     "bbox": [220, 1030, 750, 1550]
   },
   "status": "confirmed",
-  "note": "E-MT/EM motor evidence is reviewed separately from joint evidence"
+  "note": "E-MT-19 belongs to the neighboring feeder and is excluded"
 }
 ```
 
@@ -205,7 +206,7 @@ JSONL은 이런 JSON 객체를 한 줄에 하나씩 저장한 파일입니다. �
 
 - 글자를 올바르게 읽었습니까?
 - 심벌 의미를 범례와 맞게 해석했습니까?
-- Motor와 joint를 혼동하지 않았습니까?
+- Feeder #C의 전동기를 오른쪽 Feeder의 전동기와 혼동하지 않았습니까?
 - 부분 확대 이미지에서 잘린 연결을 임의로 이어 붙이지 않았습니까?
 - 확인하지 못한 값을 그럴듯하게 채우지 않았습니까?
 
@@ -217,11 +218,12 @@ Feeder #C 주변 확대 이미지를 보면서 다음 표를 완성해 보세요
 
 | query_term | observed_text_or_symbol | inferred_component | evidence_region | status | note |
 |---|---|---|---|---|---|
-| VIBRO FEEDER #C |  |  | 파란 근거 구역 |  |  |
-| 11520-M-VB-03C |  |  | 파란 근거 구역 |  |  |
-| outlet joint |  |  | 파란 근거 구역 |  |  |
+| Reception Bin 2 tag |  |  | 파란 근거 구역 |  |  |
+| A-side valve |  |  | 파란 근거 구역 |  |  |
+| Vibro Feeder #C tag |  |  | 파란 근거 구역 |  |  |
+| Feeder #C motor |  |  | 파란 근거 구역 |  |  |
 
-세 번째 행을 억지로 confirmed로 만들 필요는 없습니다. 현재 이미지에서 정확한 joint tag를 확인하지 못했다면 그 사실을 기록하는 것이 올바릅니다.
+각 행은 원본에서 해당 문자열과 연결을 확인한 뒤 `confirmed`로 표시합니다. 읽지 못한 값은 그럴듯하게 채우지 않고 `unresolved`로 남깁니다.
 
 ## 다음 단원으로 넘어갑니다
 

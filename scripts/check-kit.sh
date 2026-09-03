@@ -44,8 +44,8 @@ required_files=(
   "assets/figures/trillion-labs-image-input-summary.png"
   "assets/figures/actual-cli-image-prompt-comparison.png"
   "data/image-cost-estimates.csv"
-  "experiments/single-image-prompt/results/deep-reading-v2/summary.csv"
-  "experiments/single-image-prompt/results/deep-reading-v2/manual-review.csv"
+  "experiments/single-image-prompt/results/verifiable-v3/summary.csv"
+  "experiments/single-image-prompt/results/verifiable-v3/manual-review.csv"
   "scripts/run_single_image_prompt_experiment.sh"
   "scripts/build_image_input_figure.py"
 )

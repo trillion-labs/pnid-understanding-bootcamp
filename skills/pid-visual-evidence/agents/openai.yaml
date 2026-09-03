@@ -1,4 +1,4 @@
 interface:
   display_name: "P&ID Visual Evidence"
   short_description: "Ground P&ID answers in visual evidence"
-  default_prompt: "Use $pid-visual-evidence to find the relevant P&ID and report reviewable evidence."
+  default_prompt: "Use $pid-visual-evidence to inspect this P&ID and report the requested tags and relationships with reviewable evidence."

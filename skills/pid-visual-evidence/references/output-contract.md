@@ -1,50 +1,49 @@
 # Output contract
 
-Use this contract when the result will be compared, reviewed, or reused. Exploratory answers do not need every field.
+Use this contract when findings will be compared, reviewed, or reused. Exploratory answers do not need every field.
 
-## Retrieval answer
+## Single-drawing result
 
 ```json
 {
-  "query_id": "Q005",
-  "decision_drawing_id": "J-11520-ZM-105-005",
-  "decision_revision": "F",
-  "retrieval_confidence": "high",
-  "evidence_confidence": "medium",
-  "confirmed_terms": [],
-  "unresolved_terms": [],
-  "evidence": [],
+  "document_id": "drawing identifier from source",
+  "revision": "revision from source",
+  "question_id": "local evaluation identifier",
+  "findings": [],
+  "relationship_summary": "short traced relationship",
+  "unresolved_fields": [],
   "review_status": "needs_human_review"
 }
 ```
 
-## Evidence item
+## Finding
 
 ```json
 {
-  "term": "VIBRO FEEDER #C",
-  "observed_text": "VIBRO FEEDER #C",
-  "inferred_component_class": "vibro_feeder",
-  "source_path": "source/sample-pid.pdf",
+  "field": "requested field name",
+  "observed_text_or_symbol": "exact visible transcription",
+  "inferred_component": "component interpretation or unknown",
+  "source_path": "path to inspected image or PDF",
   "page": 1,
-  "region_id": "R03",
+  "evidence_region": "human-readable region name",
   "bbox": [0, 0, 1, 1],
   "confidence": "high",
-  "review_status": "confirmed"
+  "status": "confirmed",
+  "note": "relationship or neighboring-label check"
 }
 ```
 
 ## Required distinctions
 
-- `observed_text` is a transcription of visible text.
-- `inferred_component_class` is an interpretation and may remain `unknown`.
-- `retrieval_confidence` concerns the selected drawing.
-- `evidence_confidence` concerns the correctness of the supporting component-level evidence.
-- `unresolved_terms` prevents missing query terms from being silently ignored.
+- `observed_text_or_symbol` is a transcription of visible content.
+- `inferred_component` is an interpretation and may remain `unknown`.
+- `confidence` describes readability of the evidence.
+- `status` records whether the finding was confirmed, needs correction, or remains unresolved.
+- `unresolved_fields` prevents requested fields from being silently omitted.
 
 ## Minimal human-readable answer
 
-1. Selected drawing ID and revision.
-2. Confirmed query terms with source regions.
-3. Unresolved or contradictory terms.
-4. A short note explaining why sibling candidates were rejected.
+1. Requested fields with exact visible values.
+2. A short relationship summary describing the traced path.
+3. Evidence locations for each field.
+4. Unreadable or contradictory fields.

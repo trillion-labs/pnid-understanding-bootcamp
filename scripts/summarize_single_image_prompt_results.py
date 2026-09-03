@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE = ROOT / "experiments" / "single-image-prompt" / "results" / "deep-reading-v2"
+BASE = ROOT / "experiments" / "single-image-prompt" / "results" / "verifiable-v3"
 RAW = BASE / "raw"
 REVIEWS = BASE / "manual-review.csv"
 OUT = BASE / "summary.csv"
@@ -78,8 +78,8 @@ def main() -> None:
         merged.append({**record, **{key: value for key, value in review.items() if key not in {"provider", "model", "condition"}}})
 
     fieldnames = [
-        "provider", "model", "condition", "evidence_score", "feeder_identity",
-        "upstream_connection", "outlet_calibration", "motor_joint_separation",
+        "provider", "model", "condition", "evidence_score", "bin_tag",
+        "outlet_valve", "feeder_tag", "motor_tag",
         "duration_sec", "input_tokens", "cache_creation_input_tokens", "cached_input_tokens",
         "output_tokens", "reported_cost_usd", "comparison_cost_usd", "cost_basis",
         "model_usage_keys", "review_note", "raw_path"

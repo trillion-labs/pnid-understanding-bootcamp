@@ -1,0 +1,10 @@
+provider,model,condition,evidence_score,bin_tag,outlet_valve,feeder_tag,motor_tag,review_note
+claude,sonnet,full-short,3,1,1,1,0,"Bin·V186·Feeder tag는 맞았지만 EM/E-MT-18을 M-TP16으로 잘못 읽음"
+claude,sonnet,crop-short,4,1,1,1,1,"네 항목과 연결 관계를 모두 정확히 확인함"
+claude,sonnet,crop-guided,4,1,1,1,1,"Unit 1·2 동일 tag와 오른쪽 E-MT-19 제외까지 정확히 확인함"
+codex,luna,full-short,2,1,1,0,0,"Feeder tag를 M-V-03C, motor를 EX/M-E-17로 잘못 읽음"
+codex,luna,crop-short,4,1,1,1,1,"네 항목과 연결 관계를 모두 정확히 확인함"
+codex,luna,crop-guided,4,1,1,1,1,"네 항목을 정확히 읽고 표로 근거를 정리함"
+codex,terra,full-short,2,1,1,0,0,"Feeder와 motor tag를 판독하지 못했다고 보류함"
+codex,terra,crop-short,4,1,1,1,1,"네 항목과 연결 관계를 모두 정확히 확인함"
+codex,terra,crop-guided,3,1,1,0,1,"Unit 1 tag를 인접한 03B와 섞어 읽었고 Unit 2는 정확히 읽음"
