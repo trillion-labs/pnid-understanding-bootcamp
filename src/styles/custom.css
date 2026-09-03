@@ -139,18 +139,13 @@ header.header {
   color: var(--sl-color-accent-high);
 }
 
-/* 설명 맥락의 용어와 도면 태그는 코드 박스보다 읽기 편한 형광펜 톤으로 강조합니다. */
-.sl-markdown-content :is(p, summary, figcaption, dt, dd, h3, h4) code,
-.sl-markdown-content li > code,
-.sl-markdown-content li > :is(strong, em, a) > code {
-  padding: 0.08em 0.24em;
-  border: 0;
-  border-radius: 0.22em;
+/* 형광펜은 각 절의 핵심 판단 원칙에만 제한적으로 사용합니다. */
+.sl-markdown-content .text-highlight {
+  padding: 0.04em 0.12em;
+  border-radius: 0.16em;
   background: color-mix(in srgb, #f7d85a 30%, transparent);
   color: inherit;
-  font-family: inherit;
-  font-size: 0.96em;
-  font-weight: 650;
+  font-weight: 620;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
