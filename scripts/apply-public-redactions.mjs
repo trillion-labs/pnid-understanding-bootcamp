@@ -54,19 +54,6 @@ await sharp(fullPath)
   .png()
   .toFile(path.join(rootDir, 'assets', 'overview', 'sample-pid-overview-1600.png'));
 
-const overlapSvg = Buffer.from(`
-  <svg xmlns="http://www.w3.org/2000/svg" width="${sourceWidth}" height="${sourceHeight}">
-    <rect x="6" y="6" width="2774" height="1954" fill="none" stroke="#ef4444" stroke-width="12"/>
-    <rect x="2183" y="6" width="2774" height="1954" fill="none" stroke="#3b39e6" stroke-width="12"/>
-    <rect x="6" y="1550" width="2774" height="1953" fill="none" stroke="#26852b" stroke-width="12"/>
-    <rect x="2183" y="1550" width="2774" height="1953" fill="none" stroke="#f5a623" stroke-width="12"/>
-  </svg>
-`);
-await sharp(fullPath)
-  .composite([{ input: overlapSvg }])
-  .png()
-  .toFile(path.join(rootDir, 'assets', 'bbox', 'overlapping-quadrants.png'));
-
 await sharp(fullPath)
   .extract({ left: 3920, top: 1450, width: 890, height: 1920 })
   .png()
