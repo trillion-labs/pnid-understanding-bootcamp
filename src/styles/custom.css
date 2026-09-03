@@ -166,6 +166,38 @@ header.header {
   word-break: keep-all;
 }
 
+.sl-heading-wrapper {
+  align-items: center;
+  gap: 0.18rem;
+}
+
+.sl-anchor-link {
+  display: inline-flex;
+  width: 1.45rem;
+  height: 1.45rem;
+  align-items: center;
+  justify-content: center;
+  margin-inline-start: 0.08rem;
+  border-radius: 0.35rem;
+  color: var(--sl-color-gray-3);
+  opacity: 0.28;
+  transition: color 120ms ease, background-color 120ms ease, opacity 120ms ease;
+}
+
+.sl-anchor-icon,
+.sl-anchor-icon svg {
+  width: 0.7rem;
+  height: 0.7rem;
+}
+
+.sl-heading-wrapper:hover .sl-anchor-link,
+.sl-anchor-link:hover,
+.sl-anchor-link:focus-visible {
+  color: var(--sl-color-accent-high);
+  background: color-mix(in srgb, var(--sl-color-accent-low) 55%, transparent);
+  opacity: 0.9;
+}
+
 .sl-markdown-content img {
   display: block;
   width: 100%;
@@ -191,11 +223,13 @@ header.header {
 .sl-markdown-content th,
 .sl-markdown-content td {
   padding: 0.72rem 0.8rem;
+  text-align: center;
   vertical-align: middle;
 }
 
-.sl-markdown-content td:first-child {
-  text-align: center;
+.sl-markdown-content td:first-child:has(code) {
+  text-align: start;
+  overflow-wrap: anywhere;
 }
 
 .sl-markdown-content blockquote {

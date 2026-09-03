@@ -39,9 +39,11 @@ if (metadata.width !== sourceWidth || metadata.height !== sourceHeight) {
 
 const redactionSvg = Buffer.from(
   `<svg xmlns="http://www.w3.org/2000/svg" width="${sourceWidth}" height="${sourceHeight}">${manifest.redactions
-    .map(({ bbox }) => {
+    .map(({ bbox, mask_style: itemMaskStyle }) => {
       const [x1, y1, x2, y2] = bbox;
-      return `<rect x="${x1}" y="${y1}" width="${x2 - x1}" height="${y2 - y1}" fill="white" stroke="black" stroke-width="12"/>`;
+      const stroke = itemMaskStyle === 'whiteout' ? 'none' : 'black';
+      const strokeWidth = itemMaskStyle === 'whiteout' ? 0 : 12;
+      return `<rect x="${x1}" y="${y1}" width="${x2 - x1}" height="${y2 - y1}" fill="white" stroke="${stroke}" stroke-width="${strokeWidth}"/>`;
     })
     .join('')}</svg>`,
 );
@@ -55,9 +57,14 @@ await sharp(fullPath)
   .toFile(path.join(rootDir, '실습자료', '이미지', '전체-도면.png'));
 
 await sharp(fullPath)
-  .extract({ left: 3920, top: 1450, width: 890, height: 1920 })
+  .extract({ left: 3920, top: 3120, width: 890, height: 290 })
   .png()
   .toFile(path.join(rootDir, '실습자료', '이미지', '제목란.png'));
+
+await sharp(fullPath)
+  .extract({ left: 3710, top: 140, width: 1110, height: 900 })
+  .png()
+  .toFile(path.join(rootDir, '실습자료', '이미지', '장비-범례.png'));
 
 await sharp(path.join(rootDir, '실습자료', '이미지', 'feeder-c-원본-확대.png'))
   .resize({ height: 1600, withoutEnlargement: true })

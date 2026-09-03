@@ -17,7 +17,8 @@
     },
     {
       "id": "gs_department_number_label",
-      "bbox": [4318, 3305, 4500, 3345]
+      "bbox": [4318, 3305, 4500, 3345],
+      "mask_style": "whiteout"
     }
   ],
   "mask_style": "opaque_white_with_black_border",
