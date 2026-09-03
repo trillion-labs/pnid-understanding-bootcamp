@@ -33,7 +33,6 @@ export default defineConfig({
       credits: false,
       tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 3 },
       sidebar: [
-        { label: '시작하기', link: '/' },
         {
           label: '핵심 워크북',
           items: [
