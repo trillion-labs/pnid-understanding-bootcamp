@@ -2,6 +2,20 @@
 
 이 워크북은 P&ID를 처음 보는 분이 Claude Code나 Codex와 함께 실제 도면을 읽어 보는 실습 안내서입니다. 예시 도면 한 장과 같은 질문을 계속 사용하여, 전체에서 위치를 찾고 작은 태그를 확인한 뒤 근거를 남기는 과정을 따라갑니다.
 
+## 시작 전에 준비할 것
+
+| 참여 방법 | 준비 |
+|---|---|
+| 사이트에서 내용을 읽고 준비된 결과를 확인합니다. | 별도 준비가 필요하지 않습니다. |
+| 명령을 직접 실행해 결과를 만들어 봅니다. | 아래와 같이 실습 파일을 받은 뒤, 사용할 Claude Code 또는 Codex에 로그인합니다. |
+
+```bash
+git clone https://github.com/trillion-labs/pnid-understanding-bootcamp.git
+cd pnid-understanding-bootcamp
+```
+
+이후 단원에 나오는 `./scripts/...` 명령과 `assets/...` 경로는 이 폴더 안에서 실행하고 찾습니다.
+
 ## 중심 질문과 기준 답안
 
 > 이 P&ID에서 `RECEPTION BIN 2`의 A측 하부 출구와 연결된 `VIBRO FEEDER #C`를 찾아 주세요. Reception Bin 2의 장비 태그, A측 밸브 번호, Feeder #C의 장비 태그, 연결된 전동기의 심벌 표기와 태그를 적어 주세요.

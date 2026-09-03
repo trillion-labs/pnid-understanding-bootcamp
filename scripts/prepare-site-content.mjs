@@ -38,7 +38,7 @@ function rewriteWorkbookLinks(source) {
 }
 
 const homePage = `---
-title: 시작하기
+title: P&ID × AI Agent 실습 워크북
 description: Claude Code와 Codex로 실제 P&ID 도면을 읽고 평가하고 개선하는 실습형 워크북입니다.
 template: splash
 hero:
@@ -72,7 +72,7 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 
 ## 시작하는 순서
 
-**워크북 안내 → P&ID 입문 → 첫 번째 실제 실험** 순서로 시작하세요. 필요한 이미지와 실행 스크립트는 이미 준비되어 있습니다.
+먼저 **워크북 안내 → P&ID 입문 → 첫 번째 실제 실험** 순서로 시작하세요. 이후에는 왼쪽 사이드바의 번호를 따라 진행하면 됩니다.
 
 > 이 사이트에 표시되는 도면 이미지는 회사명, 로고, 주소, 작성·검토자 영역을 마스킹한 교육용 사본입니다. 내부 원본 PDF와 개인 메타데이터가 포함된 export 파일은 공개 저장소와 사이트에 포함하지 않습니다.
 `;
