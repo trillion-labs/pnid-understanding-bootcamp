@@ -12,7 +12,7 @@ source/
 tmp/
 output/
 data/ocr/*
-!data/ocr/pid-user-words.txt
+!data/ocr/pnid-user-words.txt
 !data/ocr/전체-도면-ocr.tsv
 !data/ocr/feeder-c-area-improved.tsv
 !data/ocr/ocr-agent-comparison.csv

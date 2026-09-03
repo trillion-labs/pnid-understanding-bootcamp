@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "clean": "node scripts/clean-generated.mjs",
     "site:prepare": "node scripts/prepare-site-content.mjs",
     "kit:build": "bash scripts/build-workbook-kit.sh",
     "dev": "npm run site:prepare && astro dev",

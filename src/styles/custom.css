@@ -280,13 +280,23 @@ header.header {
 .process-flow {
   display: grid;
   grid-template-columns: repeat(var(--flow-columns, 4), minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  align-items: stretch;
   gap: 1.65rem;
   margin-block: 1.5rem 2rem;
 }
 
 .process-step {
   position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
   min-width: 0;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
   padding: 0.9rem 0.8rem;
   border: 1px solid color-mix(in srgb, var(--sl-color-accent) 18%, var(--sl-color-hairline));
   border-radius: 0.68rem;
