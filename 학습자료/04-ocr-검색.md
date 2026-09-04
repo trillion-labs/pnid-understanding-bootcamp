@@ -128,10 +128,10 @@ sudo apt install -y tesseract-ocr
 
 ### 3. 검색 가능한 PDF를 직접 만듭니다
 
-터미널에서 이 저장소의 폴더로 이동합니다. 저장소가 `~/Projects/pnid-understanding-bootcamp`에 있다면 다음과 같이 입력합니다.
+터미널에서 압축을 푼 `pnid-ai-workbook-kit` 폴더로 이동합니다. macOS의 기본 다운로드 경로에 풀었다면 다음과 같이 입력합니다.
 
 ```bash
-cd ~/Projects/pnid-understanding-bootcamp
+cd ~/Downloads/pnid-ai-workbook-kit
 ```
 
 현재 위치가 맞는지 확인합니다.

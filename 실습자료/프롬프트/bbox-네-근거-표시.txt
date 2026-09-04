@@ -1,0 +1,24 @@
+이 작업은 태그 판독 시험이 아니라 bbox 측정과 시각 검토 실습입니다.
+`실습자료/이미지/feeder-c-원본-확대.png`에서 이미 확인된 네 근거를 찾아 각각 bbox로 표시해 주세요.
+
+대상과 상자 범위:
+- B1 `reception_bin_2_tag`: `RECEPTION BIN 2`와 `11520-M-SI-04` 두 줄의 글자만 감싸세요. Bin 본체 전체를 감싸지 마세요.
+- B2 `valve_a_side`: A측 표시, `V186` 글자와 그 출구의 밸브 심벌을 한 상자에 넣으세요. `V187`은 제외하세요.
+- B3 `feeder_c_tag`: 왼쪽에 있는 UNIT 1·UNIT 2의 `VIBRO FEEDER #C / 11520 M-VB-03C` 두 묶음의 글자만 한 상자에 넣으세요. 피더 본체와 모터, 오른쪽 Feeder #B/#D는 제외하세요.
+- B4 `connected_motor_tag`: Feeder #C의 왼쪽 `EM` 심벌과 `11520-E-MT-18` 글자를 한 상자에 넣으세요. `11520-E-MT-19`는 제외하세요.
+
+좌표 규칙:
+- 먼저 원본 이미지의 실제 픽셀 크기를 확인하고 리사이즈하지 마세요.
+- 원점은 왼쪽 위 `(0, 0)`입니다.
+- bbox는 `[x_min,y_min,x_max,y_max]`의 `xyxy_exclusive` 픽셀 좌표입니다.
+- 네 대상마다 bbox 하나를 만들고 하나의 큰 상자로 합치지 마세요.
+- 상자 선이 글자나 심벌을 가리지 않도록 대상 바깥에 8~12px 여백을 두세요.
+
+결과 파일:
+1. `output/bbox-practice/bboxes.json`에 `image_path`, `image_size`, `coordinate_format`, `findings` 배열을 저장하세요.
+2. `findings`의 각 원소는 `id`, `field`, `observed_text_or_symbol`, `bbox`, `confidence`, `note`를 포함해야 합니다.
+3. 프로젝트에 설치된 Node.js의 `sharp` 패키지를 사용해 원본 위에 B1~B4를 서로 다른 색의 5px 사각형으로 그리세요. 상자 바깥의 빈 공간에 B1~B4 라벨을 붙이고 `output/bbox-practice/marked.png`로 저장하세요.
+4. 원본 이미지는 수정하지 마세요. 결과 PNG의 픽셀 크기는 원본과 같아야 합니다.
+5. 저장한 `marked.png`를 실제로 열어 네 상자가 올바른 대상을 감싸는지 확인하세요. 글자나 심벌이 잘렸거나 제외 대상이 들어갔다면 좌표를 수정하고 다시 생성하세요.
+6. 마지막으로 JSON 문법, 네 field의 중복·누락, 좌표 순서와 이미지 경계, 출력 PNG 크기를 검사하세요.
+7. 완료 응답에는 두 결과 파일 경로, 네 bbox 좌표와 검사 결과만 간단히 적으세요.
