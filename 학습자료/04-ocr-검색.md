@@ -131,6 +131,9 @@ tesseract \
   -l eng \
   --dpi 300 \
   --psm 11 \
+  --user-words data/ocr/pnid-user-words.txt \
+  -c thresholding_method=2 \
+  -c preserve_interword_spaces=1 \
   pdf
 ```
 
@@ -143,6 +146,9 @@ tesseract \
 | `-l eng` | 영어 문자 모델 사용 |
 | `--dpi 300` | 입력 해상도를 300 DPI로 해석 |
 | `--psm 11` | 도면처럼 여러 위치에 흩어진 글자를 탐색 |
+| `--user-words data/ocr/pnid-user-words.txt` | 도면에서 확인한 P&ID 용어 46개를 사용자 단어 사전으로 사용 |
+| `-c thresholding_method=2` | 조명과 배경이 균일하지 않은 이미지에 대한 적응형 이진화 사용 |
+| `-c preserve_interword_spaces=1` | 인식된 단어 사이의 공백을 가능한 그대로 유지 |
 | `pdf` | 보이는 이미지 위에 검색용 텍스트 레이어가 있는 PDF 생성 |
 
 완료되면 `실습자료/ocr/내가-만든-pnid.pdf`가 생깁니다.

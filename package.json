@@ -8,7 +8,7 @@
     "site:prepare": "node scripts/prepare-site-content.mjs",
     "kit:build": "bash scripts/build-workbook-kit.sh",
     "dev": "npm run site:prepare && astro dev",
-    "build": "npm run site:prepare && astro build",
+    "build": "npm run kit:build && npm run site:prepare && astro build",
     "preview": "astro preview",
     "check": "npm run site:prepare && astro check"
   },
