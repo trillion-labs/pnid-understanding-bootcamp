@@ -22,13 +22,7 @@
 현재 재현 스크립트는 지정된 이미지를 최초 입력으로 불러오는 동작만 허용하고, 입력 후 추가 파일 읽기, 확대·자르기·리사이즈, OCR, 코드 실행과 외부 검색을 프롬프트에서 금지합니다. `strict/summary.csv`의 `tool_attempts`는 Codex 이벤트 로그에서만 집계하며, Claude는 허용된 `Read` 호출 횟수가 최종 JSON에 포함되지 않아 빈값으로 남깁니다.
 
 - 현재 기준 실험: `strict/`
-- 제한 강화 전 기록: `baseline/`
-- 원본 해상도 전체 도면 실험: `fullres/`
-- 확대 이미지 크기 정규화 실험: `normalized/`
-- 이전 탐색 실험: `deep-reading/`, `retrieval/`
 
-공개 실습 키트 ZIP에는 현재 본문의 근거로 사용하는 `strict/README.md`, `strict/summary.csv`와 `strict/manual-review.csv`만 포함합니다. 로컬 경로나 검토 전 응답이 섞일 수 있는 `raw/`와 이전 탐색 실험은 공개 ZIP에서 제외합니다.
+공개 실습 키트 ZIP에는 현재 본문의 근거로 사용하는 `strict/README.md`, `strict/summary.csv`와 `strict/manual-review.csv`만 포함합니다. 로컬 경로나 검토 전 응답이 섞일 수 있는 `raw/`는 공개 ZIP에서 제외합니다.
 
-`fullres/`는 4,963×3,509 원본 해상도 이미지에 대한 이전 탐색 결과입니다. 일부 실행에서 OCR이나 부분 자르기를 사용했으므로 현재 무도구 기준 점수에는 포함하지 않습니다.
-
-경로는 짧고 안정적인 이름을 사용합니다. `strict`는 현재 `strict-v1`, 기존 `baseline`은 `verifiable-v3`, `fullres`는 `fullres-v1`, `normalized`는 `normalized-crop-v1`에 해당합니다.
+현재 실험 프로토콜 버전은 `strict-v1`입니다.

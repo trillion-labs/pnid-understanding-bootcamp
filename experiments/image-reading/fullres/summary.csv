@@ -1,4 +1,0 @@
-provider,model,image,width,height,evidence_score,bin_tag,outlet_valve,feeder_tag,motor_tag,tokens_reported,review_note
-claude,sonnet,실습자료/이미지/원본-고해상도-도면.png,4963,3509,4,1,1,1,1,,"네 항목과 연결 관계를 정확히 확인함; Feeder tag 뒤에 Unit 1을 명시함"
-codex,luna,실습자료/이미지/원본-고해상도-도면.png,4963,3509,4,1,1,1,1,16903,"네 항목과 연결 관계를 정확히 확인함; 실행 중 Tesseract와 ffmpeg crop을 사용해 원본을 추가 확인함"
-codex,terra,실습자료/이미지/원본-고해상도-도면.png,4963,3509,4,1,1,1,1,29075,"네 항목과 연결 관계를 정확히 확인함; 실행 중 부분 crop을 시도함"

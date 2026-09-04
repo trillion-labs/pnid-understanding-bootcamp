@@ -1,7 +1,0 @@
-provider,model,condition,image,width,height,evidence_score,bin_tag,outlet_valve,feeder_tag,motor_tag,tokens_reported
-claude,sonnet,crop-short,실습자료/이미지/feeder-c-확대.png,1244,1600,4,1,1,1,1,
-codex,luna,crop-short,실습자료/이미지/feeder-c-확대.png,1244,1600,4,1,1,1,1,11355
-codex,terra,crop-short,실습자료/이미지/feeder-c-확대.png,1244,1600,4,1,1,1,1,11968
-claude,sonnet,crop-guided,실습자료/이미지/feeder-c-확대.png,1244,1600,4,1,1,1,1,
-codex,luna,crop-guided,실습자료/이미지/feeder-c-확대.png,1244,1600,4,1,1,1,1,7637
-codex,terra,crop-guided,실습자료/이미지/feeder-c-확대.png,1244,1600,4,1,1,1,1,12337

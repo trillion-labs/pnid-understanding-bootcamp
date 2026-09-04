@@ -7,12 +7,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser(description="Summarize one-image prompt experiment results.")
-parser.add_argument("dataset", nargs="?", default="strict")
 parser.add_argument("--run-date", required=True, help="Actual run date in YYYY-MM-DD format")
 args = parser.parse_args()
-DATASET = args.dataset
 RUN_DATE = args.run_date
-BASE = ROOT / "experiments" / "image-reading" / DATASET
+BASE = ROOT / "experiments" / "image-reading" / "strict"
 RAW = BASE / "raw"
 REVIEWS = BASE / "manual-review.csv"
 OUT = BASE / "summary.csv"
@@ -22,7 +20,7 @@ def condition_metadata(condition: str) -> dict:
     is_crop = condition.startswith("crop-")
     is_guided = condition.endswith("-guided")
     return {
-        "protocol_version": "strict-v1" if DATASET == "strict" else DATASET,
+        "protocol_version": "strict-v1",
         "run_date": RUN_DATE,
         "image_path": (
             "실습자료/이미지/feeder-c-확대.png"

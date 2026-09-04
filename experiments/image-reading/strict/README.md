@@ -37,5 +37,5 @@
 원시 결과에서 요약 CSV를 다시 만들 때에는 실제 실행일을 명시합니다.
 
 ```bash
-python3 scripts/summarize_single_image_prompt_results.py strict --run-date 2026-09-04
+python3 scripts/summarize_single_image_prompt_results.py --run-date 2026-09-04
 ```

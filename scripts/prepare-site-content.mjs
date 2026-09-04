@@ -105,6 +105,10 @@ await cp(practiceDir, path.join(contentDir, 'assets'), {
 const downloadsDir = path.join(rootDir, 'public', 'downloads');
 await mkdir(downloadsDir, { recursive: true });
 await cp(
+  path.join(practiceDir, '이미지', '원본-고해상도-도면.png'),
+  path.join(downloadsDir, '원본-고해상도-도면.png'),
+);
+await cp(
   path.join(practiceDir, 'ocr', '검색가능한-pnid.pdf'),
   path.join(downloadsDir, '검색가능한-pnid.pdf'),
 );
