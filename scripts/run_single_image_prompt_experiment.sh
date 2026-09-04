@@ -4,7 +4,7 @@ set -euo pipefail
 repo_dir=$(cd "$(dirname "$0")/.." && pwd)
 cd "$repo_dir"
 
-out_dir="experiments/image-reading/baseline/raw"
+out_dir="experiments/image-reading/strict/raw"
 mkdir -p "$out_dir"
 
 full_image="$repo_dir/실습자료/이미지/전체-도면.png"
@@ -20,7 +20,9 @@ run_claude() {
   local prompt=$5
   local output="$out_dir/claude-${model_label}-${condition}.json"
   local image_prompt
-  image_prompt="Read the image file at $image using the Read tool, then answer this Korean prompt:\n\n$prompt"
+  image_prompt="Read only the image file at $image once with the Read tool. Do not read other files or use any other tool. Then answer this Korean prompt using only the image at its current resolution:
+
+$prompt"
   claude -p "$image_prompt" \
     --model "$model" \
     --effort medium \

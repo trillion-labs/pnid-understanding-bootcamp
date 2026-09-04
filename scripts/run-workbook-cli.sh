@@ -99,6 +99,7 @@ output_dir="$repo_dir/output/workbook-cli"
 mkdir -p "$output_dir"
 timestamp=$(date +%Y%m%d-%H%M%S)
 output_path="$output_dir/${timestamp}-${agent}-${condition}.txt"
+prompt=$(<"$prompt_path")
 
 echo "도구: $agent"
 echo "모델: $model"
@@ -108,7 +109,9 @@ echo "결과 저장: $output_path"
 echo
 
 if [[ "$provider" == "claude" ]]; then
-  instruction="Read the image file at $repo_dir/$image_path with the Read tool. Then read $repo_dir/$prompt_path and answer that Korean prompt. Do not modify any files."
+  instruction="Read only the image file at $repo_dir/$image_path once with the Read tool. Do not read other files or use any other tool. Then answer the Korean prompt below using only the image at its current resolution. Do not modify any files.
+
+$prompt"
   claude -p "$instruction" \
     --model "$model" \
     --effort medium \
@@ -125,7 +128,7 @@ else
     --ephemeral \
     -C "$repo_dir" \
     --output-last-message "$output_path" \
-    "$(<"$prompt_path")"
+    "$prompt"
 fi
 
 echo

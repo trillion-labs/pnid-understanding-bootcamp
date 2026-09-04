@@ -1,0 +1,13 @@
+provider,model,condition,evidence_score,bin_tag,outlet_valve,feeder_tag,motor_tag,protocol_compliant,review_note
+claude,sonnet,full-short,3,1,1,1,0,limited_trace,"Bin·V186·Feeder tag는 맞았지만 전동기를 M-TP16으로 잘못 읽음"
+claude,sonnet,full-guided,1,1,0,0,0,limited_trace,"Bin tag만 맞고 밸브·Unit 2 Feeder tag·motor tag를 잘못 읽음"
+claude,sonnet,crop-short,4,1,1,1,1,limited_trace,"네 항목을 모두 정확히 읽음"
+claude,sonnet,crop-guided,4,1,1,1,1,limited_trace,"Unit 1·2를 구분해 네 항목을 모두 정확히 읽음"
+codex,luna,full-short,2,1,1,0,0,yes,"Feeder tag를 18/19, motor를 M/M-TP16으로 잘못 읽음"
+codex,luna,full-guided,2,1,1,0,0,yes,"Feeder tag를 07/08, motor를 M/M-TP16으로 잘못 읽음"
+codex,luna,crop-short,4,1,1,1,1,yes,"네 항목을 모두 정확히 읽음"
+codex,luna,crop-guided,4,1,1,1,1,yes,"Unit 1·2를 구분해 네 항목을 모두 정확히 읽음"
+codex,terra,full-short,2,1,1,0,0,yes,"Feeder tag와 motor를 확인하지 못함으로 보류함"
+codex,terra,full-guided,2,1,1,0,0,yes,"Bin tag와 V186은 맞고 Feeder를 보류했으며 motor를 M-TP16으로 잘못 읽음"
+codex,terra,crop-short,4,1,1,1,1,yes,"네 항목을 모두 정확히 읽음"
+codex,terra,crop-guided,4,1,1,1,1,yes,"Unit 1·2를 구분해 네 항목을 모두 정확히 읽음"

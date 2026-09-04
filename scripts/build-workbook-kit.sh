@@ -20,23 +20,40 @@ output.parent.mkdir(parents=True, exist_ok=True)
 items = [
     root / "실습자료",
     root / "workbook-kit" / "README.md",
+    root / "workbook-kit" / "package.json",
     root / "scripts" / "run-workbook-cli.sh",
     root / "scripts" / "build-ocr-assets.sh",
     root / "scripts" / "search_ocr.py",
+    root / "data" / "image-input-strategy",
     root / "data" / "ocr" / "pnid-user-words.txt",
     root / "data" / "ocr" / "전체-도면-ocr.tsv",
     root / "data" / "ocr" / "feeder-c-area-improved.tsv",
+    root / "data" / "ocr" / "ocr-agent-comparison.csv",
+    root / "data" / "document.json",
+    root / "data" / "regions.jsonl",
+    root / "data" / "objects.example.jsonl",
+    root / "data" / "benchmark-cases.jsonl",
+    root / "templates" / "evaluation.csv",
+    root / "skills" / "pid-visual-evidence" / "SKILL.md",
+    root / "skills" / "pid-visual-evidence" / "agents" / "openai.yaml",
+    root / "skills" / "pid-visual-evidence" / "references" / "output-contract.md",
+    root / "experiments" / "image-reading" / "README.md",
+    root / "experiments" / "image-reading" / "strict" / "README.md",
+    root / "experiments" / "image-reading" / "strict" / "manual-review.csv",
+    root / "experiments" / "image-reading" / "strict" / "summary.csv",
 ]
 
 with ZipFile(output, "w", ZIP_DEFLATED) as archive:
     for item in items:
         paths = item.rglob("*") if item.is_dir() else [item]
         for path in paths:
-            if not path.is_file():
+            if not path.is_file() or path.name == ".DS_Store":
                 continue
             relative = (
                 Path("README.md")
                 if path == root / "workbook-kit" / "README.md"
+                else Path("package.json")
+                if path == root / "workbook-kit" / "package.json"
                 else path.relative_to(root)
             )
             archive.write(path, Path("pnid-ai-workbook-kit") / relative)
