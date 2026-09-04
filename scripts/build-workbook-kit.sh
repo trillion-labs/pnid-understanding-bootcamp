@@ -18,6 +18,7 @@ output = root / "public" / "downloads" / "pnid-ai-workbook-kit.zip"
 output.parent.mkdir(parents=True, exist_ok=True)
 
 items = [
+    root / "학습자료",
     root / "실습자료",
     root / "workbook-kit" / "README.md",
     root / "workbook-kit" / "package.json",
@@ -34,9 +35,6 @@ items = [
     root / "data" / "objects.example.jsonl",
     root / "data" / "benchmark-cases.jsonl",
     root / "templates" / "evaluation.csv",
-    root / "skills" / "pid-visual-evidence" / "SKILL.md",
-    root / "skills" / "pid-visual-evidence" / "agents" / "openai.yaml",
-    root / "skills" / "pid-visual-evidence" / "references" / "output-contract.md",
     root / "experiments" / "image-reading" / "README.md",
     root / "experiments" / "image-reading" / "strict" / "README.md",
     root / "experiments" / "image-reading" / "strict" / "manual-review.csv",
@@ -47,7 +45,11 @@ with ZipFile(output, "w", ZIP_DEFLATED) as archive:
     for item in items:
         paths = item.rglob("*") if item.is_dir() else [item]
         for path in paths:
-            if not path.is_file() or path.name == ".DS_Store":
+            if (
+                not path.is_file()
+                or path.name == ".DS_Store"
+                or path == root / "실습자료" / "ocr" / "내가-만든-pnid.pdf"
+            ):
                 continue
             relative = (
                 Path("README.md")

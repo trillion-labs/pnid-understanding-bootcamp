@@ -1,1 +1,1 @@
-run,provider,model,condition,bin_tag,outlet_valve,feeder_tag,motor_tag,evidence_score,review_status,evidence_region,review_note
+run,provider,model,condition,bin_tag,outlet_valve,feeder_tag,motor_tag,evidence_score,wrong_item,one_change,retest_score,review_status,evidence_region,review_note
